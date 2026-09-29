@@ -27,7 +27,7 @@ export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fie
       `Requirements: ${form.get("requirements") || ""}`,
     ];
     window.gtag?.("event", "generate_lead", { lead_source: "website_inquiry", project_type: projectType, target_market: targetMarket, page_path: window.location.pathname });
-    window.open(`https://wa.me/2349018883632?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/8615595903230?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
     setPrepared(true);
   }
 
