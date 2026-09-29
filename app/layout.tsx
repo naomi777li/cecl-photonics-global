@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@/components/analytics";
 import "./globals.css";
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
@@ -20,6 +21,9 @@ export const metadata: Metadata = {
     icon: `${publicBase}/favicon.svg`,
     shortcut: `${publicBase}/favicon.svg`,
   },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({
@@ -29,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased"><Analytics />{children}</body>
     </html>
   );
 }
