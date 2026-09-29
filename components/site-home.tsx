@@ -1,0 +1,159 @@
+import Image from "next/image";
+import { ArrowUpRight, Check, Cpu, FileCheck2, Layers3, ScanLine, ShieldCheck, Sparkles } from "lucide-react";
+import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+type Lang = "en" | "zh";
+
+const copy = {
+  en: {
+    nav: ["Products", "Solutions", "Medical Beauty", "OEM / ODM", "Quality"],
+    start: "Start a project", eyebrow: "PHOTONIC SEMICONDUCTORS · LIGHT ENGINES · OEM/ODM",
+    titleA: "From chip to", titleB: "application-ready light.",
+    intro: "Custom emitters, optical modules and engineering support for sensing, medical beauty and intelligent devices.",
+    explore: "Explore products", discuss: "Discuss your application", integration: "Integration path",
+    chips: ["Visible LED", "Infrared LED", "VCSEL", "Custom modules"],
+    proof: [["Component-to-system", "One engineering conversation"], ["Application-first", "Specs shaped around the use case"], ["Model-specific", "Documents matched to the selected part"], ["Global B2B", "Samples, projects and distribution"]],
+    pathways: "Choose your development path", pathIntro: "Two buyer journeys, one photonics platform. Component teams can source emitters and modules; device brands can move into a managed OEM/ODM program.",
+    componentBuyer: "FOR COMPONENT BUYERS", semiTitle: "Semiconductors & optical modules", semiBody: "Build your bill of materials around wavelength, optical power, package, thermal design and application constraints.", semiLink: "Browse the product platform",
+    deviceBrands: "FOR DEVICE BRANDS", beautyTitle: "Medical beauty OEM / ODM", beautyBody: "Develop light-based beauty and personal-care devices with optical, thermal, industrialization and manufacturing support.", beautyLink: "Plan an OEM/ODM project",
+    platformKicker: "PRODUCT PLATFORM", platformTitle: "Specify the light source, then scale the integration.", platformBody: "The catalog is organized by buyer decision—not internal technology labels—so engineering teams can move from emitter selection to a qualified module request.",
+    semiconductors: "Semiconductors", modules: "Modules & light engines", inquire: "Request specification",
+    appsKicker: "APPLICATIONS", appsTitle: "One photonics core, multiple market paths.", appsBody: "The site keeps chips and medical beauty together because the value chain is continuous. Each application has its own technical entry point, evidence requirements and commercial workflow.",
+    beautyKicker: "MEDICAL BEAUTY & PERSONAL CARE", beautyMain: "Turn a wavelength brief into a manufacturable device program.", beautyDesc: "A separate device pathway lets brand owners discuss form factor, optical uniformity, heat, controls, production targets and market documentation without navigating a component catalog.",
+    programs: "Example program directions", programNote: "Product classification, claims and required approvals depend on the final configuration and destination market.",
+    oemKicker: "OEM / ODM WORKFLOW", oemTitle: "A reviewable path from brief to production.", oemBody: "Each gate produces a concrete decision: requirements, optical architecture, prototype, validation package and manufacturing release.",
+    qualityKicker: "TRUST & DOCUMENTATION", qualityTitle: "Credibility should be attached to a model—not a slogan.", qualityBody: "This site avoids unverified performance and certification claims. Buyers request the documentation set for the exact part, device configuration and target market.", requestDocs: "Request verified documents",
+    faqKicker: "BUYER FAQ", faqTitle: "Questions procurement and engineering teams ask first.",
+    contactKicker: "START A PROJECT", contactTitle: "Send a technical brief. We’ll route it to the right product path.", contactBody: "Share what is already known—application, wavelength, package or device concept, volume stage and destination market. Missing details can be resolved during engineering review.",
+    fields: ["Name", "Business email", "Company", "Project type", "Target market", "Project requirements"], submit: "Prepare inquiry", success: "Your project brief is ready. Email/CRM routing will be connected before public launch.",
+    footer: "Photonics components, modules and application development for global B2B partners.", scope: "Scope notice: final specifications, commercial terms and compliance documents require model-level review."
+  },
+  zh: {
+    nav: ["产品中心", "应用方案", "医疗美容", "OEM / ODM", "质量与资料"],
+    start: "发起项目", eyebrow: "光电半导体 · 光学引擎 · OEM/ODM",
+    titleA: "从芯片出发，", titleB: "做到可落地的光。",
+    intro: "面向传感、医疗美容与智能设备，提供定制发光芯片、光学模块及应用工程支持。",
+    explore: "查看产品", discuss: "沟通应用需求", integration: "集成路径",
+    chips: ["可见光 LED", "红外 LED", "VCSEL", "定制模块"],
+    proof: [["芯片到系统", "统一工程沟通窗口"], ["应用导向", "按使用场景定义规格"], ["型号对应", "资料与具体产品匹配"], ["全球 B2B", "样品、项目与渠道合作"]],
+    pathways: "选择你的开发路径", pathIntro: "两类采购旅程，共用一套光电技术平台。器件团队采购芯片和模块，设备品牌进入完整 OEM/ODM 项目。",
+    componentBuyer: "面向器件采购与研发", semiTitle: "半导体与光学模块", semiBody: "围绕波长、光功率、封装、散热设计和应用约束，建立可评估的物料方案。", semiLink: "查看产品平台",
+    deviceBrands: "面向设备品牌与渠道商", beautyTitle: "医疗美容 OEM / ODM", beautyBody: "提供光学、热设计、工业化和制造支持，开发光疗美容与个护设备。", beautyLink: "规划 OEM/ODM 项目",
+    platformKicker: "产品平台", platformTitle: "先选光源，再推进系统集成。", platformBody: "目录按照采购决策逻辑组织，让工程团队能够从发光器件选择，顺畅进入模块评估和定制需求。",
+    semiconductors: "半导体产品", modules: "模块与光学引擎", inquire: "索取规格资料",
+    appsKicker: "应用领域", appsTitle: "一套光电核心，多条市场路径。", appsBody: "芯片与医疗美容可以放在同一个外贸站，因为两者属于连续价值链；不同应用分别设置技术入口、验证资料和商务流程。",
+    beautyKicker: "医疗美容与个人护理", beautyMain: "把波长需求转化为可量产的设备项目。", beautyDesc: "设备客户可直接讨论外观形态、光照均匀性、散热、控制方式、产量目标和目标市场资料，不必先研究芯片目录。",
+    programs: "项目方向示例", programNote: "产品分类、宣传功效和所需认证取决于最终配置及销售目的地。",
+    oemKicker: "OEM / ODM 流程", oemTitle: "从需求到量产，每一步都可评审。", oemBody: "每个阶段都有明确输出：需求定义、光学架构、样机、验证资料与生产放行。",
+    qualityKicker: "可信度与技术资料", qualityTitle: "可信度应落实到具体型号，而不是口号。", qualityBody: "本站不使用未经核验的性能、认证或客户背书。采购方可针对具体型号、设备配置与目标市场索取对应资料。", requestDocs: "索取已核验资料",
+    faqKicker: "采购常见问题", faqTitle: "采购与研发团队最先关心的问题。",
+    contactKicker: "发起项目", contactTitle: "提交技术需求，我们会分配到正确的产品路径。", contactBody: "请填写已知信息：应用、波长、封装或设备概念、采购阶段及目标市场。缺失信息可在工程评审中补齐。",
+    fields: ["姓名", "工作邮箱", "公司", "项目类型", "目标市场", "项目需求"], submit: "生成询盘", success: "项目简报已生成；正式上线前将接入企业邮箱或 CRM。",
+    footer: "面向全球 B2B 客户的光电芯片、模块与应用开发平台。", scope: "范围说明：最终规格、商务条款和合规文件均需按具体型号审核。"
+  }
+};
+
+const productData = {
+  en: {
+    chips: [
+      ["AlGaInP visible emitters", "Red and yellow wavelength families for indicators, displays, sensing and light-based applications.", ["Die / packaged options", "Wavelength selection", "Binning discussion"]],
+      ["InGaN visible emitters", "Blue and green wavelength families for indicators, specialty lighting and optical systems.", ["Application-matched package", "Thermal review", "Sample evaluation"]],
+      ["Infrared LED", "Infrared emitters for sensing, illumination, machine vision and device integration.", ["Wavelength by project", "Radiant output review", "Package & optics"]],
+      ["VCSEL platform", "Vertical-cavity laser sources for proximity, time-of-flight, structured illumination and custom modules.", ["Emitter / array path", "Driver coordination", "Optical integration"]]
+    ],
+    modules: [
+      ["LED arrays & COB engines", "Multi-emitter layouts engineered around coverage, thermal path and assembly requirements.", ["Emitter mix", "Board architecture", "Thermal interface"]],
+      ["VCSEL modules", "Integrated source, optics and drive coordination for compact sensing or illumination assemblies.", ["Beam requirement", "Safety review input", "Evaluation sample"]],
+      ["Beauty light engines", "Custom light-source assemblies for wearable, handheld and professional beauty-device concepts.", ["Uniformity target", "Heat & comfort", "Form-factor fit"]],
+      ["Custom optical modules", "Application-specific assemblies combining emitters, optics, electronics and mechanical interfaces.", ["DFM review", "Prototype build", "Production transfer"]]
+    ]
+  },
+  zh: {
+    chips: [
+      ["AlGaInP 可见光芯片", "覆盖红光、黄光波段，面向指示、显示、传感及光应用。", ["芯片/封装选择", "波长选型", "分档讨论"]],
+      ["InGaN 可见光芯片", "覆盖蓝光、绿光波段，面向指示、特种照明和光学系统。", ["应用匹配封装", "散热评审", "样品验证"]],
+      ["红外 LED", "面向传感、补光、机器视觉和设备集成的红外发光器件。", ["按项目选择波长", "辐射功率评估", "封装与光学"]],
+      ["VCSEL 平台", "面向接近感应、ToF、结构光和定制模块的垂直腔面发射激光光源。", ["单管/阵列路径", "驱动协同", "光学集成"]]
+    ],
+    modules: [
+      ["LED 阵列与 COB 光引擎", "根据覆盖范围、散热路径和装配要求设计多光源布局。", ["光源组合", "电路板架构", "热界面设计"]],
+      ["VCSEL 模块", "协调光源、光学与驱动，为紧凑型传感或照明组件提供集成方案。", ["光束需求", "安全评审输入", "评估样品"]],
+      ["美容光学引擎", "面向穿戴式、手持式和专业美容设备的定制光源组件。", ["均匀性目标", "热管理与舒适度", "结构适配"]],
+      ["定制光学模块", "根据应用组合发光器件、光学、电子与机械接口。", ["可制造性评审", "样机制作", "量产转移"]]
+    ]
+  }
+};
+
+const apps = [
+  { icon: ScanLine, en: ["Sensing & machine vision", "Emitter selection, illumination geometry and compact module integration."], zh: ["传感与机器视觉", "发光器件选型、照明几何与紧凑模块集成。"] },
+  { icon: Sparkles, en: ["Medical beauty", "Light engines and device programs for photobiomodulation and beauty concepts."], zh: ["医疗美容", "面向光生物调节和美容概念的光学引擎与设备项目。"] },
+  { icon: Cpu, en: ["Consumer electronics", "Compact visible and infrared sources for intelligent device features."], zh: ["消费电子", "面向智能设备功能的紧凑型可见光与红外光源。"] },
+  { icon: Layers3, en: ["Specialty illumination", "Wavelength-specific platforms for industrial and application-defined lighting."], zh: ["特种照明", "面向工业和特定应用照明的波长平台。"] }
+];
+
+const programs = {
+  en: [["LED facial wearables", "Uniform light delivery, comfort, controls and manufacturability."], ["Scalp & hair-care devices", "Wearable optical architecture, thermal comfort and usage design."], ["Professional treatment panels", "Coverage, serviceability, control zones and production planning."], ["Hair-removal light engines", "Source, optical path, thermal management and device integration review."]],
+  zh: [["LED 面部穿戴设备", "光照均匀性、舒适度、控制方式与可制造性。"], ["头皮与毛发护理设备", "穿戴式光学架构、热舒适与使用方式设计。"], ["专业护理面板", "覆盖范围、可维护性、分区控制与生产规划。"], ["脱毛光学引擎", "光源、光路、热管理和整机集成评审。"]]
+};
+
+const workflow = {
+  en: [["01", "Brief", "Application, market, volume stage and commercial target."], ["02", "Architecture", "Emitter, optics, electronics, thermal and mechanical concept."], ["03", "Prototype", "Evaluation unit or device sample for agreed test objectives."], ["04", "Validation", "Performance, reliability and market-document review plan."], ["05", "Pilot", "Process confirmation, inspection criteria and limited build."], ["06", "Production", "Approved specification, change control and supply planning."]],
+  zh: [["01", "需求定义", "应用、市场、采购阶段与商务目标。"], ["02", "方案架构", "光源、光学、电子、散热和结构概念。"], ["03", "样机", "根据约定测试目标制作评估件或设备样品。"], ["04", "验证", "制定性能、可靠性和目标市场资料评审计划。"], ["05", "试产", "确认工艺、检验标准并完成小批量验证。"], ["06", "量产", "固化规格、变更控制与供应计划。"]]
+};
+
+const qualityCards = {
+  en: [["Technical file", "Datasheet, drawing, operating limits and handling information for the selected model."], ["Quality evidence", "Inspection approach, reliability items and traceability scope available by product program."], ["Market documentation", "Applicable declarations, reports or planning inputs reviewed against device and destination market."]],
+  zh: [["技术文件", "针对选定型号提供数据表、图纸、工作范围和操作信息。"], ["质量证据", "按产品项目提供检验方式、可靠性项目和可追溯范围。"], ["市场资料", "根据设备配置和目标市场评审适用声明、报告或规划输入。"]]
+};
+
+const faqs = {
+  en: [["Can we buy components without starting an OEM project?", "Yes. Component and module inquiries follow their own sample, specification and quotation path."], ["Can one project start at the chip level and move into a module?", "Yes. That continuity is the main reason the two businesses share one B2B website."], ["Are medical or market certifications already included?", "Certification applicability depends on the final device, claims and destination market. Evidence should be reviewed for the exact configuration."], ["What information is needed for a first review?", "Application, preferred wavelength or effect, physical constraints, estimated volume stage, target market and timeline are enough to begin."]],
+  zh: [["可以只采购芯片，不做 OEM 项目吗？", "可以。芯片和模块询盘有独立的样品、规格确认与报价流程。"], ["项目可以从芯片选型继续做到模块吗？", "可以。这种连续性正是芯片与医美业务放在同一个 B2B 网站的核心原因。"], ["医疗或市场认证是否默认包含？", "认证适用性取决于最终设备、宣传功效和目标市场，必须针对具体配置核验。"], ["首次评审需要哪些信息？", "应用、期望波长或效果、结构约束、预计采购阶段、目标市场和时间计划即可启动。"]]
+};
+
+function ProductGrid({ items, inquire }: { items: any; inquire: string }) {
+  return <div className="product-grid">{items.map((item: [string, string, string[]], i: number) => <article className="product-card" key={item[0]}><div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href="#contact">{inquire}<ArrowUpRight size={16}/></a></article>)}</div>;
+}
+
+export function SiteHome({ lang }: { lang: Lang }) {
+  const t = copy[lang];
+  const p = productData[lang];
+  const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "渠道合作"];
+
+  return (
+    <main>
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="CECL Photonics home"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></a>
+        <nav aria-label="Primary navigation">{t.nav.map((x, i) => <a key={x} href={["#products", "#solutions", "#beauty", "#oem", "#quality"][i]}>{x}</a>)}</nav>
+        <div className="header-actions"><a className="lang" href={lang === "en" ? "/zh" : "/"}>{lang === "en" ? "中文" : "EN"}</a><a className="button compact" href="#contact">{t.start}</a></div>
+      </header>
+
+      <section className="hero" id="top">
+        <div className="hero-copy"><p className="eyebrow">{t.eyebrow}</p><h1>{t.titleA}<br/><span>{t.titleB}</span></h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button" href="#products">{t.explore}</a><a className="text-link" href="#contact">{t.discuss}</a></div><div className="signal-row">{t.chips.map(x => <span key={x}>{x}</span>)}</div></div>
+        <div className="hero-visual"><Image src="/hero-photonics.png" alt="Photonics components and a wearable light therapy concept" fill priority sizes="(max-width: 900px) 100vw, 48vw"/><div className="visual-note"><small>{t.integration}</small><strong>Die → Package → Module → Device</strong></div></div>
+      </section>
+
+      <section className="proof-strip">{t.proof.map(([a,b]) => <div key={a}><strong>{a}</strong><span>{b}</span></div>)}</section>
+
+      <section className="section pathways-wrap"><div className="section-heading"><p className="eyebrow">B2B PATHWAYS</p><h2>{t.pathways}</h2><p>{t.pathIntro}</p></div><div className="pathways"><article className="path-card dark"><span className="index">01</span><p className="eyebrow">{t.componentBuyer}</p><h3>{t.semiTitle}</h3><p>{t.semiBody}</p><a href="#products">{t.semiLink}<ArrowUpRight size={18}/></a></article><article className="path-card light"><span className="index">02</span><p className="eyebrow">{t.deviceBrands}</p><h3>{t.beautyTitle}</h3><p>{t.beautyBody}</p><a href="#beauty">{t.beautyLink}<ArrowUpRight size={18}/></a></article></div></section>
+
+      <section className="section product-platform" id="products"><div className="section-heading split"><div><p className="eyebrow">{t.platformKicker}</p><h2>{t.platformTitle}</h2></div><p>{t.platformBody}</p></div><div className="catalog-group"><h3>{t.semiconductors}</h3><ProductGrid items={p.chips} inquire={t.inquire}/></div><div className="catalog-group"><h3>{t.modules}</h3><ProductGrid items={p.modules} inquire={t.inquire}/></div></section>
+
+      <section className="section applications" id="solutions"><div className="section-heading split"><div><p className="eyebrow">{t.appsKicker}</p><h2>{t.appsTitle}</h2></div><p>{t.appsBody}</p></div><div className="application-grid">{apps.map(({icon:Icon,en,zh},i) => { const x = lang === "en" ? en : zh; return <article key={x[0]}><span>0{i+1}</span><Icon size={25}/><h3>{x[0]}</h3><p>{x[1]}</p></article>})}</div></section>
+
+      <section className="beauty" id="beauty"><div className="beauty-intro"><p className="eyebrow">{t.beautyKicker}</p><h2>{t.beautyMain}</h2><p>{t.beautyDesc}</p><div className="beauty-chain"><span>Emitter</span><i/> <span>Optics</span><i/> <span>Thermal</span><i/> <span>Controls</span><i/> <span>Device</span></div></div><div className="program-panel"><p className="eyebrow">{t.programs}</p>{programs[lang].map(([a,b]) => <article key={a}><Sparkles size={18}/><div><h3>{a}</h3><p>{b}</p></div></article>)}<small>{t.programNote}</small></div></section>
+
+      <section className="section workflow" id="oem"><div className="section-heading split"><div><p className="eyebrow">{t.oemKicker}</p><h2>{t.oemTitle}</h2></div><p>{t.oemBody}</p></div><div className="workflow-grid">{workflow[lang].map(([n,a,b]) => <article key={n}><span>{n}</span><h3>{a}</h3><p>{b}</p></article>)}</div></section>
+
+      <section className="quality" id="quality"><div className="quality-copy"><p className="eyebrow">{t.qualityKicker}</p><h2>{t.qualityTitle}</h2><p>{t.qualityBody}</p><a className="button light-button" href="#contact">{t.requestDocs}</a></div><div className="quality-cards">{qualityCards[lang].map(([a,b],i) => { const Icon = [FileCheck2, ShieldCheck, ScanLine][i]; return <article key={a}><Icon size={25}/><h3>{a}</h3><p>{b}</p></article>})}</div></section>
+
+      <section className="section faq"><div className="section-heading"><p className="eyebrow">{t.faqKicker}</p><h2>{t.faqTitle}</h2></div><div className="faq-list">{faqs[lang].map(([q,a],i) => <details key={q}><summary className="faq-question"><span>{String(i+1).padStart(2,"0")}</span>{q}</summary><p className="faq-answer">{a}</p></details>)}</div></section>
+
+      <section className="contact" id="contact"><div className="contact-copy"><p className="eyebrow">{t.contactKicker}</p><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><div className="contact-note"><Check size={17}/><span>{lang === "en" ? "No certification or performance assumption is made before model review." : "型号评审前，不预设任何认证或性能结论。"}</span></div></div><form className="rfq"><div className="field-row"><label>{t.fields[0]}<Input required name="name"/></label><label>{t.fields[1]}<Input required type="email" name="email"/></label></div><div className="field-row"><label>{t.fields[2]}<Input required name="company"/></label><label>{t.fields[3]}<NativeSelect required name="type" defaultValue="" className="form-select">{formOptions.map((x,i) => <NativeSelectOption key={x} value={i ? x : ""} disabled={!i}>{x}</NativeSelectOption>)}</NativeSelect></label></div><label>{t.fields[4]}<Input name="market" placeholder={lang === "en" ? "Country / region" : "国家 / 地区"}/></label><label>{t.fields[5]}<Textarea name="requirements" rows={5} placeholder={lang === "en" ? "Application, wavelength, package, volume stage, timeline…" : "应用、波长、封装、采购阶段、时间计划……"}/></label><button className="button submit" type="button">{t.submit}</button><p className="form-note">{t.success}</p></form></section>
+
+      <footer><div className="brand footer-brand"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></div><p>{t.footer}</p><p className="scope">{t.scope}</p><a href="#top">Back to top ↑</a></footer>
+    </main>
+  );
+}
