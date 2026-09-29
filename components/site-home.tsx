@@ -214,13 +214,14 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const sitePath = (path: string) => `${basePath}${path}`;
   const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "渠道合作"];
 
-  const homeUrl = lang === "en" ? "https://cecl-photonics-global.georgia52201.chatgpt.site/" : "https://cecl-photonics-global.georgia52201.chatgpt.site/zh";
+  const publicSite = process.env.GITHUB_PAGES === "true" ? "https://ceclphotonics.com" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
+  const homeUrl = lang === "en" ? `${publicSite}/` : `${publicSite}/zh`;
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#organization", name: lang === "en" ? "CECL Photonics" : "中能芯光", url: "https://cecl-photonics-global.georgia52201.chatgpt.site/", contactPoint: [{ "@type": "ContactPoint", name: lang === "en" ? "Li Sicheng" : "李思澄", telephone: "+86-155-9590-3230", contactType: "sales", availableLanguage: ["English", "Chinese"] }] },
-      { "@type": "WebSite", "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#website", url: "https://cecl-photonics-global.georgia52201.chatgpt.site/", name: "CECL Photonics", inLanguage: ["en", "zh-CN"], publisher: { "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#organization" } },
-      { "@type": "WebPage", "@id": `${homeUrl}#webpage`, url: homeUrl, name: lang === "en" ? "CECL Photonics | Photonic Semiconductors & Medical Beauty OEM/ODM" : "中能芯光｜光电芯片、光学引擎与医疗美容 OEM/ODM", isPartOf: { "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#website" }, about: { "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#organization" }, inLanguage: lang === "en" ? "en" : "zh-CN" },
+      { "@type": "Organization", "@id": `${publicSite}/#organization`, name: lang === "en" ? "CECL Photonics" : "中能芯光", url: `${publicSite}/`, contactPoint: [{ "@type": "ContactPoint", name: lang === "en" ? "Li Sicheng" : "李思澄", telephone: "+86-155-9590-3230", contactType: "sales", availableLanguage: ["English", "Chinese"] }] },
+      { "@type": "WebSite", "@id": `${publicSite}/#website`, url: `${publicSite}/`, name: "CECL Photonics", inLanguage: ["en", "zh-CN"], publisher: { "@id": `${publicSite}/#organization` } },
+      { "@type": "WebPage", "@id": `${homeUrl}#webpage`, url: homeUrl, name: lang === "en" ? "CECL Photonics | Photonic Semiconductors & Medical Beauty OEM/ODM" : "中能芯光｜光电芯片、光学引擎与医疗美容 OEM/ODM", isPartOf: { "@id": `${publicSite}/#website` }, about: { "@id": `${publicSite}/#organization` }, inLanguage: lang === "en" ? "en" : "zh-CN" },
       { "@type": "FAQPage", mainEntity: faqs[lang].map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) }
     ]
   };

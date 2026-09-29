@@ -6,7 +6,8 @@ export function InsightArticle({ insight, lang }: { insight: Insight; lang: Insi
   const repositoryBase = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const base = isZh ? `${repositoryBase}/zh` : repositoryBase;
   const alternate = isZh ? `${repositoryBase}/insights/${insight.slug}/` : `${repositoryBase}/zh/insights/${insight.slug}/`;
-  const articleUrl = `https://cecl-photonics-global.georgia52201.chatgpt.site${base}/insights/${insight.slug}`;
+  const publicSite = process.env.GITHUB_PAGES === "true" ? "https://ceclphotonics.com" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
+  const articleUrl = `${publicSite}${base}/insights/${insight.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",

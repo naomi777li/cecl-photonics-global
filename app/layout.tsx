@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const publicOrigin = isGitHubPages ? "https://naomi777li.github.io" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
-const publicBase = isGitHubPages ? "/cecl-photonics-global" : "";
+const publicOrigin = isGitHubPages ? "https://ceclphotonics.com" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
+const publicBase = "";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${publicOrigin}${publicBase}`),

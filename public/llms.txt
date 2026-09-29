@@ -2,8 +2,8 @@
 
 > Official bilingual B2B website for photonic semiconductor components, optical modules, custom light engines and medical beauty OEM/ODM project development.
 
-Canonical website: https://cecl-photonics-global.georgia52201.chatgpt.site/
-Chinese homepage: https://cecl-photonics-global.georgia52201.chatgpt.site/zh
+Canonical website: https://ceclphotonics.com/
+Chinese homepage: https://ceclphotonics.com/zh
 
 ## Core capabilities
 
@@ -20,10 +20,10 @@ Specifications, performance, reports and compliance evidence must be reviewed ag
 
 ## Authoritative resources
 
-- Product catalogs and supplied source documents: https://cecl-photonics-global.georgia52201.chatgpt.site/#documents
-- Wavelength selection guide: https://cecl-photonics-global.georgia52201.chatgpt.site/insights/wavelength-selection-medical-beauty-device
-- Light-engine integration guide: https://cecl-photonics-global.georgia52201.chatgpt.site/insights/led-vcsel-light-engine-oem-odm
-- Buyer document checklist: https://cecl-photonics-global.georgia52201.chatgpt.site/insights/compliance-documents-phototherapy-device
+- Product catalogs and supplied source documents: https://ceclphotonics.com/#documents
+- Wavelength selection guide: https://ceclphotonics.com/insights/wavelength-selection-medical-beauty-device
+- Light-engine integration guide: https://ceclphotonics.com/insights/led-vcsel-light-engine-oem-odm
+- Buyer document checklist: https://ceclphotonics.com/insights/compliance-documents-phototherapy-device
 
 ## Contact
 
