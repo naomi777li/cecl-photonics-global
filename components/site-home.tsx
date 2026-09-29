@@ -210,6 +210,8 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const p = productData[lang];
   const d = documentCenter[lang];
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const sitePath = (path: string) => `${basePath}${path}`;
   const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "渠道合作"];
 
   const homeUrl = lang === "en" ? "https://cecl-photonics-global.georgia52201.chatgpt.site/" : "https://cecl-photonics-global.georgia52201.chatgpt.site/zh";
@@ -229,12 +231,12 @@ export function SiteHome({ lang }: { lang: Lang }) {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="CECL Photonics home"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></a>
         <nav aria-label="Primary navigation">{t.nav.map((x, i) => <a key={x} href={["#products", "#solutions", "#beauty", "#oem", "#quality", "#insights"][i]}>{x}</a>)}</nav>
-        <div className="header-actions"><a className="lang" href={lang === "en" ? "/zh" : "/"}>{lang === "en" ? "中文" : "EN"}</a><a className="button compact" href="#contact">{t.start}</a></div>
+        <div className="header-actions"><a className="lang" href={sitePath(lang === "en" ? "/zh/" : "/")}>{lang === "en" ? "中文" : "EN"}</a><a className="button compact" href="#contact">{t.start}</a></div>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy"><p className="eyebrow">{t.eyebrow}</p><h1>{t.titleA}<br/><span>{t.titleB}</span></h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button" href="#products">{t.explore}</a><a className="text-link" href="#contact">{t.discuss}</a></div><div className="signal-row">{t.chips.map(x => <span key={x}>{x}</span>)}</div></div>
-        <div className="hero-visual"><Image src="/hero-photonics.png" alt="Photonics components and a wearable light therapy concept" fill priority sizes="(max-width: 900px) 100vw, 48vw"/><div className="visual-note"><small>{t.integration}</small><strong>Die → Package → Module → Device</strong></div></div>
+        <div className="hero-visual"><Image src={sitePath("/hero-photonics.png")} alt="Photonics components and a wearable light therapy concept" fill priority sizes="(max-width: 900px) 100vw, 48vw"/><div className="visual-note"><small>{t.integration}</small><strong>Die → Package → Module → Device</strong></div></div>
       </section>
 
       <section className="proof-strip">{t.proof.map(([a,b]) => <div key={a}><strong>{a}</strong><span>{b}</span></div>)}</section>
@@ -249,7 +251,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
 
       <section className="section beauty-platform">
         <div className="section-heading split"><div><p className="eyebrow">{t.beautyPlatformKicker}</p><h2>{t.beautyPlatformTitle}</h2></div><p>{t.beautyPlatformBody}</p></div>
-        <div className="beauty-platform-layout"><figure className="concept-visual"><Image src="/medical-beauty-platform.png" alt={lang === "en" ? "Original concept visualization of a medical beauty device platform" : "医疗美容设备平台原创概念效果图"} width={1536} height={1024} sizes="(max-width: 900px) 100vw, 58vw"/><figcaption>{t.conceptLabel}</figcaption></figure><div className="concept-list">{beautyConcepts[lang].map(([a,b],i) => <article key={a}><span>0{i+1}</span><div><h3>{a}</h3><p>{b}</p><small>{t.customize}</small></div></article>)}</div></div>
+        <div className="beauty-platform-layout"><figure className="concept-visual"><Image src={sitePath("/medical-beauty-platform.png")} alt={lang === "en" ? "Original concept visualization of a medical beauty device platform" : "医疗美容设备平台原创概念效果图"} width={1536} height={1024} sizes="(max-width: 900px) 100vw, 58vw"/><figcaption>{t.conceptLabel}</figcaption></figure><div className="concept-list">{beautyConcepts[lang].map(([a,b],i) => <article key={a}><span>0{i+1}</span><div><h3>{a}</h3><p>{b}</p><small>{t.customize}</small></div></article>)}</div></div>
         <div className="definition-bar"><strong>{t.proofTitle}</strong>{t.proofItems.map((x) => <span key={x}><Check size={15}/>{x}</span>)}</div>
       </section>
 
@@ -259,20 +261,20 @@ export function SiteHome({ lang }: { lang: Lang }) {
           "/reference-placeholders/peer-factory-reference.png",
           "/reference-placeholders/peer-team-environment-reference.png",
           "/reference-placeholders/peer-exhibition-reference.png"
-        ].map((src,i) => { const [title,desc] = t.referenceCards[i]; return <article key={src}><div className="reference-media"><img src={src} alt={`${title} — ${t.referenceBadge}`}/><span>{t.referenceBadge}</span></div><div className="reference-copy"><p className="reference-index">0{i+1}</p><h3>{title}</h3><p>{desc}</p><small>{t.replaceNote}</small></div></article>})}</div>
+        ].map((src,i) => { const [title,desc] = t.referenceCards[i]; return <article key={src}><div className="reference-media"><img src={sitePath(src)} alt={`${title} — ${t.referenceBadge}`}/><span>{t.referenceBadge}</span></div><div className="reference-copy"><p className="reference-index">0{i+1}</p><h3>{title}</h3><p>{desc}</p><small>{t.replaceNote}</small></div></article>})}</div>
       </section>
 
       <section className="section workflow" id="oem"><div className="section-heading split"><div><p className="eyebrow">{t.oemKicker}</p><h2>{t.oemTitle}</h2></div><p>{t.oemBody}</p></div><div className="workflow-grid">{workflow[lang].map(([n,a,b]) => <article key={n}><span>{n}</span><h3>{a}</h3><p>{b}</p></article>)}</div></section>
 
-      <section className="section insights" id="insights"><div className="section-heading split"><div><p className="eyebrow">{t.insightKicker}</p><h2>{t.insightTitle}</h2></div><p>{t.insightBody}</p></div><div className="insight-grid">{insights[lang].map(([slug,title,desc,time],i) => <article key={slug}><div className="insight-meta"><BookOpen size={19}/><span>{time}</span></div><p className="insight-index">0{i+1}</p><h3>{title}</h3><p>{desc}</p><a href={`${lang === "zh" ? "/zh" : ""}/insights/${slug}`}>{t.readArticle}<ArrowUpRight size={16}/></a></article>)}</div></section>
+      <section className="section insights" id="insights"><div className="section-heading split"><div><p className="eyebrow">{t.insightKicker}</p><h2>{t.insightTitle}</h2></div><p>{t.insightBody}</p></div><div className="insight-grid">{insights[lang].map(([slug,title,desc,time],i) => <article key={slug}><div className="insight-meta"><BookOpen size={19}/><span>{time}</span></div><p className="insight-index">0{i+1}</p><h3>{title}</h3><p>{desc}</p><a href={sitePath(`${lang === "zh" ? "/zh" : ""}/insights/${slug}/`)}>{t.readArticle}<ArrowUpRight size={16}/></a></article>)}</div></section>
 
       <section className="quality" id="quality"><div className="quality-copy"><p className="eyebrow">{t.qualityKicker}</p><h2>{t.qualityTitle}</h2><p>{t.qualityBody}</p><a className="button light-button" href="#documents">{t.requestDocs}</a></div><div className="quality-cards">{qualityCards[lang].map(([a,b],i) => { const Icon = [FileCheck2, ShieldCheck, ScanLine][i]; return <article key={a}><Icon size={25}/><h3>{a}</h3><p>{b}</p></article>})}</div></section>
 
       <section className="section document-center" id="documents">
         <div className="section-heading split"><div><p className="eyebrow">{d.kicker}</p><h2>{d.title}</h2></div><p>{d.body}</p></div>
-        <div className="document-block"><h3>{d.companyTitle}</h3><div className="license-grid">{d.companies.map(([name,type,src,rotation]) => <article className="license-card" key={name}><a className={`license-media ${rotation}`} href={src} target="_blank" rel="noreferrer"><img src={src} alt={`${name} ${type}`}/></a><div><Building2 size={20}/><p className="doc-meta">{type}</p><h4>{name}</h4><small>{d.supplied}</small><a className="doc-link" href={src} target="_blank" rel="noreferrer">{d.view}<ArrowUpRight size={15}/></a></div></article>)}</div></div>
-        <div className="document-block"><h3>{d.complianceTitle}</h3><div className="report-grid">{d.reports.map(([title,number,date,result,links]) => <article className="report-card" key={String(number)}><div className="report-heading"><FileCheck2 size={22}/><span>{date}</span></div><h4>{title}</h4><p className="report-number">SGS · {number}</p><p>{result}</p><div className="report-links">{(links as string[]).reduce<React.ReactNode[]>((acc,item,i,array) => { if(i % 2 === 0) acc.push(<a key={item} href={array[i+1]} target="_blank" rel="noreferrer"><Download size={14}/>{item}</a>); return acc; }, [])}</div></article>)}</div></div>
-        <div className="document-block"><h3>{d.catalogTitle}</h3><div className="catalog-downloads">{d.catalogs.map(([title,desc,href]) => <article key={title}><div><p className="doc-meta">PDF · 2025 Q2</p><h4>{title}</h4><p>{desc}</p></div><a href={href} target="_blank" rel="noreferrer"><Download size={17}/>{d.download}</a></article>)}</div></div>
+        <div className="document-block"><h3>{d.companyTitle}</h3><div className="license-grid">{d.companies.map(([name,type,src,rotation]) => <article className="license-card" key={name}><a className={`license-media ${rotation}`} href={sitePath(src)} target="_blank" rel="noreferrer"><img src={sitePath(src)} alt={`${name} ${type}`}/></a><div><Building2 size={20}/><p className="doc-meta">{type}</p><h4>{name}</h4><small>{d.supplied}</small><a className="doc-link" href={sitePath(src)} target="_blank" rel="noreferrer">{d.view}<ArrowUpRight size={15}/></a></div></article>)}</div></div>
+        <div className="document-block"><h3>{d.complianceTitle}</h3><div className="report-grid">{d.reports.map(([title,number,date,result,links]) => <article className="report-card" key={String(number)}><div className="report-heading"><FileCheck2 size={22}/><span>{date}</span></div><h4>{title}</h4><p className="report-number">SGS · {number}</p><p>{result}</p><div className="report-links">{(links as string[]).reduce<React.ReactNode[]>((acc,item,i,array) => { if(i % 2 === 0) acc.push(<a key={item} href={sitePath(array[i+1])} target="_blank" rel="noreferrer"><Download size={14}/>{item}</a>); return acc; }, [])}</div></article>)}</div></div>
+        <div className="document-block"><h3>{d.catalogTitle}</h3><div className="catalog-downloads">{d.catalogs.map(([title,desc,href]) => <article key={title}><div><p className="doc-meta">PDF · 2025 Q2</p><h4>{title}</h4><p>{desc}</p></div><a href={sitePath(href)} target="_blank" rel="noreferrer"><Download size={17}/>{d.download}</a></article>)}</div></div>
       </section>
 
       <section className="section faq"><div className="section-heading"><p className="eyebrow">{t.faqKicker}</p><h2>{t.faqTitle}</h2></div><div className="faq-list">{faqs[lang].map(([q,a],i) => <details key={q}><summary className="faq-question"><span>{String(i+1).padStart(2,"0")}</span>{q}</summary><p className="faq-answer">{a}</p></details>)}</div></section>

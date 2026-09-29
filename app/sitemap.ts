@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 import { insights } from "@/lib/insights";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const origin = "https://cecl-photonics-global.georgia52201.chatgpt.site";
+  const origin = process.env.GITHUB_PAGES === "true" ? "https://naomi777li.github.io/cecl-photonics-global" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
   const lastModified = new Date("2026-09-29");
   return [
     { url: `${origin}/`, lastModified, changeFrequency: "monthly", priority: 1, alternates: { languages: { en: `${origin}/`, "zh-CN": `${origin}/zh` } } },
