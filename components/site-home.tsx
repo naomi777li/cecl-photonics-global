@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, Building2, Check, Cpu, Download, FileCheck2, Layers3, MessageCircle, Phone, ScanLine, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowUpRight, BookOpen, Building2, Check, Cpu, Download, FileCheck2, Layers3, MessageCircle, Phone, ScanLine, ShieldCheck, Sparkles } from "lucide-react";
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +8,7 @@ type Lang = "en" | "zh";
 
 const copy = {
   en: {
-    nav: ["Products", "Solutions", "Medical Beauty", "OEM / ODM", "Quality & Documents"],
+    nav: ["Products", "Solutions", "Medical Beauty", "OEM / ODM", "Quality & Documents", "Insights"],
     start: "Start a project", eyebrow: "PHOTONIC SEMICONDUCTORS · LIGHT ENGINES · OEM/ODM",
     titleA: "From chip to", titleB: "application-ready light.",
     intro: "Custom emitters, optical modules and engineering support for sensing, medical beauty and intelligent devices.",
@@ -28,10 +28,12 @@ const copy = {
     faqKicker: "BUYER FAQ", faqTitle: "Questions procurement and engineering teams ask first.",
     contactKicker: "START A PROJECT", contactTitle: "Send a technical brief. We’ll route it to the right product path.", contactBody: "Share what is already known—application, wavelength, package or device concept, volume stage and destination market. Missing details can be resolved during engineering review.",
     fields: ["Name", "Business email", "Company", "Project type", "Target market", "Project requirements"], submit: "Prepare inquiry", success: "Your project brief is ready. Email/CRM routing will be connected before public launch.",
+    beautyPlatformKicker: "DEVICE PLATFORM CONCEPTS", beautyPlatformTitle: "Four product directions, one configurable optical core.", beautyPlatformBody: "These original concept visuals show how CECL emitter and light-engine capabilities may translate into branded device programs. Final appearance, optical parameters, claims and compliance route are defined project by project.", conceptLabel: "Concept visualization · not a released product", customize: "Configurable by project", proofTitle: "What buyers can define", proofItems: ["Wavelength mix and treatment area", "Optical uniformity and irradiance target", "Thermal comfort and session controls", "Housing, interface, packaging and market plan"],
+    insightKicker: "PHOTONICS KNOWLEDGE", insightTitle: "Technical answers for better sourcing decisions.", insightBody: "Original industry articles connect component selection, device engineering and market documentation. They are written for brand owners, distributors and engineering teams—not for keyword stuffing.", readArticle: "Read article", allInsights: "Industry knowledge",
     footer: "Photonics components, modules and application development for global B2B partners.", scope: "Scope notice: final specifications, commercial terms and compliance documents require model-level review."
   },
   zh: {
-    nav: ["产品中心", "应用方案", "医疗美容", "OEM / ODM", "质量与资料"],
+    nav: ["产品中心", "应用方案", "医疗美容", "OEM / ODM", "质量与资料", "行业知识"],
     start: "发起项目", eyebrow: "光电半导体 · 光学引擎 · OEM/ODM",
     titleA: "从芯片出发，", titleB: "做到可落地的光。",
     intro: "面向传感、医疗美容与智能设备，提供定制发光芯片、光学模块及应用工程支持。",
@@ -51,6 +53,8 @@ const copy = {
     faqKicker: "采购常见问题", faqTitle: "采购与研发团队最先关心的问题。",
     contactKicker: "发起项目", contactTitle: "提交技术需求，我们会分配到正确的产品路径。", contactBody: "请填写已知信息：应用、波长、封装或设备概念、采购阶段及目标市场。缺失信息可在工程评审中补齐。",
     fields: ["姓名", "工作邮箱", "公司", "项目类型", "目标市场", "项目需求"], submit: "生成询盘", success: "项目简报已生成；正式上线前将接入企业邮箱或 CRM。",
+    beautyPlatformKicker: "设备平台概念", beautyPlatformTitle: "四类产品方向，共用可配置的光学核心。", beautyPlatformBody: "原创概念图展示中能芯光的发光器件与光学引擎能力如何延伸到品牌设备项目。最终外观、光学参数、功效表述及合规路线均按项目定义。", conceptLabel: "概念效果图 · 非已发布产品", customize: "按项目配置", proofTitle: "采购方可定义的关键项", proofItems: ["波长组合与照射区域", "光照均匀性与辐照度目标", "热舒适、时长与控制方式", "外壳、界面、包装与目标市场方案"],
+    insightKicker: "光电行业知识", insightTitle: "用技术内容帮助采购做出更好的决策。", insightBody: "原创行业文章把器件选型、设备工程与市场资料连接起来，服务品牌方、渠道商和研发团队，而不是简单堆砌关键词。", readArticle: "阅读文章", allInsights: "行业知识",
     footer: "面向全球 B2B 客户的光电芯片、模块与应用开发平台。", scope: "范围说明：最终规格、商务条款和合规文件均需按具体型号审核。"
   }
 };
@@ -168,6 +172,34 @@ const faqs = {
   zh: [["可以只采购芯片，不做 OEM 项目吗？", "可以。芯片和模块询盘有独立的样品、规格确认与报价流程。"], ["项目可以从芯片选型继续做到模块吗？", "可以。这种连续性正是芯片与医美业务放在同一个 B2B 网站的核心原因。"], ["医疗或市场认证是否默认包含？", "认证适用性取决于最终设备、宣传功效和目标市场，必须针对具体配置核验。"], ["首次评审需要哪些信息？", "应用、期望波长或效果、结构约束、预计采购阶段、目标市场和时间计划即可启动。"]]
 };
 
+const beautyConcepts = {
+  en: [
+    ["Flexible facial wearables", "Multi-wavelength layouts shaped around facial coverage, eye protection, fit and thermal comfort."],
+    ["Scalp-care systems", "Dense optical arrays, wearable geometry, session control and heat-management planning."],
+    ["Handheld treatment devices", "Compact emitters and optics for targeted coverage, charging, controls and accessory ecosystems."],
+    ["Professional light panels", "Zoned illumination, serviceable modules and scalable mechanical architecture for professional environments."]
+  ],
+  zh: [
+    ["柔性面部穿戴设备", "围绕面部覆盖、眼部防护、佩戴贴合与热舒适规划多波长布局。"],
+    ["头皮护理系统", "面向高密度光源阵列、穿戴结构、疗程控制与热管理进行系统设计。"],
+    ["手持式护理设备", "以紧凑光源和光学结构支持局部覆盖、充电控制与配件生态。"],
+    ["专业光疗面板", "采用分区照明、可维护模块与可扩展结构，适配专业应用环境。"]
+  ]
+};
+
+const insights = {
+  en: [
+    ["wavelength-selection-medical-beauty-device", "Wavelength selection for a light-based beauty device", "A practical framework for turning a desired use case into emitter, optical and validation requirements.", "8 min read"],
+    ["led-vcsel-light-engine-oem-odm", "From LED or VCSEL chip to a manufacturable light engine", "Why package, optics, drive, heat and mechanical integration should be reviewed as one system.", "7 min read"],
+    ["compliance-documents-phototherapy-device", "What documents should a phototherapy-device buyer request?", "Separate component test reports, device verification and destination-market evidence before placing an order.", "6 min read"]
+  ],
+  zh: [
+    ["wavelength-selection-medical-beauty-device", "光类美容设备如何选择波长", "从应用目标出发，逐步形成光源、光学结构与验证要求的实用框架。", "约 8 分钟"],
+    ["led-vcsel-light-engine-oem-odm", "从 LED 或 VCSEL 芯片到可量产光学引擎", "为什么封装、光学、驱动、散热和结构必须作为一个系统评审。", "约 7 分钟"],
+    ["compliance-documents-phototherapy-device", "采购光疗设备应索取哪些资料？", "在下单前区分元器件检测、整机验证及目标市场合规证据。", "约 6 分钟"]
+  ]
+};
+
 function ProductGrid({ items, inquire }: { items: any; inquire: string }) {
   return <div className="product-grid">{items.map((item: [string, string, string[]], i: number) => <article className="product-card" key={item[0]}><div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href="#contact">{inquire}<ArrowUpRight size={16}/></a></article>)}</div>;
 }
@@ -178,11 +210,23 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const d = documentCenter[lang];
   const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "渠道合作"];
 
+  const homeUrl = lang === "en" ? "https://cecl-photonics-global.georgia52201.chatgpt.site/" : "https://cecl-photonics-global.georgia52201.chatgpt.site/zh";
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Organization", "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#organization", name: lang === "en" ? "CECL Photonics" : "中能芯光", url: "https://cecl-photonics-global.georgia52201.chatgpt.site/", contactPoint: [{ "@type": "ContactPoint", name: lang === "en" ? "Li Sicheng" : "李思澄", telephone: "+86-155-9590-3230", contactType: "sales", availableLanguage: ["English", "Chinese"] }] },
+      { "@type": "WebSite", "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#website", url: "https://cecl-photonics-global.georgia52201.chatgpt.site/", name: "CECL Photonics", inLanguage: ["en", "zh-CN"], publisher: { "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#organization" } },
+      { "@type": "WebPage", "@id": `${homeUrl}#webpage`, url: homeUrl, name: lang === "en" ? "CECL Photonics | Photonic Semiconductors & Medical Beauty OEM/ODM" : "中能芯光｜光电芯片、光学引擎与医疗美容 OEM/ODM", isPartOf: { "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#website" }, about: { "@id": "https://cecl-photonics-global.georgia52201.chatgpt.site/#organization" }, inLanguage: lang === "en" ? "en" : "zh-CN" },
+      { "@type": "FAQPage", mainEntity: faqs[lang].map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) }
+    ]
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <header className="site-header">
         <a className="brand" href="#top" aria-label="CECL Photonics home"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></a>
-        <nav aria-label="Primary navigation">{t.nav.map((x, i) => <a key={x} href={["#products", "#solutions", "#beauty", "#oem", "#quality"][i]}>{x}</a>)}</nav>
+        <nav aria-label="Primary navigation">{t.nav.map((x, i) => <a key={x} href={["#products", "#solutions", "#beauty", "#oem", "#quality", "#insights"][i]}>{x}</a>)}</nav>
         <div className="header-actions"><a className="lang" href={lang === "en" ? "/zh" : "/"}>{lang === "en" ? "中文" : "EN"}</a><a className="button compact" href="#contact">{t.start}</a></div>
       </header>
 
@@ -201,7 +245,15 @@ export function SiteHome({ lang }: { lang: Lang }) {
 
       <section className="beauty" id="beauty"><div className="beauty-intro"><p className="eyebrow">{t.beautyKicker}</p><h2>{t.beautyMain}</h2><p>{t.beautyDesc}</p><div className="beauty-chain"><span>Emitter</span><i/> <span>Optics</span><i/> <span>Thermal</span><i/> <span>Controls</span><i/> <span>Device</span></div></div><div className="program-panel"><p className="eyebrow">{t.programs}</p>{programs[lang].map(([a,b]) => <article key={a}><Sparkles size={18}/><div><h3>{a}</h3><p>{b}</p></div></article>)}<small>{t.programNote}</small></div></section>
 
+      <section className="section beauty-platform">
+        <div className="section-heading split"><div><p className="eyebrow">{t.beautyPlatformKicker}</p><h2>{t.beautyPlatformTitle}</h2></div><p>{t.beautyPlatformBody}</p></div>
+        <div className="beauty-platform-layout"><figure className="concept-visual"><Image src="/medical-beauty-platform.png" alt={lang === "en" ? "Original concept visualization of a medical beauty device platform" : "医疗美容设备平台原创概念效果图"} width={1536} height={1024} sizes="(max-width: 900px) 100vw, 58vw"/><figcaption>{t.conceptLabel}</figcaption></figure><div className="concept-list">{beautyConcepts[lang].map(([a,b],i) => <article key={a}><span>0{i+1}</span><div><h3>{a}</h3><p>{b}</p><small>{t.customize}</small></div></article>)}</div></div>
+        <div className="definition-bar"><strong>{t.proofTitle}</strong>{t.proofItems.map((x) => <span key={x}><Check size={15}/>{x}</span>)}</div>
+      </section>
+
       <section className="section workflow" id="oem"><div className="section-heading split"><div><p className="eyebrow">{t.oemKicker}</p><h2>{t.oemTitle}</h2></div><p>{t.oemBody}</p></div><div className="workflow-grid">{workflow[lang].map(([n,a,b]) => <article key={n}><span>{n}</span><h3>{a}</h3><p>{b}</p></article>)}</div></section>
+
+      <section className="section insights" id="insights"><div className="section-heading split"><div><p className="eyebrow">{t.insightKicker}</p><h2>{t.insightTitle}</h2></div><p>{t.insightBody}</p></div><div className="insight-grid">{insights[lang].map(([slug,title,desc,time],i) => <article key={slug}><div className="insight-meta"><BookOpen size={19}/><span>{time}</span></div><p className="insight-index">0{i+1}</p><h3>{title}</h3><p>{desc}</p><a href={`${lang === "zh" ? "/zh" : ""}/insights/${slug}`}>{t.readArticle}<ArrowUpRight size={16}/></a></article>)}</div></section>
 
       <section className="quality" id="quality"><div className="quality-copy"><p className="eyebrow">{t.qualityKicker}</p><h2>{t.qualityTitle}</h2><p>{t.qualityBody}</p><a className="button light-button" href="#documents">{t.requestDocs}</a></div><div className="quality-cards">{qualityCards[lang].map(([a,b],i) => { const Icon = [FileCheck2, ShieldCheck, ScanLine][i]; return <article key={a}><Icon size={25}/><h3>{a}</h3><p>{b}</p></article>})}</div></section>
 
