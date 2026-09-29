@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, Check, Cpu, FileCheck2, Layers3, ScanLine, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowUpRight, Building2, Check, Cpu, Download, FileCheck2, Layers3, MessageCircle, Phone, ScanLine, ShieldCheck, Sparkles } from "lucide-react";
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +8,7 @@ type Lang = "en" | "zh";
 
 const copy = {
   en: {
-    nav: ["Products", "Solutions", "Medical Beauty", "OEM / ODM", "Quality"],
+    nav: ["Products", "Solutions", "Medical Beauty", "OEM / ODM", "Quality & Documents"],
     start: "Start a project", eyebrow: "PHOTONIC SEMICONDUCTORS · LIGHT ENGINES · OEM/ODM",
     titleA: "From chip to", titleB: "application-ready light.",
     intro: "Custom emitters, optical modules and engineering support for sensing, medical beauty and intelligent devices.",
@@ -24,7 +24,7 @@ const copy = {
     beautyKicker: "MEDICAL BEAUTY & PERSONAL CARE", beautyMain: "Turn a wavelength brief into a manufacturable device program.", beautyDesc: "A separate device pathway lets brand owners discuss form factor, optical uniformity, heat, controls, production targets and market documentation without navigating a component catalog.",
     programs: "Example program directions", programNote: "Product classification, claims and required approvals depend on the final configuration and destination market.",
     oemKicker: "OEM / ODM WORKFLOW", oemTitle: "A reviewable path from brief to production.", oemBody: "Each gate produces a concrete decision: requirements, optical architecture, prototype, validation package and manufacturing release.",
-    qualityKicker: "TRUST & DOCUMENTATION", qualityTitle: "Credibility should be attached to a model—not a slogan.", qualityBody: "This site avoids unverified performance and certification claims. Buyers request the documentation set for the exact part, device configuration and target market.", requestDocs: "Request verified documents",
+    qualityKicker: "TRUST & DOCUMENTATION", qualityTitle: "Credibility should be attached to a model—not a slogan.", qualityBody: "This site avoids unverified performance and certification claims. Buyers can review supplied business records, SGS reports and product catalogs, then request the documentation set for the exact part and target market.", requestDocs: "Open document center",
     faqKicker: "BUYER FAQ", faqTitle: "Questions procurement and engineering teams ask first.",
     contactKicker: "START A PROJECT", contactTitle: "Send a technical brief. We’ll route it to the right product path.", contactBody: "Share what is already known—application, wavelength, package or device concept, volume stage and destination market. Missing details can be resolved during engineering review.",
     fields: ["Name", "Business email", "Company", "Project type", "Target market", "Project requirements"], submit: "Prepare inquiry", success: "Your project brief is ready. Email/CRM routing will be connected before public launch.",
@@ -47,7 +47,7 @@ const copy = {
     beautyKicker: "医疗美容与个人护理", beautyMain: "把波长需求转化为可量产的设备项目。", beautyDesc: "设备客户可直接讨论外观形态、光照均匀性、散热、控制方式、产量目标和目标市场资料，不必先研究芯片目录。",
     programs: "项目方向示例", programNote: "产品分类、宣传功效和所需认证取决于最终配置及销售目的地。",
     oemKicker: "OEM / ODM 流程", oemTitle: "从需求到量产，每一步都可评审。", oemBody: "每个阶段都有明确输出：需求定义、光学架构、样机、验证资料与生产放行。",
-    qualityKicker: "可信度与技术资料", qualityTitle: "可信度应落实到具体型号，而不是口号。", qualityBody: "本站不使用未经核验的性能、认证或客户背书。采购方可针对具体型号、设备配置与目标市场索取对应资料。", requestDocs: "索取已核验资料",
+    qualityKicker: "可信度与技术资料", qualityTitle: "可信度应落实到具体型号，而不是口号。", qualityBody: "本站不使用未经核验的性能、认证或客户背书。采购方可查看企业提供的营业执照、SGS 检测报告和产品目录，再针对具体型号与目标市场索取对应资料。", requestDocs: "进入资料中心",
     faqKicker: "采购常见问题", faqTitle: "采购与研发团队最先关心的问题。",
     contactKicker: "发起项目", contactTitle: "提交技术需求，我们会分配到正确的产品路径。", contactBody: "请填写已知信息：应用、波长、封装或设备概念、采购阶段及目标市场。缺失信息可在工程评审中补齐。",
     fields: ["姓名", "工作邮箱", "公司", "项目类型", "目标市场", "项目需求"], submit: "生成询盘", success: "项目简报已生成；正式上线前将接入企业邮箱或 CRM。",
@@ -108,6 +108,61 @@ const qualityCards = {
   zh: [["技术文件", "针对选定型号提供数据表、图纸、工作范围和操作信息。"], ["质量证据", "按产品项目提供检验方式、可靠性项目和可追溯范围。"], ["市场资料", "根据设备配置和目标市场评审适用声明、报告或规划输入。"]]
 };
 
+const documentCenter = {
+  en: {
+    kicker: "VERIFICATION LIBRARY",
+    title: "Source documents buyers can open and review.",
+    body: "Original files supplied for this website are grouped by purpose. Test results apply to the submitted LED chip sample and the scope stated in each report; they are not blanket certification for every product or finished device.",
+    companyTitle: "Company registration",
+    complianceTitle: "SGS test reports · LED chip",
+    catalogTitle: "2025 Q2 product catalogs",
+    view: "View original",
+    download: "Open PDF",
+    supplied: "Copy supplied by the company · verify against the official registry",
+    companies: [
+      ["Kunshan Xunlei Optoelectronics Co., Ltd.", "Business License", "/documents/company/kunshan-xunlei-business-license.jpg", ""],
+      ["CECL (Sichuan) Technology Group Co., Ltd.", "Business License", "/documents/company/cecl-sichuan-business-license.jpg", "rotated"]
+    ],
+    reports: [
+      ["EU RoHS", "CANEC25028451601 / 1602", "Nov 21, 2025", "Conclusion: Pass", ["English", "/documents/compliance/SGS-RoHS-EN-CANEC25028451601.pdf", "中文", "/documents/compliance/SGS-RoHS-ZH-CANEC25028451602.pdf"]],
+      ["REACH SVHC screening", "CANEC25028451603", "Nov 25, 2025", "251 Candidate List SVHC and 4 potential SVHC: ≤ 0.1% (w/w)", ["English", "/documents/compliance/SGS-REACH-SVHC-EN-CANEC25028451603.pdf"]],
+      ["Halogen", "CANEC25028451605 / 1606", "Nov 21, 2025", "F, Cl, Br and I reported ND at the stated method detection limits", ["English", "/documents/compliance/SGS-Halogen-EN-CANEC25028451605.pdf", "中文", "/documents/compliance/SGS-Halogen-ZH-CANEC25028451606.pdf"]],
+      ["US EPA TSCA Section 6(h) · PBT", "CANEC25028451607 / 1608", "Nov 21, 2025", "Conclusion: Pass", ["English", "/documents/compliance/SGS-TSCA-PBT-EN-CANEC25028451607.pdf", "中文", "/documents/compliance/SGS-TSCA-PBT-ZH-CANEC25028451608.pdf"]]
+    ],
+    catalogs: [
+      ["VCSEL laser chip catalog", "Proximity, medical beauty, obstacle avoidance, liquid level and industrial sensing applications.", "/documents/catalogs/CECL-VCSEL-Chip-Catalog-2025Q2.pdf"],
+      ["AlGaInP red & yellow LED chip catalog", "Visible red, orange, yellow and yellow-green families, plus selected infrared series.", "/documents/catalogs/CECL-AlGaInP-Red-Yellow-LED-Chip-Catalog-2025Q2.pdf"],
+      ["InGaN blue & green LED chip catalog", "Lighting, display, backlight, automotive and visible blue/green product families.", "/documents/catalogs/CECL-InGaN-Blue-Green-LED-Chip-Catalog-2025Q2.pdf"]
+    ]
+  },
+  zh: {
+    kicker: "资料核验中心",
+    title: "采购方可以直接打开并核验的原始资料。",
+    body: "企业提供的原始文件按用途分类。检测结果仅适用于报告所述送检 LED 芯片样品及检测范围，不应解释为所有产品或整机设备的统一认证。",
+    companyTitle: "企业登记资料",
+    complianceTitle: "SGS 检测报告 · LED 芯片",
+    catalogTitle: "2025 年第二季度产品目录",
+    view: "查看原件",
+    download: "打开 PDF",
+    supplied: "企业提供的证照副本 · 可通过官方企业信用信息系统核验",
+    companies: [
+      ["昆山迅雷光电子有限公司", "营业执照", "/documents/company/kunshan-xunlei-business-license.jpg", ""],
+      ["中能芯光（四川）科技集团有限公司", "营业执照", "/documents/company/cecl-sichuan-business-license.jpg", "rotated"]
+    ],
+    reports: [
+      ["欧盟 RoHS", "CANEC25028451601 / 1602", "2025 年 11 月 21 日", "结论：符合", ["English", "/documents/compliance/SGS-RoHS-EN-CANEC25028451601.pdf", "中文", "/documents/compliance/SGS-RoHS-ZH-CANEC25028451602.pdf"]],
+      ["REACH SVHC 筛查", "CANEC25028451603", "2025 年 11 月 25 日", "251 项候选清单 SVHC 及 4 项潜在 SVHC 均 ≤ 0.1%（w/w）", ["English", "/documents/compliance/SGS-REACH-SVHC-EN-CANEC25028451603.pdf"]],
+      ["卤素检测", "CANEC25028451605 / 1606", "2025 年 11 月 21 日", "氟、氯、溴、碘在报告所列方法检出限下均未检出", ["English", "/documents/compliance/SGS-Halogen-EN-CANEC25028451605.pdf", "中文", "/documents/compliance/SGS-Halogen-ZH-CANEC25028451606.pdf"]],
+      ["美国 EPA TSCA 第 6(h) 节 · PBT", "CANEC25028451607 / 1608", "2025 年 11 月 21 日", "结论：符合", ["English", "/documents/compliance/SGS-TSCA-PBT-EN-CANEC25028451607.pdf", "中文", "/documents/compliance/SGS-TSCA-PBT-ZH-CANEC25028451608.pdf"]]
+    ],
+    catalogs: [
+      ["VCSEL 激光芯片产品目录", "覆盖接近传感、医疗美容、扫地机避障、液位传感及工业感测等应用。", "/documents/catalogs/CECL-VCSEL-Chip-Catalog-2025Q2.pdf"],
+      ["四元红黄 LED 芯片产品目录", "覆盖红、橙、黄、黄绿可见光系列及部分红外产品系列。", "/documents/catalogs/CECL-AlGaInP-Red-Yellow-LED-Chip-Catalog-2025Q2.pdf"],
+      ["蓝绿 LED 芯片产品目录", "覆盖照明、显示、背光、车载及蓝绿可见光产品系列。", "/documents/catalogs/CECL-InGaN-Blue-Green-LED-Chip-Catalog-2025Q2.pdf"]
+    ]
+  }
+};
+
 const faqs = {
   en: [["Can we buy components without starting an OEM project?", "Yes. Component and module inquiries follow their own sample, specification and quotation path."], ["Can one project start at the chip level and move into a module?", "Yes. That continuity is the main reason the two businesses share one B2B website."], ["Are medical or market certifications already included?", "Certification applicability depends on the final device, claims and destination market. Evidence should be reviewed for the exact configuration."], ["What information is needed for a first review?", "Application, preferred wavelength or effect, physical constraints, estimated volume stage, target market and timeline are enough to begin."]],
   zh: [["可以只采购芯片，不做 OEM 项目吗？", "可以。芯片和模块询盘有独立的样品、规格确认与报价流程。"], ["项目可以从芯片选型继续做到模块吗？", "可以。这种连续性正是芯片与医美业务放在同一个 B2B 网站的核心原因。"], ["医疗或市场认证是否默认包含？", "认证适用性取决于最终设备、宣传功效和目标市场，必须针对具体配置核验。"], ["首次评审需要哪些信息？", "应用、期望波长或效果、结构约束、预计采购阶段、目标市场和时间计划即可启动。"]]
@@ -120,6 +175,7 @@ function ProductGrid({ items, inquire }: { items: any; inquire: string }) {
 export function SiteHome({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const p = productData[lang];
+  const d = documentCenter[lang];
   const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "渠道合作"];
 
   return (
@@ -147,11 +203,18 @@ export function SiteHome({ lang }: { lang: Lang }) {
 
       <section className="section workflow" id="oem"><div className="section-heading split"><div><p className="eyebrow">{t.oemKicker}</p><h2>{t.oemTitle}</h2></div><p>{t.oemBody}</p></div><div className="workflow-grid">{workflow[lang].map(([n,a,b]) => <article key={n}><span>{n}</span><h3>{a}</h3><p>{b}</p></article>)}</div></section>
 
-      <section className="quality" id="quality"><div className="quality-copy"><p className="eyebrow">{t.qualityKicker}</p><h2>{t.qualityTitle}</h2><p>{t.qualityBody}</p><a className="button light-button" href="#contact">{t.requestDocs}</a></div><div className="quality-cards">{qualityCards[lang].map(([a,b],i) => { const Icon = [FileCheck2, ShieldCheck, ScanLine][i]; return <article key={a}><Icon size={25}/><h3>{a}</h3><p>{b}</p></article>})}</div></section>
+      <section className="quality" id="quality"><div className="quality-copy"><p className="eyebrow">{t.qualityKicker}</p><h2>{t.qualityTitle}</h2><p>{t.qualityBody}</p><a className="button light-button" href="#documents">{t.requestDocs}</a></div><div className="quality-cards">{qualityCards[lang].map(([a,b],i) => { const Icon = [FileCheck2, ShieldCheck, ScanLine][i]; return <article key={a}><Icon size={25}/><h3>{a}</h3><p>{b}</p></article>})}</div></section>
+
+      <section className="section document-center" id="documents">
+        <div className="section-heading split"><div><p className="eyebrow">{d.kicker}</p><h2>{d.title}</h2></div><p>{d.body}</p></div>
+        <div className="document-block"><h3>{d.companyTitle}</h3><div className="license-grid">{d.companies.map(([name,type,src,rotation]) => <article className="license-card" key={name}><a className={`license-media ${rotation}`} href={src} target="_blank" rel="noreferrer"><img src={src} alt={`${name} ${type}`}/></a><div><Building2 size={20}/><p className="doc-meta">{type}</p><h4>{name}</h4><small>{d.supplied}</small><a className="doc-link" href={src} target="_blank" rel="noreferrer">{d.view}<ArrowUpRight size={15}/></a></div></article>)}</div></div>
+        <div className="document-block"><h3>{d.complianceTitle}</h3><div className="report-grid">{d.reports.map(([title,number,date,result,links]) => <article className="report-card" key={String(number)}><div className="report-heading"><FileCheck2 size={22}/><span>{date}</span></div><h4>{title}</h4><p className="report-number">SGS · {number}</p><p>{result}</p><div className="report-links">{(links as string[]).reduce<React.ReactNode[]>((acc,item,i,array) => { if(i % 2 === 0) acc.push(<a key={item} href={array[i+1]} target="_blank" rel="noreferrer"><Download size={14}/>{item}</a>); return acc; }, [])}</div></article>)}</div></div>
+        <div className="document-block"><h3>{d.catalogTitle}</h3><div className="catalog-downloads">{d.catalogs.map(([title,desc,href]) => <article key={title}><div><p className="doc-meta">PDF · 2025 Q2</p><h4>{title}</h4><p>{desc}</p></div><a href={href} target="_blank" rel="noreferrer"><Download size={17}/>{d.download}</a></article>)}</div></div>
+      </section>
 
       <section className="section faq"><div className="section-heading"><p className="eyebrow">{t.faqKicker}</p><h2>{t.faqTitle}</h2></div><div className="faq-list">{faqs[lang].map(([q,a],i) => <details key={q}><summary className="faq-question"><span>{String(i+1).padStart(2,"0")}</span>{q}</summary><p className="faq-answer">{a}</p></details>)}</div></section>
 
-      <section className="contact" id="contact"><div className="contact-copy"><p className="eyebrow">{t.contactKicker}</p><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><div className="contact-note"><Check size={17}/><span>{lang === "en" ? "No certification or performance assumption is made before model review." : "型号评审前，不预设任何认证或性能结论。"}</span></div></div><form className="rfq"><div className="field-row"><label>{t.fields[0]}<Input required name="name"/></label><label>{t.fields[1]}<Input required type="email" name="email"/></label></div><div className="field-row"><label>{t.fields[2]}<Input required name="company"/></label><label>{t.fields[3]}<NativeSelect required name="type" defaultValue="" className="form-select">{formOptions.map((x,i) => <NativeSelectOption key={x} value={i ? x : ""} disabled={!i}>{x}</NativeSelectOption>)}</NativeSelect></label></div><label>{t.fields[4]}<Input name="market" placeholder={lang === "en" ? "Country / region" : "国家 / 地区"}/></label><label>{t.fields[5]}<Textarea name="requirements" rows={5} placeholder={lang === "en" ? "Application, wavelength, package, volume stage, timeline…" : "应用、波长、封装、采购阶段、时间计划……"}/></label><button className="button submit" type="button">{t.submit}</button><p className="form-note">{t.success}</p></form></section>
+      <section className="contact" id="contact"><div className="contact-copy"><p className="eyebrow">{t.contactKicker}</p><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><div className="contact-details"><p><span>{lang === "en" ? "Contact" : "联系人"}</span><strong>{lang === "en" ? "Li Sicheng" : "李思澄"}</strong></p><a href="tel:+8615595903230"><Phone size={18}/><span>+86 155 9590 3230</span></a><a href="https://wa.me/2349018883632" target="_blank" rel="noreferrer"><MessageCircle size={18}/><span>WhatsApp · +234 901 888 3632</span></a></div><div className="contact-note"><Check size={17}/><span>{lang === "en" ? "No certification or performance assumption is made before model review." : "型号评审前，不预设任何认证或性能结论。"}</span></div></div><form className="rfq"><div className="field-row"><label>{t.fields[0]}<Input required name="name"/></label><label>{t.fields[1]}<Input required type="email" name="email"/></label></div><div className="field-row"><label>{t.fields[2]}<Input required name="company"/></label><label>{t.fields[3]}<NativeSelect required name="type" defaultValue="" className="form-select">{formOptions.map((x,i) => <NativeSelectOption key={x} value={i ? x : ""} disabled={!i}>{x}</NativeSelectOption>)}</NativeSelect></label></div><label>{t.fields[4]}<Input name="market" placeholder={lang === "en" ? "Country / region" : "国家 / 地区"}/></label><label>{t.fields[5]}<Textarea name="requirements" rows={5} placeholder={lang === "en" ? "Application, wavelength, package, volume stage, timeline…" : "应用、波长、封装、采购阶段、时间计划……"}/></label><button className="button submit" type="button">{t.submit}</button><p className="form-note">{t.success}</p></form></section>
 
       <footer><div className="brand footer-brand"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></div><p>{t.footer}</p><p className="scope">{t.scope}</p><a href="#top">Back to top ↑</a></footer>
     </main>
