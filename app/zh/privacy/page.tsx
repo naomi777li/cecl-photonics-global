@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 
 export const metadata: Metadata = {
   title: "隐私说明｜中能芯光",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ZhPrivacyPage() {
   return <main className="legal-page">
-    <header className="legal-header"><Link className="brand" href="/zh/"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></Link><Link className="article-lang" href="/privacy/">EN</Link></header>
+    <header className="legal-header"><BrandLogo href="/zh/" /><Link className="article-lang" href="/privacy/">EN</Link></header>
     <article className="legal-content">
       <p className="eyebrow">网站信息</p><h1>隐私说明</h1><p>更新日期：2026 年 9 月 29 日</p>
       <h2>您主动提供的信息</h2><p>当您生成询盘、通过电话联系或继续前往 WhatsApp 时，可能会提供姓名、公司、联系方式、目标市场及技术需求。网站不会把询盘表单自动发送到中能芯光数据库，而是生成消息，供您检查后再通过 WhatsApp 发送。</p>

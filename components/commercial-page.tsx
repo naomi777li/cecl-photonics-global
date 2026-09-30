@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowUpRight, Check, FileCheck2, Mail, MessageCircle } from "lucide-react";
 import { buyerPersonas, siteOrigin, type CommercialPage, type GrowthLang } from "@/lib/growth-model";
 import { getInsight } from "@/lib/insights";
+import { BrandLogo } from "@/components/brand-logo";
 
 export function CommercialPageView({ page, lang }: { page: CommercialPage; lang: GrowthLang }) {
   const isZh = lang === "zh";
@@ -49,9 +50,7 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
     <main className="commercial-shell" data-persona={page.personaIds.join(",")} data-intent={page.intent}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="article-header">
-        <a className="brand" href={`${langBase || ""}/`} aria-label={isZh ? "中能芯光首页" : "CECL Photonics home"}>
-          <span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span>
-        </a>
+        <BrandLogo href={`${langBase || ""}/`} />
         <div className="commercial-header-actions">
           <a className="article-lang" href={`${basePath}${alternatePath}/`}>{isZh ? "EN" : "中文"}</a>
           <a className="button compact" href="#project-brief" data-analytics-event="select_content" data-content-type="cta" data-content-id={`${page.slug}-header`}>

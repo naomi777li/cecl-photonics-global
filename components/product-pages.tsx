@@ -1,11 +1,12 @@
 import { ArrowLeft, ArrowUpRight, Check, Download, Mail, MessageCircle } from "lucide-react";
 import { productFamilies, type ProductFamily, type ProductLang } from "@/lib/product-catalog";
+import { BrandLogo } from "@/components/brand-logo";
 
 const siteOrigin = "https://ceclphotonics.com";
 
 function Header({ lang, alternate }: { lang: ProductLang; alternate: string }) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  return <header className="article-header"><a className="brand" href={`${basePath}${lang === "zh" ? "/zh/" : "/"}`}><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></a><a className="article-lang" href={`${basePath}${alternate}`}>{lang === "zh" ? "EN" : "中文"}</a></header>;
+  return <header className="article-header"><BrandLogo href={`${basePath}${lang === "zh" ? "/zh/" : "/"}`} /><a className="article-lang" href={`${basePath}${alternate}`}>{lang === "zh" ? "EN" : "中文"}</a></header>;
 }
 
 export function ProductIndex({ lang }: { lang: ProductLang }) {

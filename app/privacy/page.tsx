@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 
 export const metadata: Metadata = {
   title: "Privacy Notice | CECL Photonics",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return <main className="legal-page">
-    <header className="legal-header"><Link className="brand" href="/"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></Link><Link className="article-lang" href="/zh/privacy/">中文</Link></header>
+    <header className="legal-header"><BrandLogo href="/" /><Link className="article-lang" href="/zh/privacy/">中文</Link></header>
     <article className="legal-content">
       <p className="eyebrow">WEBSITE INFORMATION</p><h1>Privacy notice</h1><p>Last updated: September 29, 2026</p>
       <h2>Information you choose to provide</h2><p>When you prepare an inquiry, contact us by phone, or continue to WhatsApp, you may provide your name, company, contact details, target market and technical requirements. The website does not automatically send the inquiry form to a CECL database; it prepares a message for you to review before sending through WhatsApp.</p>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight, BookOpen, Building2, Check, Cpu, Download, FileCheck2, Layers3, Mail, MessageCircle, Phone, ScanLine, ShieldCheck, Sparkles } from "lucide-react";
 import { InquiryForm } from "@/components/inquiry-form";
+import { BrandLogo } from "@/components/brand-logo";
 
 type Lang = "en" | "zh";
 
@@ -248,7 +249,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="CECL Photonics home"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></a>
+        <BrandLogo href="#top" />
         <nav aria-label="Primary navigation">{t.nav.map((x, i) => <a key={x} href={["#products", "#solutions", "#beauty", "#oem", "#quality", "#insights"][i]}>{x}</a>)}</nav>
         <div className="header-actions"><a className="lang" href={sitePath(lang === "en" ? "/zh/" : "/")}>{lang === "en" ? "中文" : "EN"}</a><a className="button compact" href="#contact">{t.start}</a></div>
       </header>
@@ -300,7 +301,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
 
       <section className="contact" id="contact"><div className="contact-copy"><p className="eyebrow">{t.contactKicker}</p><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><div className="contact-details"><p><span>{lang === "en" ? "Contact" : "联系人"}</span><strong>{lang === "en" ? "Li Sicheng" : "李思澄"}</strong></p><a href="mailto:sales@ceclphotonics.com"><Mail size={18}/><span>sales@ceclphotonics.com</span></a><a href="tel:+8615595903230"><Phone size={18}/><span>+86 155 9590 3230</span></a><a href="https://wa.me/8615595903230" target="_blank" rel="noreferrer"><MessageCircle size={18}/><span>WhatsApp · +86 155 9590 3230</span></a></div><div className="contact-note"><Check size={17}/><span>{lang === "en" ? "No certification or performance assumption is made before model review." : "型号评审前，不预设任何认证或性能结论。"}</span></div></div><InquiryForm lang={lang} fields={t.fields} options={formOptions} submit={t.submit}/></section>
 
-      <footer><div className="brand footer-brand"><span className="brand-mark">C</span><span><strong>CECL</strong><small>PHOTONICS · 中能芯光</small></span></div><p>{t.footer}</p><p className="scope">{t.scope}</p><div className="footer-links"><a href={sitePath(`${lang === "zh" ? "/zh" : ""}/privacy/`)}>{t.privacy}</a><a href="#top">{lang === "zh" ? "返回顶部 ↑" : "Back to top ↑"}</a></div></footer>
+      <footer><BrandLogo href="#top" className="footer-logo"/><p>{t.footer}</p><p className="scope">{t.scope}</p><div className="footer-links"><a href={sitePath(`${lang === "zh" ? "/zh" : ""}/privacy/`)}>{t.privacy}</a><a href="#top">{lang === "zh" ? "返回顶部 ↑" : "Back to top ↑"}</a></div></footer>
     </main>
   );
 }

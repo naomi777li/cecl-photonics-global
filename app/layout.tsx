@@ -18,8 +18,9 @@ export const metadata: Metadata = {
   openGraph: { type: "website", siteName: "CECL Photonics", title: "CECL Photonics | From Chip to Application-Ready Light", description: "Photonic semiconductors, optical modules and medical beauty OEM/ODM solutions for global B2B partners.", images: [{ url: `${publicBase}/hero-photonics.webp`, width: 1800, height: 750, alt: "CECL photonics platform" }] },
   twitter: { card: "summary_large_image", title: "CECL Photonics | From Chip to Application-Ready Light", description: "Photonic semiconductors, optical modules and medical beauty OEM/ODM solutions for global B2B partners.", images: [`${publicBase}/hero-photonics.webp`] },
   icons: {
-    icon: `${publicBase}/favicon.svg`,
-    shortcut: `${publicBase}/favicon.svg`,
+    icon: `${publicBase}/brand/cecl-favicon.png`,
+    shortcut: `${publicBase}/brand/cecl-favicon.png`,
+    apple: `${publicBase}/brand/cecl-icon.png`,
   },
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
