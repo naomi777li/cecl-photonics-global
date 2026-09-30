@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 type Lang = "en" | "zh";
 type ApiResult = { ok?: boolean; accepted?: boolean; error?: string; errors?: string[]; fallbackEmail?: string };
 
-const FALLBACK_EMAIL = "info@ceclphotonics.com";
+const FALLBACK_EMAIL = "sales@ceclphotonics.com";
 
 function track(event: "rfq_submit" | "rfq_submit_error", parameters: Record<string, string>) {
   window.gtag?.("event", event, parameters);
@@ -80,8 +80,8 @@ export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fie
     <label className="honeypot" aria-hidden="true">Leave this field empty<Input name="_honey" tabIndex={-1} autoComplete="off"/></label>
     <label className="privacy-consent"><input required type="checkbox" name="privacy_consent" value="Accepted"/><span>{isZh ? "我同意按照" : "I agree to the"} <a href={isZh ? "/zh/privacy/" : "/privacy/"} target="_blank">{isZh ? "隐私说明" : "privacy notice"}</a>{isZh ? "处理本次询盘信息。" : " for processing this inquiry."}</span></label>
     <button className="button submit" type="submit" disabled={status === "submitting"}>{status === "submitting" ? <><LoaderCircle className="spin" size={18}/>{isZh ? "正在安全提交……" : "Submitting securely…"}</> : submit}</button>
-    {status === "idle" && <p className="form-note">{isZh ? "邮件服务确认接受后才会显示成功，并继续打开预填的 WhatsApp 项目简报。" : "Success appears only after the email service accepts the RFQ, followed by a prefilled WhatsApp project brief."}</p>}
-    {status === "success" && <p className="form-success" role="status"><Check size={16}/><span>{isZh ? "询盘已被邮件服务接受，正在前往 WhatsApp……" : "RFQ accepted by our email service. Opening WhatsApp…"}</span></p>}
+    {status === "idle" && <p className="form-note">{isZh ? "Hostinger 企业邮箱确认接受后才会显示成功，并继续打开预填的 WhatsApp 项目简报。" : "Success appears only after Hostinger business mail accepts the RFQ, followed by a prefilled WhatsApp project brief."}</p>}
+    {status === "success" && <p className="form-success" role="status"><Check size={16}/><span>{isZh ? "询盘已被企业邮箱接受，正在前往 WhatsApp……" : "RFQ accepted by our business mailbox. Opening WhatsApp…"}</span></p>}
     {status === "error" && <p className="form-error" role="alert"><AlertCircle size={16}/><span>{errorMessage ? `${errorMessage} ` : ""}{isZh ? "请重试，或直接发送邮件至 " : "Please retry, or email "}<a href={`mailto:${FALLBACK_EMAIL}`}>{FALLBACK_EMAIL}</a>{isZh ? "。" : "."}</span></p>}
   </form>;
 }

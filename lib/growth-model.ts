@@ -300,7 +300,7 @@ export const measurementModel = {
   ga4Events: [
     { name: "select_content", purpose: "Commercial page or insight selection", parameters: ["content_type", "content_id", "persona", "intent"] },
     { name: "view_item", purpose: "Commercial solution page view", parameters: ["items", "persona", "intent"] },
-    { name: "rfq_submit", purpose: "Resend accepted a qualified RFQ for delivery", parameters: ["project_type", "target_market", "page_path"] },
+    { name: "rfq_submit", purpose: "The business-mail service accepted a qualified RFQ for delivery", parameters: ["project_type", "target_market", "page_path"] },
     { name: "rfq_submit_error", purpose: "RFQ validation, network or provider acceptance failed", parameters: ["project_type", "target_market", "page_path", "error_type"] },
     { name: "contact", purpose: "Phone or WhatsApp contact click", parameters: ["method", "page_path", "intent"] },
     { name: "view_document", purpose: "Catalog, license or report opened", parameters: ["document_type", "document_name", "page_path"] },

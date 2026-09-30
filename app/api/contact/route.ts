@@ -1,11 +1,11 @@
 import { appendFile, mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 
-const FALLBACK_EMAIL = "info@ceclphotonics.com";
+const FALLBACK_EMAIL = "sales@ceclphotonics.com";
 const PERSONAL_EMAIL_DOMAINS = new Set([
   "126.com", "163.com", "aol.com", "gmail.com", "googlemail.com", "hotmail.com",
   "icloud.com", "live.com", "mail.com", "outlook.com", "proton.me", "protonmail.com",
@@ -93,11 +93,9 @@ export async function POST(request: Request) {
   };
 
   const persisted = await archive(record);
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.RFQ_TO_EMAIL || FALLBACK_EMAIL;
-  const from = process.env.RFQ_FROM_EMAIL || "rfq@ceclphotonics.com";
-  if (!apiKey) {
-    console.error(`[inquiry] ${inquiryId} archived=${persisted}, but RESEND_API_KEY is not configured`);
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, INQUIRY_TO } = process.env;
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+    console.error(`[inquiry] ${inquiryId} archived=${persisted}, but Hostinger SMTP is not configured`);
     return failure(503, "Our email service is temporarily unavailable. Please email us directly.");
   }
 
@@ -119,29 +117,34 @@ export async function POST(request: Request) {
   ].join("\n");
 
   try {
-    const resend = new Resend(apiKey);
-    const { data, error } = await resend.emails.send({
-      from: `CECL Photonics RFQ <${from}>`,
-      to: [to],
+    const port = Number(SMTP_PORT || 465);
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port,
+      secure: port === 465,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 20_000,
+    });
+    const info = await transporter.sendMail({
+      from: `CECL Photonics RFQ <${SMTP_USER}>`,
+      to: INQUIRY_TO || FALLBACK_EMAIL,
       replyTo: record.email,
       subject: `[CECL RFQ] ${record.company} · ${record.projectType}`,
       text: message,
-      tags: [
-        { name: "category", value: "website_rfq" },
-        { name: "language", value: record.language.replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 50) || "unknown" },
-      ],
     });
 
-    if (error || !data?.id) {
-      console.error(`[inquiry] ${inquiryId} Resend rejected request: ${error?.name || "UNKNOWN"} ${error?.message || "No email ID returned"}`);
+    if (!info.accepted.length) {
+      console.error(`[inquiry] ${inquiryId} SMTP returned no accepted recipients; rejected=[${info.rejected.join(", ")}] response=${info.response}`);
       return failure(502, "The email service did not accept this inquiry. Please retry or email us directly.");
     }
 
-    console.info(`[inquiry] ${inquiryId} accepted by Resend as ${data.id}; archived=${persisted}`);
-    return NextResponse.json({ ok: true, accepted: true, inquiryId, messageId: data.id, archived: persisted });
+    console.info(`[inquiry] ${inquiryId} accepted by Hostinger SMTP; accepted=[${info.accepted.join(", ")}] archived=${persisted}`);
+    return NextResponse.json({ ok: true, accepted: true, inquiryId, messageId: info.messageId, archived: persisted });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown Resend error";
-    console.error(`[inquiry] ${inquiryId} Resend request failed: ${message}`);
+    const smtpError = error as { code?: string; responseCode?: number; message?: string };
+    console.error(`[inquiry] ${inquiryId} Hostinger SMTP failed code=${smtpError.code || "?"} responseCode=${smtpError.responseCode || "?"} message=${smtpError.message || "unknown"}`);
     return failure(502, "The email service could not be reached. Please retry or email us directly.");
   }
 }
