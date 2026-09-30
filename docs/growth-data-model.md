@@ -41,7 +41,7 @@
 
 ## 6. GSC + GA4 闭环
 
-GA4 收集 `select_content`、`view_item`、`generate_lead`、`contact` 和 `view_document`；GSC 使用 query、page、country、device、search appearance 和 date 维度。
+GA4 收集 `select_content`、`view_item`、`rfq_submit`、`rfq_submit_error`、`contact` 和 `view_document`；其中 `rfq_submit` 仅在邮件服务确认接受后触发，GSC 使用 query、page、country、device、search appearance 和 date 维度。
 
 将标准化导出数据放入：
 
@@ -62,4 +62,3 @@ node --experimental-strip-types scripts/analyze-growth-data.mjs
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`：Google Search Console HTML 标签验证值。
 
 这两项为帐户级配置，不应在代码中写死或公开敏感凭据。
-

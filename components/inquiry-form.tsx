@@ -7,25 +7,36 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 type Lang = "en" | "zh";
+type ApiResult = { ok?: boolean; accepted?: boolean; error?: string; errors?: string[]; fallbackEmail?: string };
+
+const FALLBACK_EMAIL = "info@ceclphotonics.com";
+
+function track(event: "rfq_submit" | "rfq_submit_error", parameters: Record<string, string>) {
+  window.gtag?.("event", event, parameters);
+}
 
 export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fields: string[]; options: string[]; submit: string }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const isZh = lang === "zh";
 
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
-    const form = new FormData(event.currentTarget);
+    setErrorMessage("");
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const projectType = String(form.get("type") || "");
     const targetMarket = String(form.get("market") || "");
     const phone = String(form.get("phone") || "");
+    const analytics = { project_type: projectType, target_market: targetMarket, page_path: window.location.pathname };
     const lines = [
       "CECL Photonics B2B inquiry",
       `Name: ${form.get("name") || ""}`,
       `Business email: ${form.get("email") || ""}`,
       `Company: ${form.get("company") || ""}`,
       `Phone / WhatsApp: ${phone}`,
-      `Project type: ${projectType}`,
+      `Product / service: ${projectType}`,
       `Target market: ${targetMarket}`,
       `Requirements: ${form.get("requirements") || ""}`,
     ];
@@ -38,37 +49,39 @@ export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fie
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           ...inquiry,
-          _subject: `New CECL inquiry · ${projectType || "B2B project"} · ${String(form.get("company") || "Unknown company")}`,
-          _template: "table",
           source_page: window.location.href,
           referrer: document.referrer || "Direct / unavailable",
           language: lang,
-          submitted_at_utc: new Date().toISOString(),
         }),
       });
-      const result = await response.json().catch(() => ({})) as { ok?: boolean; delivered?: boolean };
-      if (!response.ok || result.ok !== true || result.delivered !== true) throw new Error("Submission was not delivered");
+      const result = await response.json().catch(() => ({})) as ApiResult;
+      if (!response.ok || result.ok !== true || result.accepted !== true) {
+        const details = result.errors?.join(" ") || result.error;
+        throw new Error(details || (isZh ? "邮件服务未接受本次询盘。" : "The email service did not accept this inquiry."));
+      }
 
-      window.gtag?.("event", "generate_lead", { lead_source: "website_inquiry", project_type: projectType, target_market: targetMarket, page_path: window.location.pathname });
+      track("rfq_submit", analytics);
       setStatus("success");
-      window.setTimeout(() => {
-        window.location.assign(whatsappUrl);
-      }, 900);
-    } catch {
+      formElement.reset();
+      window.setTimeout(() => window.location.assign(whatsappUrl), 1100);
+    } catch (error) {
+      const details = error instanceof Error ? error.message : "";
+      setErrorMessage(details);
       setStatus("error");
+      track("rfq_submit_error", { ...analytics, error_type: details ? "api_error" : "network_error" });
     }
   }
 
   return <form className="rfq" onSubmit={submitInquiry} aria-busy={status === "submitting"}>
-    <div className="field-row"><label>{fields[0]}<Input required name="name" autoComplete="name"/></label><label>{fields[1]}<Input required type="email" name="email" autoComplete="email"/></label></div>
-    <div className="field-row"><label>{fields[2]}<Input required name="company" autoComplete="organization"/></label><label>{fields[3]}<Input name="phone" type="tel" autoComplete="tel" placeholder={isZh ? "+国家代码 手机号" : "+country code number"}/></label></div>
-    <div className="field-row"><label>{fields[4]}<NativeSelect required name="type" defaultValue="" className="form-select">{options.map((x,i) => <NativeSelectOption key={x} value={i ? x : ""} disabled={!i}>{x}</NativeSelectOption>)}</NativeSelect></label><label>{fields[5]}<Input name="market" placeholder={isZh ? "国家 / 地区" : "Country / region"}/></label></div>
-    <label>{fields[6]}<Textarea required name="requirements" rows={5} placeholder={isZh ? "应用、产品/型号、波长、封装、预计数量、时间计划……" : "Application, product/model, wavelength, package, estimated quantity, timeline…"}/></label>
+    <div className="field-row"><label>{fields[0]}<Input required name="name" autoComplete="name" maxLength={120}/></label><label>{fields[1]}<Input required type="email" name="email" autoComplete="email" inputMode="email" maxLength={200}/></label></div>
+    <div className="field-row"><label>{fields[2]}<Input required name="company" autoComplete="organization" maxLength={180}/></label><label>{fields[3]}<Input name="phone" type="tel" autoComplete="tel" maxLength={80} placeholder={isZh ? "+国家代码 手机号" : "+country code number"}/></label></div>
+    <div className="field-row"><label>{fields[4]}<NativeSelect required name="type" defaultValue="" className="form-select">{options.map((x,i) => <NativeSelectOption key={x} value={i ? x : ""} disabled={!i}>{x}</NativeSelectOption>)}</NativeSelect></label><label>{fields[5]}<Input name="market" maxLength={180} placeholder={isZh ? "国家 / 地区" : "Country / region"}/></label></div>
+    <label>{fields[6]}<Textarea required name="requirements" maxLength={6000} rows={5} placeholder={isZh ? "应用、产品/型号、波长、封装、预计数量、时间计划……" : "Application, product/model, wavelength, package, estimated quantity, timeline…"}/></label>
     <label className="honeypot" aria-hidden="true">Leave this field empty<Input name="_honey" tabIndex={-1} autoComplete="off"/></label>
     <label className="privacy-consent"><input required type="checkbox" name="privacy_consent" value="Accepted"/><span>{isZh ? "我同意按照" : "I agree to the"} <a href={isZh ? "/zh/privacy/" : "/privacy/"} target="_blank">{isZh ? "隐私说明" : "privacy notice"}</a>{isZh ? "处理本次询盘信息。" : " for processing this inquiry."}</span></label>
-    <button className="button submit" type="submit" disabled={status === "submitting"} data-analytics-event="generate_lead">{status === "submitting" ? <><LoaderCircle className="spin" size={18}/>{isZh ? "正在安全提交……" : "Submitting securely…"}</> : submit}</button>
-    {status === "idle" && <p className="form-note">{isZh ? "提交后将邮件发送并在服务器留档，然后打开预填的 WhatsApp 项目简报。" : "The inquiry is emailed and archived on the server before a prefilled WhatsApp project brief opens."}</p>}
-    {status === "success" && <p className="form-success" role="status"><Check size={16}/><span>{isZh ? "询盘已发送到企业邮箱并留档，正在前往 WhatsApp……" : "Inquiry emailed and archived. Opening WhatsApp…"}</span></p>}
-    {status === "error" && <p className="form-error" role="alert"><AlertCircle size={16}/><span>{isZh ? "暂时无法安全保存询盘，请稍后重试，或直接通过 WhatsApp / 邮件联系。" : "The inquiry could not be stored securely. Please retry or contact us by WhatsApp or email."}</span></p>}
+    <button className="button submit" type="submit" disabled={status === "submitting"}>{status === "submitting" ? <><LoaderCircle className="spin" size={18}/>{isZh ? "正在安全提交……" : "Submitting securely…"}</> : submit}</button>
+    {status === "idle" && <p className="form-note">{isZh ? "邮件服务确认接受后才会显示成功，并继续打开预填的 WhatsApp 项目简报。" : "Success appears only after the email service accepts the RFQ, followed by a prefilled WhatsApp project brief."}</p>}
+    {status === "success" && <p className="form-success" role="status"><Check size={16}/><span>{isZh ? "询盘已被邮件服务接受，正在前往 WhatsApp……" : "RFQ accepted by our email service. Opening WhatsApp…"}</span></p>}
+    {status === "error" && <p className="form-error" role="alert"><AlertCircle size={16}/><span>{errorMessage ? `${errorMessage} ` : ""}{isZh ? "请重试，或直接发送邮件至 " : "Please retry, or email "}<a href={`mailto:${FALLBACK_EMAIL}`}>{FALLBACK_EMAIL}</a>{isZh ? "。" : "."}</span></p>}
   </form>;
 }
