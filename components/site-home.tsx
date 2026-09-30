@@ -34,7 +34,7 @@ const copy = {
   zh: {
     nav: ["产品中心", "应用方案", "医疗美容", "OEM / ODM", "质量与资料", "行业知识"],
     start: "发起项目", eyebrow: "光电半导体 · 光学引擎 · OEM/ODM",
-    titleA: "从芯片出发，", titleB: "做到可落地的光。",
+    titleA: "从芯片出发，", titleB: "做可落地的光。",
     intro: "面向传感、医疗美容与智能设备，提供定制发光芯片、光学模块及应用工程支持。",
     explore: "查看产品", discuss: "沟通应用需求", integration: "集成路径",
     chips: ["可见光 LED", "红外 LED", "VCSEL", "定制模块"],
