@@ -1,7 +1,15 @@
 import { ArrowLeft, ArrowUpRight, Check, FileCheck2, Mail, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { buyerPersonas, siteOrigin, type CommercialPage, type GrowthLang } from "@/lib/growth-model";
 import { getInsight } from "@/lib/insights";
 import { BrandLogo } from "@/components/brand-logo";
+
+const beautyProductPrograms = [
+  { image: "/medical-beauty/led-face-mask.webp", title: { en: "Flexible LED facial mask", zh: "柔性 LED 面罩" }, priority: { en: "Priority 01 · broadest global demand", zh: "优先级 01 · 全球需求覆盖最广" }, markets: { en: "North America · Europe · Southeast Asia", zh: "北美 · 欧洲 · 东南亚" }, body: { en: "Red and near-infrared platform with optional blue-light zones, reviewed around coverage, eye protection, fit and thermal comfort.", zh: "以红光与近红外为主、可选蓝光分区，围绕覆盖、眼部防护、贴合与热舒适进行评审。" } },
+  { image: "/medical-beauty/scalp-care-helmet.webp", title: { en: "Scalp-care helmet", zh: "头皮护理头盔" }, priority: { en: "Priority 02 · premium wearable opportunity", zh: "优先级 02 · 高端穿戴机会" }, markets: { en: "North America · Europe · GCC", zh: "北美 · 欧洲 · 海湾市场" }, body: { en: "Dense red and near-infrared array concept with ventilated fit, session control, charging and heat-management planning.", zh: "高密度红光与近红外阵列概念，覆盖透气佩戴、疗程控制、充电及热管理规划。" } },
+  { image: "/medical-beauty/handheld-light-device.webp", title: { en: "Targeted handheld device", zh: "局部手持护理设备" }, priority: { en: "Priority 03 · e-commerce friendly", zh: "优先级 03 · 适合电商渠道" }, markets: { en: "Southeast Asia · Europe · North America", zh: "东南亚 · 欧洲 · 北美" }, body: { en: "Portable platform with configurable optical heads, charging dock and accessories for focused beauty-care programs.", zh: "便携式平台可配置光学头、充电底座及配件，适合局部美容护理项目。" } },
+  { image: "/medical-beauty/professional-light-panel.webp", title: { en: "Professional modular panel", zh: "专业模块化光疗面板" }, priority: { en: "Priority 04 · professional channel", zh: "优先级 04 · 专业渠道" }, markets: { en: "GCC · Europe · clinics and salons", zh: "海湾市场 · 欧洲 · 诊所与美容院" }, body: { en: "Zoned, serviceable light-engine architecture for distributors, salons and professional treatment environments.", zh: "采用分区、可维护光学引擎架构，面向渠道商、美容院及专业护理环境。" } },
+];
 
 export function CommercialPageView({ page, lang }: { page: CommercialPage; lang: GrowthLang }) {
   const isZh = lang === "zh";
@@ -81,6 +89,8 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
         <div><span>{isZh ? "适合阶段" : "Best-fit stage"}</span><strong>{isZh ? "供应商评估 → 项目简报" : "Supplier review → project brief"}</strong></div>
         <div><span>{isZh ? "证据原则" : "Evidence rule"}</span><strong>{isZh ? "文件与具体型号对应" : "Documents matched to the model"}</strong></div>
       </section>
+
+      {page.slug === "medical-beauty-device-oem-odm" && <section className="section beauty-market-programs"><div className="section-heading split"><div><p className="eyebrow">{isZh ? "目标市场产品优先级" : "TARGET-MARKET PRODUCT PRIORITIES"}</p><h2>{isZh ? "先展示买家正在寻找的产品形态。" : "Lead with the formats buyers are actively seeking."}</h2></div><p>{isZh ? "产品顺序依据 2025–2026 年北美、欧洲、中东及东南亚的市场信号，并结合中能芯光现有 LED、VCSEL 与光学引擎能力。图片均为原创可配置概念视觉，不代表已定型或已获批整机。" : "Priorities combine 2025–2026 market signals from North America, Europe, the Middle East and Southeast Asia with CECL's LED, VCSEL and light-engine capabilities. Images are original configurable concepts—not released or cleared finished devices."}</p></div><div className="beauty-program-grid">{beautyProductPrograms.map((item) => <article key={item.image}><figure><Image src={`${basePath}${item.image}`} alt={item.title[lang]} fill sizes="(max-width: 760px) 100vw, 50vw"/></figure><div><small>{item.priority[lang]}</small><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p><span>{item.markets[lang]}</span><a href="#project-brief">{isZh ? "申请配置与报价" : "Request configuration & quote"}<ArrowUpRight size={16}/></a></div></article>)}</div></section>}
 
       <section className="section commercial-section">
         <div className="section-heading split"><div><p className="eyebrow">{isZh ? "常见风险" : "COMMON BUYER RISKS"}</p><h2>{isZh ? "项目失败往往不是因为缺少一个参数。" : "Projects rarely fail because one parameter is missing."}</h2></div><p>{isZh ? "更常见的原因是需求、接口、验证和资料范围没有在同一个项目模型中对齐。" : "The more common cause is that requirements, interfaces, verification and document scope were never aligned in one project model."}</p></div>

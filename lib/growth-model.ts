@@ -241,7 +241,7 @@ export const commercialPages: CommercialPage[] = [
     personaIds: ["beauty-brand-owner", "quality-distributor"],
     intent: "project-inquiry",
     primaryKeyword: "medical beauty device OEM ODM",
-    secondaryKeywords: ["LED light therapy device manufacturer", "LED face mask OEM", "red light therapy device ODM", "beauty device manufacturer China", "phototherapy device OEM"],
+    secondaryKeywords: ["LED light therapy device manufacturer", "LED face mask OEM", "red light therapy device ODM", "scalp care helmet OEM", "handheld LED beauty device", "professional LED therapy panel", "beauty device manufacturer China", "phototherapy device OEM"],
     title: { en: "Medical Beauty Device OEM/ODM | CECL Photonics", zh: "医疗美容设备 OEM/ODM｜中能芯光" },
     description: { en: "Develop LED light-therapy and personal-care device concepts through an optical, thermal, prototype and market-document review workflow.", zh: "通过光学、散热、样机和目标市场资料评审流程，开发 LED 光疗与个人护理设备概念。" },
     eyebrow: { en: "MEDICAL BEAUTY OEM / ODM", zh: "医疗美容 OEM / ODM" },
@@ -253,8 +253,8 @@ export const commercialPages: CommercialPage[] = [
       { en: "Certification promises are made before intended use and target market are fixed.", zh: "预期用途和目标市场未定就先承诺认证。" },
     ],
     capabilities: [
-      { title: { en: "Wearable concepts", zh: "穿戴式产品概念" }, body: { en: "Facial and scalp-care concepts reviewed around coverage, fit, eye protection, heat and session controls.", zh: "围绕覆盖范围、佩戴、眼部保护、散热与疗程控制评审面部和头皮护理概念。" } },
-      { title: { en: "Handheld and professional formats", zh: "手持式与专业设备" }, body: { en: "Targeted handhelds and treatment panels structured around optical zones, serviceability and production planning.", zh: "围绕光学分区、可维护性与生产规划设计手持设备和专业护理面板。" } },
+      { title: { en: "Facial and scalp wearables", zh: "面部与头皮穿戴设备" }, body: { en: "LED facial masks and scalp-care helmets reviewed around coverage, fit, eye protection, ventilation, heat and session controls.", zh: "围绕覆盖、佩戴、眼部保护、透气、散热与疗程控制评审 LED 面罩和头皮护理头盔。" } },
+      { title: { en: "Handhelds and professional panels", zh: "手持设备与专业面板" }, body: { en: "Portable targeted devices and modular professional panels structured around optical zones, accessories, serviceability and production planning.", zh: "围绕光学分区、配件、可维护性与生产规划设计便携手持设备和专业模块化面板。" } },
       { title: { en: "Evidence planning", zh: "证据规划" }, body: { en: "Separate component reports, device verification and destination-market evidence before commercial claims are finalized.", zh: "在确定商业宣传前区分元器件报告、整机验证与目标市场证据。" } },
     ],
     deliverables: [
@@ -264,6 +264,7 @@ export const commercialPages: CommercialPage[] = [
       { en: "Document gap list for the selected configuration", zh: "所选配置的资料差距清单" },
     ],
     questions: [
+      { question: { en: "Which light-based beauty-device formats should a new brand prioritize?", zh: "新品牌应优先开发哪些光美容设备？" }, answer: { en: "For a photonics-led range, start with a red/near-infrared LED facial mask, then evaluate a scalp-care wearable, a targeted handheld device and a professional modular panel. Final priority should reflect the destination market, channel, price tier and evidence plan.", zh: "若以光电技术为核心，建议先开发红光/近红外 LED 面罩，再评估头皮护理穿戴设备、局部手持设备和专业模块化面板。最终优先级仍需结合目标市场、渠道、价格带与证据规划。" } },
       { question: { en: "Can a component test report support finished-device claims?", zh: "元器件检测报告能否支持整机宣传？" }, answer: { en: "Not by itself. Component evidence supports only the sample and scope stated in the report. Device claims require a completed configuration, defined intended use and applicable verification for the target market.", zh: "不能单独支持。元器件证据只覆盖报告注明的样品和范围。整机宣传需要完整配置、明确预期用途以及目标市场适用验证。" } },
       { question: { en: "What is needed for an initial OEM/ODM review?", zh: "首次 OEM/ODM 评审需要什么？" }, answer: { en: "Share the product format, treatment area, desired wavelength or use case, target market, volume stage, timing, industrial-design status and any existing optical or compliance requirements.", zh: "请提供产品形态、照射区域、期望波长或使用场景、目标市场、采购阶段、时间计划、外观设计状态及现有光学或合规要求。" } },
     ],

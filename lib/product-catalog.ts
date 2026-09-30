@@ -33,7 +33,7 @@ export const productFamilies: ProductFamily[] = [
     summary: { en: "Red and yellow wavelength families for indication, display, sensing and application-defined light systems.", zh: "覆盖红光、黄光波段，面向指示、显示、传感及特定光应用。" },
     applications: { en: ["Indicators and displays", "Specialty illumination", "Optical sensing"], zh: ["指示与显示", "特种照明", "光学传感"] },
     reviewItems: { en: ["Dominant wavelength and bin", "Die size and electrode orientation", "Luminous-intensity target", "Assembly and thermal conditions"], zh: ["主波长与分档", "芯片尺寸与电极方向", "发光强度目标", "装配与热条件"] },
-    image: "/products/visuals/led-dies.webp", imageAlt: { en: "Original visualization of visible LED semiconductor dies", zh: "可见光 LED 半导体芯片原创示意图" },
+    image: "/products/visuals/red-yellow-led-products.webp", imageAlt: { en: "Original visualization of red, orange and yellow LED dies and packages", zh: "红、橙、黄光 LED 芯片与封装原创示意图" },
     samples: [
       { model: "CE-G07CUR*U/L", application: { en: "Red LED", zh: "红光 LED" }, drive: "20 mA", output: { en: "110–230 mcd", zh: "110–230 mcd" }, detail: { en: "620–627 nm · P-UP · 6 mil", zh: "620–627 nm · P-UP · 6 mil" } },
       { model: "CE-G06CSO*U/L", application: { en: "Orange LED", zh: "橙光 LED" }, drive: "20 mA", output: { en: "110–250 mcd", zh: "110–250 mcd" }, detail: { en: "600–607 nm · P-UP · 5 mil", zh: "600–607 nm · P-UP · 5 mil" } },
@@ -48,7 +48,7 @@ export const productFamilies: ProductFamily[] = [
     summary: { en: "Blue and green emitters for indication, specialty lighting and compact optical systems.", zh: "面向指示、特种照明与紧凑光学系统的蓝光、绿光芯片。" },
     applications: { en: ["Specialty illumination", "Indicators", "Compact optical systems"], zh: ["特种照明", "指示应用", "紧凑光学系统"] },
     reviewItems: { en: ["Wavelength range", "Optical-power target", "Drive-current range", "Package and heat path"], zh: ["波长范围", "光功率目标", "驱动电流范围", "封装与散热路径"] },
-    image: "/products/visuals/led-dies.webp", imageAlt: { en: "Original visualization of blue and green LED semiconductor dies", zh: "蓝绿光 LED 半导体芯片原创示意图" },
+    image: "/products/visuals/blue-green-led-products.webp", imageAlt: { en: "Original visualization of blue and green LED dies and packages", zh: "蓝绿光 LED 芯片与封装原创示意图" },
     samples: [
       { model: "CE-10C6B*U", application: { en: "Blue display LED", zh: "蓝光数码显示" }, drive: "1–20 mA", output: { en: "38–54 mcd", zh: "38–54 mcd" }, detail: { en: "460–475 nm · 6 × 9 mil", zh: "460–475 nm · 6 × 9 mil" } },
       { model: "CE-13C6G*U", application: { en: "Green display LED", zh: "绿光数码显示" }, drive: "1–20 mA", output: { en: "240–300 mcd", zh: "240–300 mcd" }, detail: { en: "515–535 nm · 6 × 11 mil", zh: "515–535 nm · 6 × 11 mil" } },
@@ -64,7 +64,7 @@ export const productFamilies: ProductFamily[] = [
     summary: { en: "Infrared emitters for sensing, illumination, machine vision and device integration.", zh: "面向传感、补光、机器视觉与设备集成的红外发光器件。" },
     applications: { en: ["Machine vision", "Infrared illumination", "Sensing and detection"], zh: ["机器视觉", "红外补光", "传感与检测"] },
     reviewItems: { en: ["Peak wavelength", "Radiant-power target", "Drive and duty cycle", "Optics and package"], zh: ["峰值波长", "辐射功率目标", "驱动与占空比", "光学与封装"] },
-    image: "/products/visuals/led-dies.webp", imageAlt: { en: "Original visualization of infrared LED semiconductor dies", zh: "红外 LED 半导体芯片原创示意图" },
+    image: "/products/visuals/infrared-led-products.webp", imageAlt: { en: "Original visualization of infrared LED dies and packages", zh: "红外 LED 芯片与封装原创示意图" },
     samples: [
       { model: "CE-F08AIR*U", application: { en: "850 nm compact IR LED", zh: "850 nm 紧凑红外 LED" }, drive: "50 mA", output: { en: "20–35 mW", zh: "20–35 mW" }, detail: { en: "835–865 nm · N-UP · 8 mil", zh: "835–865 nm · N-UP · 8 mil" } },
       { model: "CE-F18CIR*ZCU", application: { en: "850 nm IR LED", zh: "850 nm 红外 LED" }, drive: "250 mA", output: { en: "140–180 mW", zh: "140–180 mW" }, detail: { en: "835–865 nm · N-UP · 16 mil", zh: "835–865 nm · N-UP · 16 mil" } },
@@ -101,7 +101,7 @@ export const productFamilies: ProductFamily[] = [
     eyebrow: { en: "CUSTOM LIGHT ENGINES", zh: "定制光学引擎" },
     summary: { en: "Project-defined multi-emitter layouts engineered around coverage, thermal path and assembly requirements.", zh: "围绕覆盖范围、散热路径与装配要求定义的多光源项目平台。" },
     applications: { en: ["Specialty illumination", "Beauty-device light engines", "Application-specific arrays"], zh: ["特种照明", "美容设备光引擎", "应用定制阵列"] },
-    reviewItems: { en: ["Emitter and wavelength mix", "Board architecture", "Coverage and uniformity", "Thermal interface"], zh: ["光源与波长组合", "电路板架构", "覆盖与均匀性", "热界面设计"] }, image: "/products/visuals/light-engine.webp", imageAlt: { en: "Original visualization of a configurable LED light-engine assembly", zh: "可配置 LED 光学引擎原创示意图" }, samples: []
+    reviewItems: { en: ["Emitter and wavelength mix", "Board architecture", "Coverage and uniformity", "Thermal interface"], zh: ["光源与波长组合", "电路板架构", "覆盖与均匀性", "热界面设计"] }, image: "/products/visuals/cob-light-engine.webp", imageAlt: { en: "Original visualization of a configurable multi-wavelength COB light engine", zh: "可配置多波长 COB 光学引擎原创示意图" }, samples: []
   },
   {
     slug: "vcsel-modules", group: "module",
@@ -117,7 +117,7 @@ export const productFamilies: ProductFamily[] = [
     eyebrow: { en: "OEM / ODM PLATFORM", zh: "OEM / ODM 平台" },
     summary: { en: "Configurable optical assemblies for wearable, handheld and professional beauty-device programs.", zh: "面向穿戴式、手持式与专业美容设备项目的可配置光学组件。" },
     applications: { en: ["LED facial wearables", "Scalp and hair-care devices", "Professional treatment panels"], zh: ["LED 面部穿戴设备", "头皮与毛发护理设备", "专业护理面板"] },
-    reviewItems: { en: ["Wavelength mix", "Irradiance and uniformity target", "Thermal comfort and controls", "Market and compliance plan"], zh: ["波长组合", "辐照度与均匀性目标", "热舒适与控制", "目标市场与合规规划"] }, image: "/medical-beauty-platform.webp", imageAlt: { en: "Original concept visualization of a configurable beauty-device platform", zh: "可配置美容设备平台原创概念图" }, samples: []
+    reviewItems: { en: ["Wavelength mix", "Irradiance and uniformity target", "Thermal comfort and controls", "Market and compliance plan"], zh: ["波长组合", "辐照度与均匀性目标", "热舒适与控制", "目标市场与合规规划"] }, image: "/medical-beauty/device-platform-lineup.webp", imageAlt: { en: "Original concept lineup of configurable light-based beauty devices", zh: "可配置光美容设备产品线原创概念图" }, samples: []
   },
   {
     slug: "custom-optical-modules", group: "module",

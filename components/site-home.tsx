@@ -97,8 +97,8 @@ const apps = [
 ];
 
 const programs = {
-  en: [["LED facial wearables", "Uniform light delivery, comfort, controls and manufacturability."], ["Scalp & hair-care devices", "Wearable optical architecture, thermal comfort and usage design."], ["Professional treatment panels", "Coverage, serviceability, control zones and production planning."], ["Hair-removal light engines", "Source, optical path, thermal management and device integration review."]],
-  zh: [["LED 面部穿戴设备", "光照均匀性、舒适度、控制方式与可制造性。"], ["头皮与毛发护理设备", "穿戴式光学架构、热舒适与使用方式设计。"], ["专业护理面板", "覆盖范围、可维护性、分区控制与生产规划。"], ["脱毛光学引擎", "光源、光路、热管理和整机集成评审。"]]
+  en: [["LED facial wearables", "Uniform light delivery, comfort, controls and manufacturability."], ["Scalp & hair-care devices", "Wearable optical architecture, thermal comfort and usage design."], ["Targeted handheld devices", "Portable form factor, interchangeable optics, charging and accessory planning."], ["Professional treatment panels", "Coverage, serviceability, control zones and production planning."]],
+  zh: [["LED 面部穿戴设备", "光照均匀性、舒适度、控制方式与可制造性。"], ["头皮与毛发护理设备", "穿戴式光学架构、热舒适与使用方式设计。"], ["局部手持护理设备", "便携结构、可更换光学头、充电与配件方案。"], ["专业护理面板", "覆盖范围、可维护性、分区控制与生产规划。"]]
 };
 
 const workflow = {
@@ -180,6 +180,15 @@ const beautyConcepts = {
   ]
 };
 
+const capabilityVisuals = [
+  { src: "/capabilities/technology-campus-visualization.webp", en: ["Technology campus", "A brand visualization for the scale and operating environment expected by global B2B programs."], zh: ["科技园区", "用于表达全球 B2B 项目所需规模与运营环境的品牌场景视觉。"] },
+  { src: "/capabilities/cleanroom-production-visualization.webp", en: ["Cleanroom production", "Wafer handling, die inspection and precision manufacturing workflow visualization."], zh: ["洁净生产", "晶圆处理、芯片检测与精密制造流程场景视觉。"] },
+  { src: "/capabilities/photonics-laboratory-visualization.webp", en: ["Optical laboratory", "A measurement environment covering optical power, beam, thermal and microscopic inspection."], zh: ["光学实验室", "覆盖光功率、光束、热与显微检测的测量环境视觉。"] },
+  { src: "/capabilities/quality-packing-visualization.webp", en: ["Quality & delivery", "Inspection, anti-static handling, moisture protection, packing and dispatch workflow."], zh: ["品质与交付", "检验、防静电操作、防潮包装与出货流程视觉。"] },
+  { src: "/capabilities/global-team-visualization.webp", en: ["Engineering collaboration", "Application, optics, electronics, industrialization and export requirements reviewed together."], zh: ["工程协作", "应用、光学、电子、工业化与外贸需求协同评审。"] },
+  { src: "/capabilities/exhibition-visualization.webp", en: ["Global buyer engagement", "A campaign visualization of component, module and beauty-device sourcing conversations."], zh: ["全球客户沟通", "展示芯片、模块与美容设备采购沟通的品牌场景视觉。"] },
+];
+
 const insights = {
   en: [
     ["wavelength-selection-medical-beauty-device", "Wavelength selection for a light-based beauty device", "A practical framework for turning a desired use case into emitter, optical and validation requirements.", "8 min read"],
@@ -259,11 +268,13 @@ export function SiteHome({ lang }: { lang: Lang }) {
 
       <section className="section applications" id="solutions"><div className="section-heading split"><div><p className="eyebrow">{t.appsKicker}</p><h2>{t.appsTitle}</h2></div><p>{t.appsBody}</p></div><div className="application-grid">{apps.map(({icon:Icon,en,zh},i) => { const x = lang === "en" ? en : zh; return <article key={x[0]}><span>0{i+1}</span><Icon size={25}/><h3>{x[0]}</h3><p>{x[1]}</p></article>})}</div></section>
 
+      <section className="section capability-visuals"><div className="section-heading split"><div><p className="eyebrow">{lang === "en" ? "CAPABILITY ENVIRONMENTS" : "能力场景"}</p><h2>{lang === "en" ? "A complete story from wafer to global delivery." : "从晶圆到全球交付的完整叙事。"}</h2></div><p>{lang === "en" ? "These original campaign visualizations communicate the operating environments relevant to a photonics supplier. They are not documentary photographs of a specific CECL site, team or exhibition and will be replaced as verified photography becomes available." : "以下为原创投放场景视觉，用于表达光电供应商相关的运营环境，并非中能芯光特定厂区、员工或展会的纪实照片；取得经核验实拍后将逐步替换。"}</p></div><div className="capability-visual-grid">{capabilityVisuals.map(({src,en,zh},i) => { const x = lang === "en" ? en : zh; return <article key={src}><figure><Image src={sitePath(src)} alt={x[0]} fill sizes="(max-width: 760px) 100vw, 33vw"/></figure><div><span>0{i+1}</span><h3>{x[0]}</h3><p>{x[1]}</p><small>{lang === "en" ? "Original brand visualization" : "原创品牌场景视觉"}</small></div></article>})}</div></section>
+
       <section className="beauty" id="beauty"><div className="beauty-intro"><p className="eyebrow">{t.beautyKicker}</p><h2>{t.beautyMain}</h2><p>{t.beautyDesc}</p><div className="beauty-chain"><span>Emitter</span><i/> <span>Optics</span><i/> <span>Thermal</span><i/> <span>Controls</span><i/> <span>Device</span></div></div><div className="program-panel"><p className="eyebrow">{t.programs}</p>{programs[lang].map(([a,b]) => <article key={a}><Sparkles size={18}/><div><h3>{a}</h3><p>{b}</p></div></article>)}<small>{t.programNote}</small></div></section>
 
       <section className="section beauty-platform">
         <div className="section-heading split"><div><p className="eyebrow">{t.beautyPlatformKicker}</p><h2>{t.beautyPlatformTitle}</h2></div><p>{t.beautyPlatformBody}</p></div>
-        <div className="beauty-platform-layout"><figure className="concept-visual"><Image src={sitePath("/medical-beauty-platform.webp")} alt={lang === "en" ? "Original concept visualization of a medical beauty device platform" : "医疗美容设备平台原创概念效果图"} width={1536} height={1024} sizes="(max-width: 900px) 100vw, 58vw"/><figcaption>{t.conceptLabel}</figcaption></figure><div className="concept-list">{beautyConcepts[lang].map(([a,b],i) => <article key={a}><span>0{i+1}</span><div><h3>{a}</h3><p>{b}</p><small>{t.customize}</small></div></article>)}</div></div>
+        <div className="beauty-platform-layout"><figure className="concept-visual"><Image src={sitePath("/medical-beauty/device-platform-lineup.webp")} alt={lang === "en" ? "Original concept lineup of four light-based beauty device formats" : "四类光美容设备原创概念产品线"} width={1600} height={1067} sizes="(max-width: 900px) 100vw, 58vw"/><figcaption>{t.conceptLabel}</figcaption></figure><div className="concept-list">{beautyConcepts[lang].map(([a,b],i) => <article key={a}><span>0{i+1}</span><div><h3>{a}</h3><p>{b}</p><small>{t.customize}</small></div></article>)}</div></div>
         <div className="definition-bar"><strong>{t.proofTitle}</strong>{t.proofItems.map((x) => <span key={x}><Check size={15}/>{x}</span>)}</div>
       </section>
 
