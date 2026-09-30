@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight, BookOpen, Building2, Check, Cpu, Download, FileCheck2, Layers3, Mail, MessageCircle, Phone, ScanLine, ShieldCheck, Sparkles } from "lucide-react";
 import { InquiryForm } from "@/components/inquiry-form";
+import { siteOrigin } from "@/lib/site-url";
 import { BrandLogo } from "@/components/brand-logo";
 
 type Lang = "en" | "zh";
@@ -234,7 +235,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const sitePath = (path: string) => `${basePath}${path}`;
   const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "渠道合作"];
 
-  const publicSite = process.env.GITHUB_PAGES === "true" ? "https://ceclphotonics.com" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
+  const publicSite = siteOrigin;
   const homeUrl = lang === "en" ? `${publicSite}/` : `${publicSite}/zh`;
   const structuredData = {
     "@context": "https://schema.org",

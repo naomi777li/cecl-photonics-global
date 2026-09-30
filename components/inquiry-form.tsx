@@ -11,7 +11,6 @@ type Lang = "en" | "zh";
 export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fields: string[]; options: string[]; submit: string }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const isZh = lang === "zh";
-  const inquiryEndpoint = process.env.NEXT_PUBLIC_INQUIRY_ENDPOINT;
 
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,15 +32,8 @@ export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fie
     const inquiry = Object.fromEntries(form.entries());
     const whatsappUrl = `https://wa.me/8615595903230?text=${encodeURIComponent(lines.join("\n"))}`;
 
-    if (!inquiryEndpoint) {
-      window.gtag?.("event", "generate_lead", { lead_source: "website_inquiry_whatsapp_fallback", project_type: projectType, target_market: targetMarket, page_path: window.location.pathname });
-      setStatus("success");
-      window.setTimeout(() => window.location.assign(whatsappUrl), 500);
-      return;
-    }
-
     try {
-      const response = await fetch(inquiryEndpoint, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -54,8 +46,8 @@ export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fie
           submitted_at_utc: new Date().toISOString(),
         }),
       });
-      const result = await response.json().catch(() => ({})) as { success?: boolean | string };
-      if (!response.ok || result.success === false || result.success === "false") throw new Error("Submission was not accepted");
+      const result = await response.json().catch(() => ({})) as { ok?: boolean; delivered?: boolean };
+      if (!response.ok || result.ok !== true || result.delivered !== true) throw new Error("Submission was not delivered");
 
       window.gtag?.("event", "generate_lead", { lead_source: "website_inquiry", project_type: projectType, target_market: targetMarket, page_path: window.location.pathname });
       setStatus("success");
@@ -75,8 +67,8 @@ export function InquiryForm({ lang, fields, options, submit }: { lang: Lang; fie
     <label className="honeypot" aria-hidden="true">Leave this field empty<Input name="_honey" tabIndex={-1} autoComplete="off"/></label>
     <label className="privacy-consent"><input required type="checkbox" name="privacy_consent" value="Accepted"/><span>{isZh ? "我同意按照" : "I agree to the"} <a href={isZh ? "/zh/privacy/" : "/privacy/"} target="_blank">{isZh ? "隐私说明" : "privacy notice"}</a>{isZh ? "处理本次询盘信息。" : " for processing this inquiry."}</span></label>
     <button className="button submit" type="submit" disabled={status === "submitting"} data-analytics-event="generate_lead">{status === "submitting" ? <><LoaderCircle className="spin" size={18}/>{isZh ? "正在安全提交……" : "Submitting securely…"}</> : submit}</button>
-    {status === "idle" && <p className="form-note">{inquiryEndpoint ? (isZh ? "提交后将邮件发送并留档，然后打开预填的 WhatsApp 项目简报。" : "The inquiry is emailed and archived before a prefilled WhatsApp project brief opens.") : (isZh ? "企业邮箱询盘通道正在激活；当前提交将继续打开 WhatsApp 项目简报。" : "The email inquiry channel is being activated; submission currently continues to WhatsApp.")}</p>}
-    {status === "success" && <p className="form-success" role="status"><Check size={16}/><span>{inquiryEndpoint ? (isZh ? "询盘已发送到企业邮箱并留档，正在前往 WhatsApp……" : "Inquiry emailed and archived. Opening WhatsApp…") : (isZh ? "正在前往 WhatsApp……" : "Opening WhatsApp…")}</span></p>}
+    {status === "idle" && <p className="form-note">{isZh ? "提交后将邮件发送并在服务器留档，然后打开预填的 WhatsApp 项目简报。" : "The inquiry is emailed and archived on the server before a prefilled WhatsApp project brief opens."}</p>}
+    {status === "success" && <p className="form-success" role="status"><Check size={16}/><span>{isZh ? "询盘已发送到企业邮箱并留档，正在前往 WhatsApp……" : "Inquiry emailed and archived. Opening WhatsApp…"}</span></p>}
     {status === "error" && <p className="form-error" role="alert"><AlertCircle size={16}/><span>{isZh ? "暂时无法安全保存询盘，请稍后重试，或直接通过 WhatsApp / 邮件联系。" : "The inquiry could not be stored securely. Please retry or contact us by WhatsApp or email."}</span></p>}
   </form>;
 }

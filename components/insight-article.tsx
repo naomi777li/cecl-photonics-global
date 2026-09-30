@@ -2,6 +2,7 @@ import { ArrowLeft, MessageCircle } from "lucide-react";
 import type { Insight, InsightLang } from "@/lib/insights";
 import { getCommercialPage, insightToCommercialPages } from "@/lib/growth-model";
 import { BrandLogo } from "@/components/brand-logo";
+import { siteOrigin } from "@/lib/site-url";
 
 export function InsightArticle({ insight, lang }: { insight: Insight; lang: InsightLang }) {
   const isZh = lang === "zh";
@@ -9,7 +10,7 @@ export function InsightArticle({ insight, lang }: { insight: Insight; lang: Insi
   const base = isZh ? `${repositoryBase}/zh` : repositoryBase;
   const alternate = isZh ? `${repositoryBase}/insights/${insight.slug}/` : `${repositoryBase}/zh/insights/${insight.slug}/`;
   const relatedSolutions = (insightToCommercialPages[insight.slug] || []).map(getCommercialPage).filter(Boolean);
-  const publicSite = process.env.GITHUB_PAGES === "true" ? "https://ceclphotonics.com" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
+  const publicSite = siteOrigin;
   const articleUrl = `${publicSite}${base}/insights/${insight.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",

@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Analytics } from "@/components/analytics";
+import { siteOrigin } from "@/lib/site-url";
 import "./globals.css";
 
-const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const publicOrigin = isGitHubPages ? "https://ceclphotonics.com" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
 const publicBase = "";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${publicOrigin}${publicBase}`),
+  metadataBase: new URL(`${siteOrigin}${publicBase}`),
   title: { default: "CECL Photonics | Semiconductors, Light Engines & OEM/ODM", template: "%s" },
   description: "Photonic semiconductors, optical modules and medical beauty OEM/ODM solutions for global B2B partners.",
   keywords: ["photonic semiconductors", "LED chip manufacturer", "VCSEL chip", "medical beauty OEM", "LED light therapy device ODM", "optical light engine"],

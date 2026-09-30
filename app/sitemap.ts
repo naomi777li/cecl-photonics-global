@@ -2,11 +2,12 @@ import type { MetadataRoute } from "next";
 import { insights } from "@/lib/insights";
 import { commercialPages } from "@/lib/growth-model";
 import { productFamilies } from "@/lib/product-catalog";
+import { siteOrigin } from "@/lib/site-url";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const origin = process.env.GITHUB_PAGES === "true" ? "https://ceclphotonics.com" : "https://cecl-photonics-global.georgia52201.chatgpt.site";
+  const origin = siteOrigin;
   const lastModified = new Date("2026-09-29");
   return [
     { url: `${origin}/`, lastModified, changeFrequency: "monthly", priority: 1, alternates: { languages: { en: `${origin}/`, "zh-CN": `${origin}/zh`, "x-default": `${origin}/` } } },
