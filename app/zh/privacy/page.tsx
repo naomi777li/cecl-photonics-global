@@ -18,7 +18,7 @@ export default function ZhPrivacyPage() {
       <h2>网站数据分析</h2><p>启用测量 ID 后，我们可能使用 Google Analytics 4。它可能收集设备、浏览器、大致地区、访问来源及互动信息，帮助我们判断哪些产品与技术页面更有价值。本站不会出售个人信息。</p>
       <h2>信息用途</h2><ul><li>回复技术、采购及合作询盘；</li><li>评估产品或 OEM/ODM 要求并安排后续沟通；</li><li>改善网站内容、导航与搜索可见性；</li><li>维护安全并履行适用义务。</li></ul>
       <h2>外部服务与资料</h2><p>WhatsApp 及外部托管服务遵循各自的隐私条款。可下载目录与报告用于商务评估，依赖前应核验其内容及型号覆盖范围。</p>
-      <h2>保存期限与查询</h2><p>询盘信息仅在商务沟通、记录保存和适用法律要求所合理需要的期限内保存。如需查询您曾发送的信息，请发送邮件至 <a href="mailto:sales@ceclphotonics.com">sales@ceclphotonics.com</a>，或通过电话、WhatsApp 联系李思澄：+86 155 9590 3230。</p>
+      <h2>保存期限与查询</h2><p>询盘信息仅在商务沟通、记录保存和适用法律要求所合理需要的期限内保存。如需查询您曾发送的信息，请发送邮件至 <a href="mailto:sales@ceclphotonics.com">sales@ceclphotonics.com</a>，或通过电话、WhatsApp 联系李思澄：+86 15595903230。</p>
       <h2>变更</h2><p>本说明可能随网站、分析配置和联系方式的完善而更新。页面上方日期代表当前版本。</p>
     </article>
   </main>;
