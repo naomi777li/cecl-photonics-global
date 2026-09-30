@@ -28,7 +28,6 @@ const copy = {
     contactKicker: "START A PROJECT", contactTitle: "Send a technical brief. We’ll route it to the right product path.", contactBody: "Share what is already known—application, wavelength, package or device concept, volume stage and destination market. Missing details can be resolved during engineering review.",
     fields: ["Name", "Business email", "Company", "Project type", "Target market", "Project requirements"], submit: "Prepare inquiry", success: "Your project brief opens in WhatsApp for review before sending.",
     beautyPlatformKicker: "DEVICE PLATFORM CONCEPTS", beautyPlatformTitle: "Four product directions, one configurable optical core.", beautyPlatformBody: "These original concept visuals show how CECL emitter and light-engine capabilities may translate into branded device programs. Final appearance, optical parameters, claims and compliance route are defined project by project.", conceptLabel: "Concept visualization · not a released product", customize: "Configurable by project", proofTitle: "What buyers can define", proofItems: ["Wavelength mix and treatment area", "Optical uniformity and irradiance target", "Thermal comfort and session controls", "Housing, interface, packaging and market plan"],
-    referenceKicker: "TEMPORARY VISUAL REFERENCES", referenceTitle: "Factory and exhibition storytelling — layout placeholders.", referenceBody: "The images below come from a peer-company presentation supplied for reference. They do not show CECL facilities, employees or exhibitions. They are retained only to establish the visual structure and must be replaced with verified CECL photography before public launch.", referenceBadge: "PEER REFERENCE · NOT CECL", replaceNote: "Replace with verified CECL original", referenceCards: [["Factory exterior", "A future CECL image should establish site identity, location context and manufacturing credibility."], ["Team & operating environment", "Use verified R&D, production, quality or office photography with dates and locations."], ["Exhibition archive", "Replace with CECL booth, event name, city and year so overseas buyers can verify the record."]],
     insightKicker: "PHOTONICS KNOWLEDGE", insightTitle: "Technical answers for better sourcing decisions.", insightBody: "Original industry articles connect component selection, device engineering and market documentation. They are written for brand owners, distributors and engineering teams—not for keyword stuffing.", readArticle: "Read article", allInsights: "Industry knowledge",
     footer: "Photonics components, modules and application development for global B2B partners.", scope: "Scope notice: final specifications, commercial terms and compliance documents require model-level review.", privacy: "Privacy"
   },
@@ -54,7 +53,6 @@ const copy = {
     contactKicker: "发起项目", contactTitle: "提交技术需求，我们会分配到正确的产品路径。", contactBody: "请填写已知信息：应用、波长、封装或设备概念、采购阶段及目标市场。缺失信息可在工程评审中补齐。",
     fields: ["姓名", "工作邮箱", "公司", "项目类型", "目标市场", "项目需求"], submit: "生成询盘", success: "项目简报将在 WhatsApp 中打开，检查后再发送。",
     beautyPlatformKicker: "设备平台概念", beautyPlatformTitle: "四类产品方向，共用可配置的光学核心。", beautyPlatformBody: "原创概念图展示中能芯光的发光器件与光学引擎能力如何延伸到品牌设备项目。最终外观、光学参数、功效表述及合规路线均按项目定义。", conceptLabel: "概念效果图 · 非已发布产品", customize: "按项目配置", proofTitle: "采购方可定义的关键项", proofItems: ["波长组合与照射区域", "光照均匀性与辐照度目标", "热舒适、时长与控制方式", "外壳、界面、包装与目标市场方案"],
-    referenceKicker: "临时视觉参考", referenceTitle: "工厂与展会展示——版式占位。", referenceBody: "以下图片来自用户提供的同行企业简介，仅用于建立网站版式与叙事结构，并非中能芯光的工厂、员工或参展记录。网站正式公开前必须替换为经核验的中能芯光实拍素材。", referenceBadge: "同行参考 · 非中能芯光素材", replaceNote: "待替换为中能芯光真实原图", referenceCards: [["工厂外观", "后续应使用中能芯光实拍照片，并补充所在地与制造主体信息。"], ["团队与运营环境", "使用经核验的研发、生产、质量或办公照片，并注明时间与地点。"], ["展会记录", "替换为中能芯光展位实拍，并标注展会名称、城市和年份，方便海外客户核验。"]],
     insightKicker: "光电行业知识", insightTitle: "用技术内容帮助采购做出更好的决策。", insightBody: "原创行业文章把器件选型、设备工程与市场资料连接起来，服务品牌方、渠道商和研发团队，而不是简单堆砌关键词。", readArticle: "阅读文章", allInsights: "行业知识",
     footer: "面向全球 B2B 客户的光电芯片、模块与应用开发平台。", scope: "范围说明：最终规格、商务条款和合规文件均需按具体型号审核。", privacy: "隐私说明"
   }
@@ -124,10 +122,7 @@ const documentCenter = {
     view: "View original",
     download: "Open PDF",
     supplied: "Copy supplied by the company · verify against the official registry",
-    companies: [
-      ["Kunshan Xunlei Optoelectronics Co., Ltd.", "Business License", "/documents/company/kunshan-xunlei-business-license.jpg", ""],
-      ["CECL (Sichuan) Technology Group Co., Ltd.", "Business License", "/documents/company/cecl-sichuan-business-license.jpg", "rotated"]
-    ],
+    companies: [["CECL (Sichuan) Technology Group Co., Ltd.", "Business License", "/documents/company/cecl-sichuan-business-license.jpg", "rotated"]],
     reports: [
       ["EU RoHS", "CANEC25028451601 / 1602", "Nov 21, 2025", "Conclusion: Pass", ["English", "/documents/compliance/SGS-RoHS-EN-CANEC25028451601.pdf", "中文", "/documents/compliance/SGS-RoHS-ZH-CANEC25028451602.pdf"]],
       ["REACH SVHC screening", "CANEC25028451603", "Nov 25, 2025", "251 Candidate List SVHC and 4 potential SVHC: ≤ 0.1% (w/w)", ["English", "/documents/compliance/SGS-REACH-SVHC-EN-CANEC25028451603.pdf"]],
@@ -150,10 +145,7 @@ const documentCenter = {
     view: "查看原件",
     download: "打开 PDF",
     supplied: "企业提供的证照副本 · 可通过官方企业信用信息系统核验",
-    companies: [
-      ["昆山迅雷光电子有限公司", "营业执照", "/documents/company/kunshan-xunlei-business-license.jpg", ""],
-      ["中能芯光（四川）科技集团有限公司", "营业执照", "/documents/company/cecl-sichuan-business-license.jpg", "rotated"]
-    ],
+    companies: [["中能芯光（四川）科技集团有限公司", "营业执照", "/documents/company/cecl-sichuan-business-license.jpg", "rotated"]],
     reports: [
       ["欧盟 RoHS", "CANEC25028451601 / 1602", "2025 年 11 月 21 日", "结论：符合", ["English", "/documents/compliance/SGS-RoHS-EN-CANEC25028451601.pdf", "中文", "/documents/compliance/SGS-RoHS-ZH-CANEC25028451602.pdf"]],
       ["REACH SVHC 筛查", "CANEC25028451603", "2025 年 11 月 25 日", "251 项候选清单 SVHC 及 4 项潜在 SVHC 均 ≤ 0.1%（w/w）", ["English", "/documents/compliance/SGS-REACH-SVHC-EN-CANEC25028451603.pdf"]],
@@ -273,15 +265,6 @@ export function SiteHome({ lang }: { lang: Lang }) {
         <div className="section-heading split"><div><p className="eyebrow">{t.beautyPlatformKicker}</p><h2>{t.beautyPlatformTitle}</h2></div><p>{t.beautyPlatformBody}</p></div>
         <div className="beauty-platform-layout"><figure className="concept-visual"><Image src={sitePath("/medical-beauty-platform.webp")} alt={lang === "en" ? "Original concept visualization of a medical beauty device platform" : "医疗美容设备平台原创概念效果图"} width={1536} height={1024} sizes="(max-width: 900px) 100vw, 58vw"/><figcaption>{t.conceptLabel}</figcaption></figure><div className="concept-list">{beautyConcepts[lang].map(([a,b],i) => <article key={a}><span>0{i+1}</span><div><h3>{a}</h3><p>{b}</p><small>{t.customize}</small></div></article>)}</div></div>
         <div className="definition-bar"><strong>{t.proofTitle}</strong>{t.proofItems.map((x) => <span key={x}><Check size={15}/>{x}</span>)}</div>
-      </section>
-
-      <section className="section reference-gallery" id="reference-gallery">
-        <div className="section-heading split"><div><p className="eyebrow">{t.referenceKicker}</p><h2>{t.referenceTitle}</h2></div><p>{t.referenceBody}</p></div>
-        <div className="reference-grid">{[
-          "/reference-placeholders/peer-factory-reference.webp",
-          "/reference-placeholders/peer-team-environment-reference.webp",
-          "/reference-placeholders/peer-exhibition-reference.webp"
-        ].map((src,i) => { const [title,desc] = t.referenceCards[i]; return <article key={src}><div className="reference-media"><Image src={sitePath(src)} alt={`${title} — ${t.referenceBadge}`} fill sizes="(max-width: 900px) 100vw, 33vw"/><span>{t.referenceBadge}</span></div><div className="reference-copy"><p className="reference-index">0{i+1}</p><h3>{title}</h3><p>{desc}</p><small>{t.replaceNote}</small></div></article>})}</div>
       </section>
 
       <section className="section workflow" id="oem"><div className="section-heading split"><div><p className="eyebrow">{t.oemKicker}</p><h2>{t.oemTitle}</h2></div><p>{t.oemBody}</p></div><div className="workflow-grid">{workflow[lang].map(([n,a,b]) => <article key={n}><span>{n}</span><h3>{a}</h3><p>{b}</p></article>)}</div></section>
