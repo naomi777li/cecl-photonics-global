@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   creator: "CECL Photonics",
   publisher: "CECL Photonics",
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
-  openGraph: { type: "website", siteName: "CECL Photonics", title: "CECL Photonics | From Chip to Application-Ready Light", description: "Photonic semiconductors, optical modules and medical beauty OEM/ODM solutions for global B2B partners.", images: [{ url: `${publicBase}/hero-photonics.png`, width: 1536, height: 1024, alt: "CECL photonics platform" }] },
-  twitter: { card: "summary_large_image", title: "CECL Photonics | From Chip to Application-Ready Light", description: "Photonic semiconductors, optical modules and medical beauty OEM/ODM solutions for global B2B partners.", images: [`${publicBase}/hero-photonics.png`] },
+  openGraph: { type: "website", siteName: "CECL Photonics", title: "CECL Photonics | From Chip to Application-Ready Light", description: "Photonic semiconductors, optical modules and medical beauty OEM/ODM solutions for global B2B partners.", images: [{ url: `${publicBase}/hero-photonics.webp`, width: 1800, height: 750, alt: "CECL photonics platform" }] },
+  twitter: { card: "summary_large_image", title: "CECL Photonics | From Chip to Application-Ready Light", description: "Photonic semiconductors, optical modules and medical beauty OEM/ODM solutions for global B2B partners.", images: [`${publicBase}/hero-photonics.webp`] },
   icons: {
     icon: `${publicBase}/favicon.svg`,
     shortcut: `${publicBase}/favicon.svg`,

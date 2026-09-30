@@ -8,6 +8,7 @@ export type Insight = {
   readTime: Record<InsightLang, string>;
   sections: Record<InsightLang, { heading: string; paragraphs: string[]; bullets?: string[] }[]>;
   note: Record<InsightLang, string>;
+  sources?: { label: string; url: string }[];
 };
 
 export const insights: Insight[] = [
@@ -76,6 +77,81 @@ export const insights: Insight[] = [
       ]
     },
     note: { en: "The CECL document center states the scope of each supplied file and avoids presenting component reports as blanket finished-device certification.", zh: "中能芯光网站资料中心会说明每份已提交文件的适用范围，不把元器件报告包装成整机统一认证。" }
+  },
+  {
+    slug: "940nm-vcsel-selection-guide",
+    title: { en: "940 nm VCSEL selection guide for sensing projects", zh: "传感项目的 940 nm VCSEL 选型指南" },
+    description: { en: "A buyer-focused method for comparing optical power, pulse conditions, beam, efficiency and thermal limits before requesting samples.", zh: "在索取样品前，系统比较光功率、脉冲条件、光束、效率与热限制的采购方法。" },
+    date: "2026-09-29",
+    readTime: { en: "9 min read", zh: "约 9 分钟" },
+    sections: {
+      en: [
+        { heading: "Define the operating point before comparing watts", paragraphs: ["A headline optical-power value is meaningful only with its drive current, pulse width, duty cycle, temperature and measurement condition. Two arrays advertised at the same wavelength and nominal power can behave very differently in a time-of-flight or structured-light design."], bullets: ["Peak or continuous optical output", "Pulse width, repetition rate and duty cycle", "Operating and junction-temperature assumptions", "Drive-current waveform and allowed overshoot"] },
+        { heading: "Translate the application into a beam requirement", paragraphs: ["The receiver field of view, working distance and illumination pattern determine whether the source needs a bare array, diffuser, lens or complete module. Ask for far-field distribution and test geometry; a single divergence number may hide asymmetric or multi-lobed behavior."] },
+        { heading: "Review efficiency and heat as a system", paragraphs: ["Wall-plug efficiency, electrical resistance, driver loss, PCB thermal path and enclosure conditions jointly affect temperature rise. Evaluate the intended pulse train on a representative board instead of extrapolating from a short bench test."] },
+        { heading: "Build a sample request that produces comparable evidence", paragraphs: ["Give suppliers the same target conditions and request model-level curves, dimensions, optical test conditions and traceability. Then measure every sample with the same fixture and acceptance criteria."], bullets: ["Target wavelength and tolerance", "Required output at a defined pulse condition", "Beam or field-of-illumination requirement", "Package, footprint and thermal interface", "Quantity stage and destination application"] }
+      ],
+      zh: [
+        { heading: "比较功率前先定义工作点", paragraphs: ["光功率标称值只有与驱动电流、脉宽、占空比、温度和测量条件一起看才有意义。即使波长与标称功率相同，不同阵列在 ToF 或结构光设计中的表现也可能明显不同。"], bullets: ["峰值或连续光输出", "脉宽、重复频率与占空比", "工作温度与结温假设", "驱动电流波形及允许过冲"] },
+        { heading: "把应用要求转换成光束要求", paragraphs: ["接收端视场角、工作距离和照明图案决定光源应使用裸阵列、扩散片、透镜还是完整模块。应索取远场分布及测试几何；单一发散角数字可能掩盖不对称或多峰光束。"] },
+        { heading: "把效率与散热作为系统问题评审", paragraphs: ["电光转换效率、电阻、驱动损耗、电路板热路径和外壳条件共同决定温升。应在具有代表性的电路板上验证目标脉冲序列，而不是从短时台架测试简单外推。"] },
+        { heading: "让样品申请形成可比较的证据", paragraphs: ["向不同供应商提供同一组目标条件，并索取具体型号的曲线、尺寸、光学测试条件与追溯信息，再用同一夹具和验收标准测量所有样品。"], bullets: ["目标波长及容差", "明确脉冲条件下的输出要求", "光束或照明视场要求", "封装、焊盘与热界面", "采购阶段、数量及目标应用"] }
+      ]
+    },
+    note: { en: "Laser-product safety and finished-system classification require a design-specific assessment. This guide is for supplier comparison and does not replace that assessment.", zh: "激光产品安全和整机分类必须按具体设计进行评估。本文用于供应商比较，不能替代该评估。" },
+    sources: [
+      { label: "ams OSRAM — VCSEL product portfolio", url: "https://ams-osram.com/products/lasers/color-lasers-vcsel" },
+      { label: "Lumentum — Sensing VCSEL products", url: "https://www.lumentum.com/en/products/sensing-vcsel" }
+    ]
+  },
+  {
+    slug: "compare-led-chip-specifications",
+    title: { en: "How to compare LED chips beyond wavelength and price", zh: "如何超越波长与价格比较 LED 芯片" },
+    description: { en: "A procurement checklist covering bins, optical output, voltage, test conditions, package interfaces and change control.", zh: "覆盖分档、光输出、电压、测试条件、封装接口与变更控制的采购清单。" },
+    date: "2026-09-29",
+    readTime: { en: "8 min read", zh: "约 8 分钟" },
+    sections: {
+      en: [
+        { heading: "Compare values measured under the same conditions", paragraphs: ["Peak wavelength, dominant wavelength, radiant flux, luminous flux and forward voltage answer different questions. Before comparing suppliers, normalize test current, pulse or continuous operation, temperature, integrating-sphere setup and bin limits."] },
+        { heading: "Choose the metric that matches the application", paragraphs: ["Visible indicators may be evaluated with photometric quantities, while sensing, machine vision and many light-based devices need radiometric data. The selected metric should follow the optical function rather than whichever number looks larger."], bullets: ["Spectral distribution and wavelength tolerance", "Radiant or luminous output at a stated current", "Forward-voltage range and driver headroom", "Viewing angle or radiation pattern", "Thermal resistance and maximum ratings"] },
+        { heading: "Treat binning as a commercial specification", paragraphs: ["A typical value is not an incoming-inspection limit. Define which wavelength, output and voltage bins are accepted, whether bins may be mixed, how reels or lots are labeled and what happens when supply shifts to another bin."] },
+        { heading: "Connect the datasheet to incoming inspection", paragraphs: ["Record the exact part, revision and measurement method used for approval. A practical control plan aligns supplier documentation, sample qualification, incoming inspection and change notification instead of relying on a generic family brochure."] }
+      ],
+      zh: [
+        { heading: "只比较相同条件下测得的数据", paragraphs: ["峰值波长、主波长、辐射通量、光通量和正向电压回答的是不同问题。比较供应商前，应统一测试电流、脉冲或连续模式、温度、积分球设置与分档范围。"] },
+        { heading: "按应用选择正确指标", paragraphs: ["可见光指示器可能使用光度学量，而传感、机器视觉和许多光类设备需要辐射度学数据。指标应服务于光学功能，而不是选择看起来更大的数字。"], bullets: ["光谱分布与波长容差", "规定电流下的辐射或光度输出", "正向电压范围与驱动余量", "视角或辐射图形", "热阻与最大额定值"] },
+        { heading: "把分档写进商务规格", paragraphs: ["典型值不是来料验收限。应定义可接受的波长、输出和电压档位，是否允许混档，卷盘或批次如何标识，以及供应切换档位时如何处理。"] },
+        { heading: "让数据表与来料检验连接", paragraphs: ["记录批准时使用的准确料号、版本和测量方法。有效的控制计划应把供应商资料、样品确认、来料检验与变更通知连接起来，而不是只依赖通用系列宣传册。"] }
+      ]
+    },
+    note: { en: "Actual acceptance limits should be agreed for the selected CECL model and the customer’s measurement capability.", zh: "实际验收限应根据选定的中能芯光型号及客户的测量能力共同确认。" },
+    sources: [{ label: "Lumileds — Technical documentation library", url: "https://lumileds.com/support/documentation/" }]
+  },
+  {
+    slug: "led-face-mask-oem-engineering-checklist",
+    title: { en: "LED face mask OEM/ODM engineering checklist", zh: "LED 面罩 OEM/ODM 工程核对清单" },
+    description: { en: "The questions brand owners should settle across optics, thermal comfort, controls, validation and manufacturing before tooling.", zh: "品牌方在开模前应明确的光学、热舒适、控制、验证与制造问题。" },
+    date: "2026-09-29",
+    readTime: { en: "10 min read", zh: "约 10 分钟" },
+    sections: {
+      en: [
+        { heading: "Freeze the intended product before freezing the housing", paragraphs: ["Target user, use environment, session concept, markets and commercial claims shape the engineering and documentation route. A cosmetic concept and a medical intended use are not interchangeable, even when the enclosure appears similar."] },
+        { heading: "Specify delivered light, not only LED count", paragraphs: ["Emitter count does not define performance. Review spectral range, irradiance at the user plane, uniformity, distance to skin, optical losses, timing and output stability over a full session."], bullets: ["Wavelength combination and tolerance", "Treatment area and uniformity map", "Irradiance and session-control targets", "Eye-area design and misuse considerations", "Method and fixture for optical verification"] },
+        { heading: "Validate heat, fit and control behavior together", paragraphs: ["Temperature, weight distribution, flexibility, strap geometry, battery position and user interface affect whether the designed light can be delivered consistently. Verify representative users and worst-case operating conditions before production tooling is released."] },
+        { heading: "Create manufacturing gates before pilot build", paragraphs: ["An OEM/ODM plan should identify critical characteristics, golden samples, inspection fixtures, firmware revision control, component-change approval and pilot acceptance. Each gate needs an owner and a recordable output."], bullets: ["Requirements and risk review", "Optical/thermal engineering sample", "Design verification configuration", "Pilot build and process capability review", "Approved production file and change control"] }
+      ],
+      zh: [
+        { heading: "先冻结产品定位，再冻结外壳", paragraphs: ["目标用户、使用环境、疗程概念、销售市场和宣传表述会影响工程及资料路线。即使外壳相似，美容概念和医疗预期用途也不能互换。"] },
+        { heading: "定义到达用户面的光，而不仅是灯珠数量", paragraphs: ["光源数量不能直接代表性能。项目应评审光谱范围、用户面辐照度、均匀性、皮肤距离、光学损耗、时序以及完整疗程中的输出稳定性。"], bullets: ["波长组合及容差", "照射区域与均匀性图", "辐照度及疗程控制目标", "眼周设计与误用考虑", "光学验证方法与夹具"] },
+        { heading: "把温升、佩戴与控制行为一起验证", paragraphs: ["温度、重量分布、柔性、绑带几何、电池位置和交互界面都会影响设计光输出能否稳定送达。生产开模前，应覆盖代表性用户和最不利工作条件。"] },
+        { heading: "试产前建立制造关卡", paragraphs: ["OEM/ODM 计划应明确关键特性、黄金样品、检验夹具、固件版本控制、元器件变更批准和试产验收。每个关卡都需要负责人和可记录的输出。"], bullets: ["需求与风险评审", "光学/热工程样机", "设计验证配置", "试产与过程能力评审", "批准的量产资料及变更控制"] }
+      ]
+    },
+    note: { en: "Product classification, claims, testing and market access depend on the final design and destination. This checklist is a project-planning aid, not medical or regulatory advice.", zh: "产品分类、功效表述、测试及市场准入取决于最终设计和销售目的地。本文为项目规划工具，不构成医疗或法规建议。" },
+    sources: [
+      { label: "Celluma — Professional light-therapy overview", url: "https://www.celluma.com/pages/for-professionals" },
+      { label: "Omnilux — Business resources", url: "https://wholesale.omniluxled.com/pages/business-resources" }
+    ]
   }
 ];
 

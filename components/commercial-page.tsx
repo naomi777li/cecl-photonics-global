@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, Check, FileCheck2, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, FileCheck2, Mail, MessageCircle } from "lucide-react";
 import { buyerPersonas, siteOrigin, type CommercialPage, type GrowthLang } from "@/lib/growth-model";
 import { getInsight } from "@/lib/insights";
 
@@ -112,6 +112,7 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
         <div><p className="eyebrow">{isZh ? "项目简报" : "PROJECT BRIEF"}</p><h2>{page.cta[lang]}</h2><p>{isZh ? "请准备应用、目标市场、关键参数、采购阶段与时间计划。我们会先确认问题范围，再进入型号或方案评审。" : "Prepare the application, destination market, key parameters, volume stage and timeline. We will define the review scope before proposing a model or architecture."}</p></div>
         <div className="commercial-cta-actions">
           <a className="button" href={`https://wa.me/8615595903230?text=${encodeURIComponent(`CECL project inquiry: ${page.primaryKeyword}`)}`} target="_blank" rel="noreferrer" data-analytics-event="contact" data-method="whatsapp" data-intent={page.intent}><MessageCircle size={18}/>{isZh ? "WhatsApp 联系李思澄" : "Contact Li Sicheng on WhatsApp"}</a>
+          <a className="text-link" href={`mailto:sales@ceclphotonics.com?subject=${encodeURIComponent(`CECL project inquiry: ${page.primaryKeyword}`)}`} data-analytics-event="contact" data-method="email" data-intent={page.intent}><Mail size={16}/>sales@ceclphotonics.com</a>
           <a className="text-link" href={`${langBase || ""}/#contact`}><ArrowLeft size={16}/>{isZh ? "返回完整询盘表单" : "Open the full inquiry form"}</a>
         </div>
       </section>
