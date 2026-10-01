@@ -114,7 +114,7 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
 
       <section className="section related-insights">
         <div className="section-heading"><p className="eyebrow">{isZh ? "延伸阅读" : "SUPPORTING GUIDES"}</p><h2>{isZh ? "先理解工程决策，再确定供应范围。" : "Understand the engineering decision before fixing supply scope."}</h2></div>
-        <div className="related-grid">{page.relatedInsights.map((slug) => { const insight = getInsight(slug); if (!insight) return null; return <article key={slug}><FileCheck2 size={22}/><h3>{insight.title[lang]}</h3><p>{insight.description[lang]}</p><a href={`${langBase}/insights/${slug}/`} data-analytics-event="select_content" data-content-type="article" data-content-id={slug}>{isZh ? "阅读指南" : "Read the guide"}<ArrowUpRight size={16}/></a></article>; })}</div>
+        <div className="related-grid">{page.relatedInsights.map((slug) => { const insight = getInsight(slug); if (!insight) return null; return <article key={slug}><FileCheck2 size={22}/><h3>{insight.title[lang]}</h3><p>{insight.description[lang]}</p><a href={`${langBase}/insights/${slug}`} data-analytics-event="select_content" data-content-type="article" data-content-id={slug}>{isZh ? "阅读指南" : "Read the guide"}<ArrowUpRight size={16}/></a></article>; })}</div>
       </section>
 
       <section className="commercial-cta" id="project-brief">

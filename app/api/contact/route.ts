@@ -11,6 +11,9 @@ const PERSONAL_EMAIL_DOMAINS = new Set([
   "icloud.com", "live.com", "mail.com", "outlook.com", "proton.me", "protonmail.com",
   "qq.com", "yahoo.com", "yahoo.co.uk", "yandex.com",
 ]);
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 8;
+const attempts = new Map<string, number[]>();
 
 type Payload = Record<string, unknown>;
 
@@ -18,14 +21,35 @@ function text(value: unknown, max = 5000) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 function isBusinessEmail(email: string) {
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return false;
   return !PERSONAL_EMAIL_DOMAINS.has(email.split("@").at(-1)?.toLowerCase() || "");
+}
+
+function clientIp(request: Request) {
+  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
+    || request.headers.get("x-real-ip")?.trim()
+    || "unknown";
+}
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const recent = (attempts.get(ip) || []).filter((value) => now - value < RATE_LIMIT_WINDOW_MS);
+  recent.push(now);
+  attempts.set(ip, recent);
+  if (attempts.size > 5000) {
+    for (const [key, values] of attempts) {
+      if (!values.some((value) => now - value < RATE_LIMIT_WINDOW_MS)) attempts.delete(key);
+    }
+  }
+  return recent.length > RATE_LIMIT_MAX;
 }
 
 async function archive(record: Record<string, string | boolean>) {
   const line = JSON.stringify(record);
-  console.info(`[inquiry-record] ${line}`);
   const logPath = process.env.INQUIRY_LOG_PATH;
   if (!logPath) return false;
   try {
@@ -41,11 +65,14 @@ async function archive(record: Record<string, string | boolean>) {
 function failure(status: number, error: string, errors?: string[]) {
   return NextResponse.json(
     { ok: false, accepted: false, error, errors, fallbackEmail: FALLBACK_EMAIL },
-    { status },
+    { status, headers: { "Cache-Control": "no-store" } },
   );
 }
 
 export async function POST(request: Request) {
+  if (isRateLimited(clientIp(request))) {
+    return failure(429, "Too many inquiry attempts. Please wait a few minutes or email us directly.");
+  }
   const contentLength = Number(request.headers.get("content-length") || 0);
   if (contentLength > 25_000) return failure(413, "The inquiry is too large. Please email us instead.");
 
@@ -62,12 +89,16 @@ export async function POST(request: Request) {
   const projectType = text(body.type, 180);
   const requirements = text(body.requirements, 6000);
   const honeypot = text(body._honey, 200);
+  const startedAt = Number(body._started_at || 0);
   const errors: string[] = [];
 
   if (honeypot) return failure(400, "The inquiry could not be processed.");
+  if (!Number.isFinite(startedAt) || startedAt <= 0 || Date.now() - startedAt < 1800 || Date.now() - startedAt > 86_400_000) {
+    return failure(400, "The inquiry could not be processed. Please reload the page and try again.");
+  }
   if (!name) errors.push("Name is required.");
-  if (!email) errors.push("Work email is required.");
-  else if (!isBusinessEmail(email)) errors.push("Please use a valid work email address.");
+  if (!email) errors.push("Email is required.");
+  else if (!isValidEmail(email)) errors.push("Please use a valid email address.");
   if (!company) errors.push("Company is required.");
   if (!projectType) errors.push("Product or service requirement is required.");
   if (!requirements) errors.push("Project requirements are required.");
@@ -76,12 +107,15 @@ export async function POST(request: Request) {
 
   const submittedAt = new Date().toISOString();
   const inquiryId = `CECL-${submittedAt.slice(0, 10).replaceAll("-", "")}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
+  const businessEmail = isBusinessEmail(email);
   const record = {
     inquiryId,
     submittedAt,
     spamFlag: false,
     name,
     email,
+    emailType: businessEmail ? "business" : "personal",
+    leadPriority: businessEmail ? "standard" : "review",
     company,
     phone: text(body.phone, 80),
     projectType,
@@ -103,7 +137,9 @@ export async function POST(request: Request) {
     `Inquiry ID:       ${inquiryId}`,
     `Submitted (UTC):  ${submittedAt}`,
     `Name:             ${record.name}`,
-    `Work email:       ${record.email}`,
+    `Email:            ${record.email}`,
+    `Email type:       ${record.emailType}`,
+    `Lead priority:    ${record.leadPriority}`,
     `Company:          ${record.company}`,
     `Phone / WhatsApp: ${record.phone || "—"}`,
     `Product/service:  ${record.projectType}`,
@@ -131,7 +167,7 @@ export async function POST(request: Request) {
       from: `CECL Photonics RFQ <${SMTP_USER}>`,
       to: INQUIRY_TO || FALLBACK_EMAIL,
       replyTo: record.email,
-      subject: `[CECL RFQ] ${record.company} · ${record.projectType}`,
+      subject: `[CECL RFQ][${businessEmail ? "STANDARD" : "REVIEW"}] ${record.company} · ${record.projectType}`,
       text: message,
     });
 
@@ -141,7 +177,10 @@ export async function POST(request: Request) {
     }
 
     console.info(`[inquiry] ${inquiryId} accepted by Hostinger SMTP; accepted=[${info.accepted.join(", ")}] archived=${persisted}`);
-    return NextResponse.json({ ok: true, accepted: true, inquiryId, messageId: info.messageId, archived: persisted });
+    return NextResponse.json(
+      { ok: true, accepted: true, inquiryId, messageId: info.messageId, archived: persisted },
+      { headers: { "Cache-Control": "no-store" } },
+    );
   } catch (error) {
     const smtpError = error as { code?: string; responseCode?: number; message?: string };
     console.error(`[inquiry] ${inquiryId} Hostinger SMTP failed code=${smtpError.code || "?"} responseCode=${smtpError.responseCode || "?"} message=${smtpError.message || "unknown"}`);

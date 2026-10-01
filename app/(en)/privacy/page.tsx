@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return <main className="legal-page">
-    <header className="legal-header"><BrandLogo href="/" /><Link className="article-lang" href="/zh/privacy/">中文</Link></header>
+    <header className="legal-header"><BrandLogo href="/" /><Link className="article-lang" href="/zh/privacy">中文</Link></header>
     <article className="legal-content">
       <p className="eyebrow">WEBSITE INFORMATION</p><h1>Privacy notice</h1><p>Last updated: September 30, 2026</p>
       <h2>Information you choose to provide</h2><p>When you submit an inquiry, contact us by phone, or continue to WhatsApp, you may provide your name, company, contact details, target market and technical requirements. The inquiry is processed by CECL&apos;s self-hosted website service, recorded in its protected server archive and sent to sales@ceclphotonics.com through Hostinger business mail before a prepared WhatsApp message opens. Your work email is used as the Reply-To address so CECL can answer you directly.</p>

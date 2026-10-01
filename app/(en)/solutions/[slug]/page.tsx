@@ -10,18 +10,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const page = getCommercialPage(slug);
   if (!page) return {};
   return {
-    title: page.title.zh,
-    description: page.description.zh,
+    title: page.title.en,
+    description: page.description.en,
     keywords: [page.primaryKeyword, ...page.secondaryKeywords],
-    alternates: { canonical: `/zh/solutions/${slug}`, languages: { en: `/solutions/${slug}`, "zh-CN": `/zh/solutions/${slug}`, "x-default": `/solutions/${slug}` } },
-    openGraph: { title: page.title.zh, description: page.description.zh, url: `/zh/solutions/${slug}`, type: "website", locale: "zh_CN" },
+    alternates: { canonical: `/solutions/${slug}`, languages: { en: `/solutions/${slug}`, "zh-CN": `/zh/solutions/${slug}`, "x-default": `/solutions/${slug}` } },
+    openGraph: { title: page.title.en, description: page.description.en, url: `/solutions/${slug}`, type: "website" },
   };
 }
 
-export default async function ZhCommercialSolutionPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CommercialSolutionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const page = getCommercialPage(slug);
   if (!page) notFound();
-  return <CommercialPageView page={page} lang="zh" />;
+  return <CommercialPageView page={page} lang="en" />;
 }
-

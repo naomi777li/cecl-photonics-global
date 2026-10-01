@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ZhPrivacyPage() {
   return <main className="legal-page">
-    <header className="legal-header"><BrandLogo href="/zh/" /><Link className="article-lang" href="/privacy/">EN</Link></header>
+    <header className="legal-header"><BrandLogo href="/zh" /><Link className="article-lang" href="/privacy">EN</Link></header>
     <article className="legal-content">
       <p className="eyebrow">网站信息</p><h1>隐私说明</h1><p>更新日期：2026 年 9 月 30 日</p>
       <h2>您主动提供的信息</h2><p>当您提交询盘、通过电话联系或继续前往 WhatsApp 时，可能会提供姓名、公司、联系方式、目标市场及技术需求。询盘由中能芯光自托管的网站服务处理并写入受保护的服务器记录，再通过 Hostinger 企业邮箱发送至 sales@ceclphotonics.com；邮件服务确认接受后，网站才会打开预填的 WhatsApp 消息。买家的工作邮箱会被设置为 Reply-To，便于中能芯光直接回复。</p>

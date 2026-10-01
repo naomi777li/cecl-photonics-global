@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@/components/analytics";
 import { siteOrigin } from "@/lib/site-url";
-import "./globals.css";
+import "../globals.css";
 
 const publicBase = "";
 
