@@ -14,4 +14,3 @@ Add `data/analytics/gsc.json` and/or `data/analytics/ga4.json`, then rerun this 
 - Traffic + no lead action: inspect persona mismatch, proof gaps and CTA friction before adding more keywords.
 - New query cluster repeated for 4+ weeks: map it to an existing page first; create a new page only when the user task is materially different.
 - Commercial page ranking for informational queries: add a supporting guide and link both directions instead of bloating the sales page.
-

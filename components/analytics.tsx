@@ -10,9 +10,10 @@ declare global {
   }
 }
 
-// GA4 measurement IDs are public identifiers. Keep the production stream as a
-// safe default while allowing a build-time environment variable to override it.
-const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-NRSK0NJV8R";
+// Each independent site must use its own GA4 property. Do not provide a
+// cross-site fallback: analytics stays disabled until CECL's build-time ID is
+// configured in its own deployment environment.
+const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "";
 
 function text(value: string | undefined | null) {
   return value?.trim().slice(0, 100) || undefined;
