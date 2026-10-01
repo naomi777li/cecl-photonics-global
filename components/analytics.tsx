@@ -10,7 +10,9 @@ declare global {
   }
 }
 
-const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+// GA4 measurement IDs are public identifiers. Keep the production stream as a
+// safe default while allowing a build-time environment variable to override it.
+const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-NRSK0NJV8R";
 
 function text(value: string | undefined | null) {
   return value?.trim().slice(0, 100) || undefined;
@@ -57,4 +59,3 @@ export function Analytics() {
     `}</Script>
   </>;
 }
-
