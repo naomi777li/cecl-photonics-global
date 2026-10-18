@@ -79,7 +79,7 @@ export const productFamilies: ProductFamily[] = [
     summary: { en: "850 nm and 940 nm source families for proximity, liquid and industrial sensing applications.", zh: "覆盖 850 nm 与 940 nm 系列，面向接近、液位与工业传感。" },
     applications: { en: ["Proximity sensing", "Liquid sensing", "Industrial sensing"], zh: ["接近传感", "液位传感", "工业传感"] },
     reviewItems: { en: ["Wavelength and optical power", "Beam divergence", "Drive conditions", "Emitter, array and optics path"], zh: ["波长与光功率", "光束发散角", "驱动条件", "单管、阵列与光学路径"] },
-    image: "/products/visuals/vcsel-array.webp", imageAlt: { en: "Original visualization of VCSEL dies and emitter arrays", zh: "VCSEL 芯片与发光阵列原创示意图" },
+    image: "/products/visuals/vcsel-array-components-v2.jpg", imageAlt: { en: "VCSEL emitter dies, an array on a ceramic carrier and a packaged optical module", zh: "VCSEL 发光芯片、陶瓷载板阵列与封装光学模块" },
     samples: [
       { model: "850 nm family", application: { en: "Proximity sensing", zh: "接近传感" }, drive: "9 mA", output: { en: "9 mW typical", zh: "典型 9 mW" }, detail: { en: "Vf 2.0 V typical · divergence 28° typical", zh: "典型 Vf 2.0 V · 典型发散角 28°" } },
       { model: "940 nm family", application: { en: "Proximity sensing", zh: "接近传感" }, drive: "9 mA", output: { en: "5.8 mW typical", zh: "典型 5.8 mW" }, detail: { en: "Vf 1.8 V typical · divergence 24° typical", zh: "典型 Vf 1.8 V · 典型发散角 24°" } },
