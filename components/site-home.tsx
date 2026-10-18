@@ -192,6 +192,7 @@ const capabilityVisuals = [
 
 const insights = {
   en: [
+    ["vcsel-robot-vacuum-obstacle-sensing", "808 nm and 850 nm VCSELs for robot-vacuum obstacle sensing", "Compare catalog-backed operating points and the optical, receiver and calibration decisions behind triangulation sensing.", "7 min read"],
     ["wavelength-selection-medical-beauty-device", "Wavelength selection for a light-based beauty device", "A practical framework for turning a desired use case into emitter, optical and validation requirements.", "8 min read"],
     ["led-vcsel-light-engine-oem-odm", "From LED or VCSEL chip to a manufacturable light engine", "Why package, optics, drive, heat and mechanical integration should be reviewed as one system.", "7 min read"],
     ["compliance-documents-phototherapy-device", "What documents should a phototherapy-device buyer request?", "Separate component test reports, device verification and destination-market evidence before placing an order.", "6 min read"],
@@ -200,6 +201,7 @@ const insights = {
     ["led-face-mask-oem-engineering-checklist", "LED face mask OEM/ODM engineering checklist", "Settle optics, thermal comfort, controls, validation and manufacturing inputs before tooling.", "10 min read"]
   ],
   zh: [
+    ["vcsel-robot-vacuum-obstacle-sensing", "扫地机器人避障感知用 808 nm 与 850 nm VCSEL", "对比目录参数与三角测距系统所需的光学、接收端和标定设计。", "约 7 分钟"],
     ["wavelength-selection-medical-beauty-device", "光类美容设备如何选择波长", "从应用目标出发，逐步形成光源、光学结构与验证要求的实用框架。", "约 8 分钟"],
     ["led-vcsel-light-engine-oem-odm", "从 LED 或 VCSEL 芯片到可量产光学引擎", "为什么封装、光学、驱动、散热和结构必须作为一个系统评审。", "约 7 分钟"],
     ["compliance-documents-phototherapy-device", "采购光疗设备应索取哪些资料？", "在下单前区分元器件检测、整机验证及目标市场合规证据。", "约 6 分钟"],

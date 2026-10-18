@@ -9,6 +9,8 @@ export type Insight = {
   sections: Record<InsightLang, { heading: string; paragraphs: string[]; bullets?: string[] }[]>;
   note: Record<InsightLang, string>;
   sources?: { label: string; url: string }[];
+  illustration?: Record<InsightLang, { src: string; alt: string; caption: string }>;
+  dataTable?: Record<InsightLang, { title: string; columns: string[]; rows: string[][] }>;
 };
 
 export const insights: Insight[] = [
@@ -151,6 +153,57 @@ export const insights: Insight[] = [
     sources: [
       { label: "Celluma — Professional light-therapy overview", url: "https://www.celluma.com/pages/for-professionals" },
       { label: "Omnilux — Business resources", url: "https://wholesale.omniluxled.com/pages/business-resources" }
+    ]
+  },
+  {
+    slug: "vcsel-robot-vacuum-obstacle-sensing",
+    title: { en: "808 nm and 850 nm VCSELs for robot-vacuum obstacle sensing", zh: "扫地机器人避障感知用 808 nm 与 850 nm VCSEL" },
+    description: { en: "Compare catalog-backed VCSEL operating points and the optical, receiver and calibration decisions behind triangulation-based obstacle sensing.", zh: "对比目录中的 VCSEL 工作点，并梳理三角测距避障感知所需的光学、接收端与标定条件。" },
+    date: "2026-10-18",
+    readTime: { en: "7 min read", zh: "约 7 分钟" },
+    illustration: {
+      en: { src: "/products/visuals/vcsel-robot-obstacle-sensing-en.svg", alt: "Block diagram of a VCSEL line emitter, projected lines, object reflection, image receiver and processor in a triangulation sensing path", caption: "Triangulation sensing path: the VCSEL is the emitter component; the receiver, optics, calibration and control algorithm complete the system." },
+      zh: { src: "/products/visuals/vcsel-robot-obstacle-sensing-zh.svg", alt: "VCSEL 线光发射、投射线、物体反射、图像接收端与处理器组成的三角测距感知框图", caption: "三角测距感知路径：VCSEL 是发射器件，接收端、光学、标定与控制算法共同构成系统。" }
+    },
+    dataTable: {
+      en: {
+        title: "Representative robot-vacuum VCSEL entries in the CECL 2025 Q2 catalog",
+        columns: ["Wavelength family", "Drive current", "Optical power (min / typ. / max)", "Peak wavelength", "Typical divergence", "Catalog condition"],
+        rows: [
+          ["808 nm", "200 mA", "200 / 210 / 230 mW", "798–818 nm", "26°", "Ta = 25°C"],
+          ["850 nm", "200 mA", "175 / 185 / 200 mW", "840–860 nm", "25°", "Ta = 25°C"]
+        ]
+      },
+      zh: {
+        title: "CECL 2025 Q2 目录中的扫地机器人 VCSEL 代表条目",
+        columns: ["波长系列", "驱动电流", "光功率（最小 / 典型 / 最大）", "峰值波长", "典型发散角", "目录条件"],
+        rows: [
+          ["808 nm", "200 mA", "200 / 210 / 230 mW", "798–818 nm", "26°", "Ta = 25°C"],
+          ["850 nm", "200 mA", "175 / 185 / 200 mW", "840–860 nm", "25°", "Ta = 25°C"]
+        ]
+      }
+    },
+    sections: {
+      en: [
+        { heading: "Obstacle avoidance is a sensing system, not a chip-only result", paragraphs: ["A robot-vacuum obstacle sensor must illuminate the scene, receive a usable return, estimate object position and feed a motion-control decision. The CECL VCSEL catalog describes an 808 nm and an 850 nm source family for robot-vacuum obstacle avoidance using a triangulation principle with dual line patterns. The emitter provides an optical input to that architecture; it does not, on its own, guarantee a sensing distance, detection rate or avoidance result."], bullets: ["Emitter and drive waveform", "Line-generating optics and mechanical alignment", "Receiver sensitivity, field of view and filtering", "Calibration, ambient-light handling and decision logic"] },
+        { heading: "Two catalog-backed wavelength options", paragraphs: ["The values below are copied from the two robot-vacuum entries in the supplied CECL 2025 Q2 VCSEL catalog. They are representative component values at the listed 200 mA drive condition and Ta = 25°C, not finished-module performance or universal operating limits."] },
+        { heading: "How triangulation turns reflected light into distance", paragraphs: ["A projected line or pattern changes its position on an image receiver as the target distance changes. The sensor geometry and calibration map that shift to an estimated distance. In the dual-line approach described in the CECL catalog, line placement and receiver visibility are part of the optical design. ST's integrated ToF products illustrate a different architecture: they combine a 940 nm VCSEL emitter with a receiver array and processing in a ranging module. These approaches should not be mixed when selecting a component."], bullets: ["Triangulation needs a defined emitter-receiver baseline and calibrated geometry", "ToF needs a compatible emitter, timing/driver path, receiver and signal processing", "In either architecture, reflectance, target size, viewing angle, cover-window effects and ambient light influence system results"] },
+        { heading: "Application conditions to settle before sampling", paragraphs: ["A useful engineering brief lets a supplier assess whether the catalog emitter is a plausible candidate and lets the robot team define a fair comparison against other sources."], bullets: ["Obstacle classes: cables, shoes, furniture edges, dark and glossy surfaces", "Target distance, vertical field of view and robot mounting height", "Single-line or dual-line pattern, line spread and optical window", "Continuous or pulsed operation, current waveform, duty cycle and thermal path", "Receiver type, filter band, exposure time and ambient-light range", "Calibration method, detection threshold, false-positive/false-negative criteria and validation set"] },
+        { heading: "What the catalog does not specify", paragraphs: ["The published entries do not provide detection range, accuracy, line uniformity, receiver configuration, pulse conditions, sunlight immunity, safety classification or finished robot test results. Those must be established for the complete module and robot platform. The right next step is a model-level datasheet and drawing review, then a controlled sample evaluation using the customer's optical stack and acceptance criteria."] }
+      ],
+      zh: [
+        { heading: "避障是完整感知系统的结果，不是芯片单独实现的功能", paragraphs: ["扫地机器人避障传感器需要完成场景照明、接收有效回波、估算物体位置，并把结果交给运动控制。CECL VCSEL 产品目录将 808 nm 与 850 nm 系列列为扫地机器人避障光源，并描述了基于三角测距和双线光型的应用。发射器为该架构提供光学输入，但单颗芯片本身不保证探测距离、识别率或避障结果。"], bullets: ["发射器与驱动波形", "线光光学件及机械对准", "接收器灵敏度、视场与滤光", "标定、环境光处理与决策算法"] },
+        { heading: "两个有目录依据的波长选择", paragraphs: ["下表摘自 CECL 提供的 2025 Q2 VCSEL 目录中两条扫地机器人避障条目。数据为目录列明的 200 mA 驱动条件和 Ta = 25°C 下的代表性器件值，不等同于整机模块性能，也不是所有工况的通用极限。"] },
+        { heading: "三角测距如何把反射光变成距离信息", paragraphs: ["投射线或光型在图像接收器上的位置会随目标距离变化。传感器几何关系和标定数据把位置变化转换为距离估算。CECL 目录描述的双线方案还需要共同确定线光位置和接收视野。ST 的集成 ToF 产品则展示了另一种架构：把 940 nm VCSEL 发射器、接收阵列和处理集成在测距模块中。选型时不应把这两类原理混为一谈。"], bullets: ["三角测距需要确定发射与接收基线，并标定几何关系", "ToF 需要匹配的光源、时序/驱动、接收器与信号处理", "两种架构的系统结果都会受到目标反射率、尺寸、视角、盖板影响和环境光影响"] },
+        { heading: "送样前先明确的应用条件", paragraphs: ["一份有效的工程需求能帮助供应商判断目录器件是否适合作为候选，也能让机器人团队与其他光源进行公平比较。"], bullets: ["障碍物类型：线缆、鞋子、家具边缘、深色与高反光表面", "探测距离、垂直视场及机器人安装高度", "单线或双线光型、线宽与光学窗口", "连续或脉冲工作、电流波形、占空比与热路径", "接收器类型、滤光带宽、曝光时间与环境光范围", "标定方法、检测阈值、误检/漏检判据与验证样本"] },
+        { heading: "目录尚未给出的系统指标", paragraphs: ["公开目录没有列出探测距离、测距精度、线光均匀性、接收器配置、脉冲条件、日光免疫能力、安全分类或整机机器人测试结果。这些指标必须针对完整模块和机器人平台确定。下一步应获取具体型号的数据表与图纸，再在客户的光学堆栈和验收条件下开展受控样品评估。"] }
+      ]
+    },
+    note: { en: "Catalog values are subject to current model revision and written confirmation. VCSEL product safety and finished-robot performance require a design-specific assessment.", zh: "目录参数应以当前型号版本及书面确认结果为准。VCSEL 产品安全与机器人整机性能须按具体设计评估。" },
+    sources: [
+      { label: "CECL — 2025 Q2 VCSEL chip catalog (robot-vacuum entries, pp. 7–8)", url: "/documents/catalogs/CECL-VCSEL-Chip-Catalog-2025Q2.pdf" },
+      { label: "STMicroelectronics — VL53L4CX datasheet (940 nm ToF module and robotics applications)", url: "https://www.st.com/content/ccc/resource/technical/document/datasheet/group3/aa/c7/73/ba/d2/08/49/0f/DM00815676/files/DM00815676.pdf/jcr:content/translations/en.DM00815676.pdf" },
+      { label: "Infineon — REAL3 ToF sensors for robotics and consumer applications", url: "https://www.infineon.com/products/sensor/tof-3d-image-sensors" }
     ]
   }
 ];

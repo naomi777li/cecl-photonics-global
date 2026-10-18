@@ -21,6 +21,7 @@ export type ProductFamily = {
   image: string;
   imageAlt: Localized;
   samples: ProductSample[];
+  relatedInsights?: string[];
   catalog?: string;
   catalogLabel?: Localized;
 };
@@ -76,15 +77,17 @@ export const productFamilies: ProductFamily[] = [
     slug: "vcsel-chips", group: "semiconductor",
     name: { en: "VCSEL chips", zh: "VCSEL 激光芯片" },
     eyebrow: { en: "VERTICAL-CAVITY LASER SOURCES", zh: "垂直腔面发射激光器" },
-    summary: { en: "850 nm and 940 nm source families for proximity, liquid and industrial sensing applications.", zh: "覆盖 850 nm 与 940 nm 系列，面向接近、液位与工业传感。" },
-    applications: { en: ["Proximity sensing", "Liquid sensing", "Industrial sensing"], zh: ["接近传感", "液位传感", "工业传感"] },
+    summary: { en: "808 nm, 850 nm and 940 nm VCSEL source families for proximity, robot-vacuum obstacle sensing, liquid and industrial sensing applications.", zh: "覆盖 808 nm、850 nm 与 940 nm VCSEL 系列，面向接近感应、扫地机器人避障、液位及工业传感。" },
+    applications: { en: ["Proximity sensing", "Robot-vacuum obstacle sensing", "Liquid sensing", "Industrial ToF sensing"], zh: ["接近传感", "扫地机器人避障", "液位传感", "工业 ToF 传感"] },
     reviewItems: { en: ["Wavelength and optical power", "Beam divergence", "Drive conditions", "Emitter, array and optics path"], zh: ["波长与光功率", "光束发散角", "驱动条件", "单管、阵列与光学路径"] },
     image: "/products/visuals/vcsel-array-components-v2.jpg", imageAlt: { en: "VCSEL emitter dies, an array on a ceramic carrier and a packaged optical module", zh: "VCSEL 发光芯片、陶瓷载板阵列与封装光学模块" },
+    relatedInsights: ["vcsel-robot-vacuum-obstacle-sensing"],
     samples: [
       { model: "850 nm family", application: { en: "Proximity sensing", zh: "接近传感" }, drive: "9 mA", output: { en: "9 mW typical", zh: "典型 9 mW" }, detail: { en: "Vf 2.0 V typical · divergence 28° typical", zh: "典型 Vf 2.0 V · 典型发散角 28°" } },
       { model: "940 nm family", application: { en: "Proximity sensing", zh: "接近传感" }, drive: "9 mA", output: { en: "5.8 mW typical", zh: "典型 5.8 mW" }, detail: { en: "Vf 1.8 V typical · divergence 24° typical", zh: "典型 Vf 1.8 V · 典型发散角 24°" } },
       { model: "668 nm family", application: { en: "Beauty-device source", zh: "美容设备光源" }, drive: "15 mA", output: { en: "8 mW typical", zh: "典型 8 mW" }, detail: { en: "665–670 nm · PCE 24% typical", zh: "665–670 nm · 典型 PCE 24%" } },
-      { model: "808 nm family", application: { en: "Robot obstacle sensing", zh: "扫地机避障" }, drive: "200 mA", output: { en: "210 mW typical", zh: "典型 210 mW" }, detail: { en: "Vf 2.15 V typical · divergence 26° typical", zh: "典型 Vf 2.15 V · 典型发散角 26°" } },
+      { model: "808 nm robot-vacuum family", application: { en: "Triangulation-based obstacle sensing", zh: "三角测距式避障感知" }, drive: "200 mA", output: { en: "200 / 210 / 230 mW min. / typ. / max.", zh: "200 / 210 / 230 mW 最小 / 典型 / 最大" }, detail: { en: "798–818 nm · Vf 2.0 / 2.15 / 2.3 V · 26° typ. divergence · Ta 25°C", zh: "798–818 nm · Vf 2.0 / 2.15 / 2.3 V · 典型发散角 26° · Ta 25°C" } },
+      { model: "850 nm robot-vacuum family", application: { en: "Triangulation-based obstacle sensing", zh: "三角测距式避障感知" }, drive: "200 mA", output: { en: "175 / 185 / 200 mW min. / typ. / max.", zh: "175 / 185 / 200 mW 最小 / 典型 / 最大" }, detail: { en: "840–860 nm · Vf 1.9 / 2.15 / 2.3 V · 25° typ. divergence · Ta 25°C", zh: "840–860 nm · Vf 1.9 / 2.15 / 2.3 V · 典型发散角 25° · Ta 25°C" } },
       { model: "940 nm family", application: { en: "Liquid sensing", zh: "液位传感" }, drive: "30 mA", output: { en: "29 mW typical", zh: "典型 29 mW" }, detail: { en: "Vf 2.0 V typical · divergence 23° typical", zh: "典型 Vf 2.0 V · 典型发散角 23°" } },
       { model: "940 nm family", application: { en: "Smart bathroom sensing", zh: "智能卫浴传感" }, drive: "80 mA", output: { en: "80 mW typical", zh: "典型 80 mW" }, detail: { en: "Vf 2.2 V typical · PCE 45% typical", zh: "典型 Vf 2.2 V · 典型 PCE 45%" } },
       { model: "850 nm family", application: { en: "Industrial sensing", zh: "工业传感" }, drive: "185 mA", output: { en: "185 mW typical", zh: "典型 185 mW" }, detail: { en: "Vf 2.1 V typical · PCE 47% typical", zh: "典型 Vf 2.1 V · 典型 PCE 47%" } },
