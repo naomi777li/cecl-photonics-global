@@ -107,6 +107,33 @@ export const productFamilies: ProductFamily[] = [
     reviewItems: { en: ["Emitter and wavelength mix", "Board architecture", "Coverage and uniformity", "Thermal interface"], zh: ["光源与波长组合", "电路板架构", "覆盖与均匀性", "热界面设计"] }, image: "/products/visuals/cob-light-engine.webp", imageAlt: { en: "Original visualization of a configurable multi-wavelength COB light engine", zh: "可配置多波长 COB 光学引擎原创示意图" }, samples: []
   },
   {
+    slug: "horticulture-led-light-engines", group: "module",
+    name: { en: "Horticulture LED light engines", zh: "植物照明 LED 光引擎" },
+    eyebrow: { en: "APPLICATION-SPECIFIC LED MODULES", zh: "应用型 LED 模块" },
+    summary: { en: "Project-defined horticulture emitter bars and arrays built around crop spectrum, fixture geometry, thermal path and grow-light verification needs.", zh: "围绕作物光谱、灯具结构、散热路径与植物照明验证需求定义的发光条和阵列方案。" },
+    applications: { en: ["Horticulture fixtures", "Controlled-environment agriculture", "Crop-specific lighting programs"], zh: ["植物照明灯具", "受控环境农业", "作物定制照明项目"] },
+    reviewItems: { en: ["Crop and growth-stage spectrum", "PPF / PPFD target and measurement plane", "Fixture dimensions and optical layout", "Thermal, driver and verification conditions"], zh: ["作物与生长阶段光谱", "PPF / PPFD 目标及测量平面", "灯具尺寸与光学布局", "散热、驱动与验证条件"] },
+    image: "/products/visuals/horticulture-led-engine.jpg", imageAlt: { en: "Configurable red and blue horticulture LED light-engine bar", zh: "红蓝光可配置植物照明 LED 光引擎条示意图" }, samples: []
+  },
+  {
+    slug: "uv-curing-led-modules", group: "module",
+    name: { en: "UV curing LED modules", zh: "UV 固化 LED 模块" },
+    eyebrow: { en: "INDUSTRIAL UV LIGHT ENGINES", zh: "工业 UV 光引擎" },
+    summary: { en: "Configurable UV LED light engines for curing-equipment programs, reviewed against material response, exposure profile, cooling and line integration.", zh: "面向固化设备项目的可配置 UV LED 光引擎，围绕材料响应、曝光曲线、冷却方式与产线集成进行评审。" },
+    applications: { en: ["UV curing equipment", "Adhesive and coating process development", "Application-specific UV sources"], zh: ["UV 固化设备", "胶黏剂与涂层工艺开发", "应用定制 UV 光源"] },
+    reviewItems: { en: ["Material and photoinitiator response", "Wavelength band and irradiance target", "Exposure distance, width and line speed", "Cooling, interlocks and verification plan"], zh: ["材料与光引发剂响应", "波段与辐照强度目标", "照射距离、宽度与线速度", "冷却、安全联锁与验证计划"] },
+    image: "/products/visuals/uv-curing-led-engine.jpg", imageAlt: { en: "Industrial UV LED curing light-engine module visualization", zh: "工业 UV LED 固化光引擎模块示意图" }, samples: []
+  },
+  {
+    slug: "automotive-display-backlight-modules", group: "module",
+    name: { en: "Automotive display backlight modules", zh: "车载显示背光模块" },
+    eyebrow: { en: "DISPLAY & MOBILITY PROGRAMS", zh: "显示与出行项目" },
+    summary: { en: "A project-review path for LED backlight sources and optical stacks matched to automotive display geometry, luminance targets and qualification plans.", zh: "围绕车载显示结构、亮度目标与验证计划评审 LED 背光光源及光学堆叠方案。" },
+    applications: { en: ["Automotive displays", "Instrument and center-stack panels", "Display OEM development programs"], zh: ["车载显示", "仪表与中控面板", "显示 OEM 开发项目"] },
+    reviewItems: { en: ["Panel geometry and LED placement", "Luminance and uniformity targets", "Optical stack, thermal and electrical interfaces", "Automotive validation and change-control plan"], zh: ["面板结构与 LED 布局", "亮度与均匀性目标", "光学堆叠、热与电气接口", "车规验证与变更管理计划"] },
+    image: "/products/visuals/automotive-backlight-engine.jpg", imageAlt: { en: "Automotive display LED backlight module and optical layers visualization", zh: "车载显示 LED 背光模块及光学层示意图" }, samples: []
+  },
+  {
     slug: "vcsel-modules", group: "module",
     name: { en: "VCSEL modules", zh: "VCSEL 模块" },
     eyebrow: { en: "INTEGRATED OPTICAL MODULES", zh: "集成光学模块" },
