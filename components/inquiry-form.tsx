@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FocusEvent, type FormEvent } from "react";
 import { AlertCircle, Check, LoaderCircle } from "lucide-react";
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
 import { Input } from "@/components/ui/input";
@@ -11,7 +11,7 @@ type ApiResult = { ok?: boolean; accepted?: boolean; error?: string; errors?: st
 
 const FALLBACK_EMAIL = "sales@ceclphotonics.com";
 
-function track(event: "rfq_submit" | "rfq_submit_error", parameters: Record<string, string>) {
+function track(event: "rfq_start" | "rfq_submit" | "rfq_submit_error", parameters: Record<string, string>) {
   window.gtag?.("event", event, parameters);
 }
 
@@ -19,6 +19,7 @@ export function InquiryForm({ lang, fields, options, submit, defaultProjectType 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [startedAt] = useState(() => Date.now());
+  const hasTrackedStart = useRef(false);
   const isZh = lang === "zh";
 
   async function submitInquiry(event: FormEvent<HTMLFormElement>) {
@@ -73,7 +74,13 @@ export function InquiryForm({ lang, fields, options, submit, defaultProjectType 
     }
   }
 
-  return <form className="rfq" onSubmit={submitInquiry} aria-busy={status === "submitting"}>
+  function trackStart(event: FocusEvent<HTMLFormElement>) {
+    if (hasTrackedStart.current || !(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement || event.target instanceof HTMLSelectElement)) return;
+    hasTrackedStart.current = true;
+    track("rfq_start", { page_path: window.location.pathname });
+  }
+
+  return <form className="rfq" onSubmit={submitInquiry} onFocusCapture={trackStart} aria-busy={status === "submitting"}>
     <input type="hidden" name="_started_at" value={startedAt}/>
     <div className="field-row"><label>{fields[0]}<Input required name="name" autoComplete="name" maxLength={120}/></label><label>{fields[1]}<Input required type="email" name="email" autoComplete="email" inputMode="email" maxLength={200}/></label></div>
     <div className="field-row"><label>{fields[2]}<Input required name="company" autoComplete="organization" maxLength={180}/></label><label>{fields[3]}<Input name="phone" type="tel" autoComplete="tel" maxLength={80} placeholder={isZh ? "+国家代码 手机号" : "+country code number"}/></label></div>
