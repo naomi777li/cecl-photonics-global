@@ -63,7 +63,6 @@ export function ProductDetail({ product, lang }: { product: ProductFamily; lang:
     : ["Name", "Email (business preferred)", "Company", "Phone / WhatsApp", "Product / service", "Target market", "Model, specifications, quantity and timeline"];
   const inquiryOptions = [zh ? "选择产品" : "Select product", product.name[lang]];
   const jsonLd = { "@context": "https://schema.org", "@graph": [
-    { "@type": "ProductGroup", "@id": `${url}#product`, name: product.name[lang], description: product.summary[lang], image: `${siteOrigin}${product.image}`, category: product.group === "semiconductor" ? "Photonic semiconductor" : "Optical module", manufacturer: { "@type": "Organization", "@id": `${siteOrigin}/#organization`, name: "CECL Photonics" }, url },
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: zh ? "首页" : "Home", item: `${siteOrigin}${prefix || "/"}` },
       { "@type": "ListItem", position: 2, name: zh ? "产品中心" : "Products", item: `${siteOrigin}${prefix}/products` },
