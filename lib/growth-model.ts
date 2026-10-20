@@ -27,6 +27,7 @@ export type CommercialPage = {
   deliverables: Localized[];
   questions: { question: Localized; answer: Localized }[];
   relatedInsights: string[];
+  relatedProducts?: string[];
   cta: Localized;
 };
 
@@ -271,6 +272,78 @@ export const commercialPages: CommercialPage[] = [
     relatedInsights: ["wavelength-selection-medical-beauty-device", "compliance-documents-phototherapy-device"],
     cta: { en: "Request a medical beauty project review", zh: "申请医疗美容项目评审" },
   },
+  {
+    slug: "aviation-optical-navigation-sensing",
+    personaIds: ["optoelectronics-engineer", "component-procurement", "quality-distributor"],
+    intent: "project-inquiry",
+    primaryKeyword: "aviation optical navigation sensing module",
+    secondaryKeywords: ["airborne lidar emitter module development", "aerospace proximity sensing VCSEL", "aircraft obstacle sensing optical module OEM", "landing terrain sensing optical emitter"],
+    title: { en: "Aviation Optical Navigation Sensing Modules | CECL Photonics", zh: "航空光学导航感知模块｜中能芯光" },
+    description: { en: "Scope photonic emitters and custom optical subassemblies for aviation and aerospace sensing OEM programs. Review wavelength, ranging method, receiver, environment and qualification needs before selecting a configuration.", zh: "面向航空与航天感知 OEM 项目评审光电发射器件及定制光学子组件；先明确波长、测距方式、接收端、环境与验证要求，再确定配置。" },
+    eyebrow: { en: "AVIATION & AEROSPACE SENSOR OEM", zh: "航空与航天传感器 OEM" },
+    h1: { en: "Photonic emitter and module development for aviation sensing programs.", zh: "面向航空感知项目的光电发射器件与模块开发。" },
+    lead: { en: "CECL works at the component and optical-subassembly layer: candidate LED/VCSEL sources, illumination geometry and module interfaces can be reviewed for proximity, obstacle-awareness and navigation-sensor programs. A source component is not a complete airborne lidar or certified navigation system; mission-level performance and qualification remain system-program requirements.", zh: "中能芯光聚焦器件与光学子组件层：可针对接近感知、障碍物感知和导航传感项目，评审 LED/VCSEL 候选光源、照明几何与模块接口。发光器件不等于完整机载激光雷达或已认证导航系统，系统性能与适航验证须由整机项目定义。" },
+    pains: [
+      { en: "A wavelength or power figure alone cannot establish airborne range, detection probability or safety.", zh: "单凭波长或功率数值，不能确定机载量程、探测概率或安全性。" },
+      { en: "Emitter, optics, receiver, timing and signal processing must be reviewed as one sensing chain.", zh: "发射器、光学、接收器、时序与信号处理必须作为完整感知链路评审。" },
+      { en: "Environmental and qualification requirements differ by platform, installation zone and intended use.", zh: "环境与验证要求会因平台、安装区域和预期用途而异。" },
+    ],
+    capabilities: [
+      { title: { en: "Proximity and obstacle awareness", zh: "接近感知与障碍物提示" }, body: { en: "Review short-range active optical sensing concepts for platform-adjacent detection tasks, with receiver geometry and target conditions specified by the integrator.", zh: "面向平台周边近距探测任务评审主动光学感知方案，由系统集成方明确接收几何与目标条件。" } },
+      { title: { en: "Terrain or landing-area sensing studies", zh: "地形或着陆区域感知评估" }, body: { en: "For lidar/altimetry concepts, first check the ranging principle, wavelength, pulse regime, receiver, optical aperture and platform constraints. Suitability is not assumed from the existing VCSEL catalog.", zh: "对于激光雷达/高度测量方案，先核对测距原理、波长、脉冲方式、接收端、光学口径与平台约束；不默认现有 VCSEL 目录即可适用。" } },
+      { title: { en: "Emitter-to-module integration", zh: "从发射器到模块集成" }, body: { en: "Structure an engineering brief for source, optics, drive, thermal path, mechanical envelope and verification interfaces before prototype scope is agreed.", zh: "在确定样机范围前，围绕光源、光学、驱动、散热、机械包络与验证接口建立工程需求书。" } },
+    ],
+    deliverables: [
+      { en: "Platform and sensing-task input checklist", zh: "平台与感知任务输入清单" },
+      { en: "Candidate source and feasibility review, subject to wavelength and ranging-method fit", zh: "候选光源与可行性评审（以波长和测距方式匹配为前提）" },
+      { en: "Optical/electrical/mechanical interface and verification gap list", zh: "光、电、机械接口与验证差距清单" },
+      { en: "Project-specific sample scope after engineering review", zh: "工程评审后确定项目样品范围" },
+    ],
+    questions: [
+      { question: { en: "Does CECL supply a complete aircraft navigation or lidar system?", zh: "中能芯光供应完整的航空导航或激光雷达系统吗？" }, answer: { en: "This page describes photonic components and custom optical subassembly development for OEM evaluation—not a complete navigation system, flight-control product or certified airborne lidar. The system integrator owns mission architecture and platform qualification.", zh: "本页介绍面向 OEM 评估的光电器件及定制光学子组件开发，不代表完整导航系统、飞控产品或已认证机载激光雷达。系统集成方负责任务架构和平台验证。" } },
+      { question: { en: "Can a catalog VCSEL be used for terrain mapping or aircraft landing?", zh: "目录中的 VCSEL 能直接用于地形测绘或航空器着陆吗？" }, answer: { en: "Not without an application-specific feasibility review. Ranging method, wavelength, pulse energy, receiver sensitivity, aperture, eye-safety analysis, operating environment and qualification scope all affect suitability; no universal performance is implied here.", zh: "不能未经项目可行性评审直接判定。测距方式、波长、脉冲能量、接收灵敏度、口径、眼安全分析、工作环境与验证范围都会影响适用性；本页不承诺通用性能。" } },
+      { question: { en: "What should an aviation sensing inquiry include?", zh: "航空感知询盘应提供什么信息？" }, answer: { en: "Share the platform and installation zone, operational phase, target/task, required range and field of view, receiver and ranging method, optical-window constraints, environmental profile, qualification target and program stage. Exact device parameters follow engineering review.", zh: "请提供平台与安装区域、运行阶段、目标/任务、量程与视场需求、接收端和测距方式、光学窗口约束、环境条件、验证目标及项目阶段。器件具体参数在工程评审后确认。" } },
+    ],
+    relatedInsights: [],
+    relatedProducts: ["aviation-marine-navigation-sensing-modules"],
+    cta: { en: "Request an aviation sensing feasibility review", zh: "申请航空感知可行性评审" },
+  },
+  {
+    slug: "marine-navigation-optical-sensing",
+    personaIds: ["optoelectronics-engineer", "component-procurement", "quality-distributor"],
+    intent: "project-inquiry",
+    primaryKeyword: "marine navigation optical sensing module",
+    secondaryKeywords: ["marine lidar emitter module", "ship berthing optical sensor OEM", "vessel obstacle awareness optical module", "marine proximity sensing VCSEL"],
+    title: { en: "Marine Navigation Optical Sensing Modules | CECL Photonics", zh: "海事导航光学感知模块｜中能芯光" },
+    description: { en: "Evaluate optical emitters and custom modules for above-water vessel proximity, approach, berthing and situational-awareness sensor programs. Define environment, receiver and system interfaces before specifications are confirmed.", zh: "评估用于水面船舶接近、进近、靠泊与环境感知传感项目的光学发射器件和定制模块；先明确环境、接收端及系统接口，再确认规格。" },
+    eyebrow: { en: "MARINE NAVIGATION SENSOR OEM", zh: "海事导航传感器 OEM" },
+    h1: { en: "Optical sensing components for vessel approach and navigation-support programs.", zh: "面向船舶进近与导航辅助项目的光学感知器件。" },
+    lead: { en: "CECL can review emitter and optical-module concepts for above-water proximity, obstacle-awareness and berthing assistance. These are supplemental sensing components for integration with the vessel's wider navigation architecture—not replacements for radar, GNSS, AIS, sonar or approved bridge equipment. Water clarity and weather can strongly affect optical performance.", zh: "中能芯光可评审用于水面接近感知、障碍物提示和靠泊辅助的发射器件与光学模块方案。它们是船舶综合导航架构中的辅助感知器件，不替代雷达、GNSS、AIS、声呐或经批准的驾驶台设备。水体清澈度和天气会显著影响光学表现。" },
+    pains: [
+      { en: "Spray, fog, glare, rain, salt exposure and window contamination change the optical path.", zh: "浪花、雾气、眩光、降雨、盐雾与窗口污染都会改变光路条件。" },
+      { en: "Optical sensing is complementary; bridge navigation functions require a separately validated system architecture.", zh: "光学感知属于补充方案；驾驶台导航功能需要独立验证的系统架构。" },
+      { en: "Underwater turbidity, attenuation and backscatter can limit optical ranging; subsea use needs separate feasibility testing.", zh: "水下浑浊、衰减和后向散射会限制光学测距；水下应用需单独开展可行性测试。" },
+    ],
+    capabilities: [
+      { title: { en: "Approach and berthing assistance", zh: "进近与靠泊辅助" }, body: { en: "Scope short-range emitter/receiver concepts around mounting position, target surfaces, viewing geometry, ambient light and operator display interfaces.", zh: "围绕安装位置、目标表面、观察几何、环境光及驾驶员显示接口，定义近距发射/接收方案。" } },
+      { title: { en: "Above-water obstacle awareness", zh: "水面障碍物感知" }, body: { en: "Review optical illumination and module integration as one input to a multisensor awareness stack; system-level detection and alert performance must be verified by the integrator.", zh: "把光学照明与模块集成作为多传感器感知方案的一个输入；系统级探测和告警表现由集成方验证。" } },
+      { title: { en: "Marine environmental integration", zh: "海事环境集成评审" }, body: { en: "Document enclosure, window, condensation, salt exposure, vibration, thermal, maintenance and service requirements before module definition.", zh: "在模块定义前明确外壳、窗口、冷凝、盐雾、振动、热、维护与服务要求。" } },
+    ],
+    deliverables: [
+      { en: "Vessel, mounting and operating-scene brief", zh: "船型、安装与运行场景需求书" },
+      { en: "Emitter/receiver and optical-window interface review", zh: "发射器/接收端及光学窗口接口评审" },
+      { en: "Environmental and maintenance test-input checklist", zh: "环境与维护测试输入清单" },
+      { en: "Project-specific module scope after engineering review", zh: "工程评审后确定项目模块范围" },
+    ],
+    questions: [
+      { question: { en: "Can an optical module replace marine radar, AIS or GNSS?", zh: "光学模块可以替代船用雷达、AIS 或 GNSS 吗？" }, answer: { en: "No. The proposed photonic components are intended for OEM evaluation as supplemental optical sensing inputs. They are not stand-alone navigation equipment and are not presented as substitutes for required bridge systems.", zh: "不可以。本页所述光电器件用于 OEM 评估，作为辅助光学感知输入；它们不是独立导航设备，也不宣称可替代驾驶台必需系统。" } },
+      { question: { en: "Are the modules intended for underwater navigation?", zh: "这些模块用于水下导航吗？" }, answer: { en: "The current page focuses on above-water vessel sensing. Underwater optical propagation depends on water clarity, range, wavelength and receiver design; any subsea application requires its own feasibility test and is not assumed to work from the above-water configuration.", zh: "本页主要面向水面船舶感知。水下光传播取决于水体清澈度、距离、波长和接收设计；任何水下应用都需单独进行可行性测试，不能直接沿用水面配置。" } },
+      { question: { en: "What details help scope a marine sensing module?", zh: "评估海事感知模块需要哪些信息？" }, answer: { en: "Provide vessel type, mounting location, sensing task, target and distance, field of view, receiver, window material, ambient-light and weather exposure, ingress/corrosion requirements, interface constraints and intended approval route.", zh: "请提供船型、安装位置、感知任务、目标与距离、视场、接收端、窗口材料、环境光与天气暴露、防水/防腐要求、接口约束及计划采用的审批路径。" } },
+    ],
+    relatedInsights: [],
+    relatedProducts: ["aviation-marine-navigation-sensing-modules"],
+    cta: { en: "Discuss a marine sensing module", zh: "沟通海事感知模块需求" },
+  },
 ];
 
 export const keywordClusters = [
@@ -279,6 +352,8 @@ export const keywordClusters = [
   { id: "robotics-vcsel", funnel: "technical-evaluation", page: "vcsel-robot-vacuum-obstacle-sensing", primary: "VCSEL for robot vacuum obstacle avoidance", support: ["808nm VCSEL obstacle sensing", "850nm VCSEL robot vacuum", "triangulation obstacle sensing emitter"] },
   { id: "optical-module", funnel: "commercial", page: "custom-optical-module-manufacturer", primary: "custom optical module manufacturer", support: ["custom LED module", "COB light engine", "VCSEL module supplier"] },
   { id: "beauty-oem", funnel: "commercial", page: "medical-beauty-device-oem-odm", primary: "medical beauty device OEM ODM", support: ["LED face mask OEM", "red light therapy device ODM", "phototherapy device manufacturer"] },
+  { id: "aviation-sensing", funnel: "project-inquiry", page: "aviation-optical-navigation-sensing", primary: "aviation optical navigation sensing module", support: ["airborne lidar emitter module development", "aerospace proximity sensing VCSEL", "aircraft obstacle sensing optical module OEM"] },
+  { id: "marine-sensing", funnel: "project-inquiry", page: "marine-navigation-optical-sensing", primary: "marine navigation optical sensing module", support: ["marine lidar emitter module", "ship berthing optical sensor OEM", "vessel obstacle awareness optical module"] },
   { id: "engineering-guides", funnel: "informational", page: "insights", primary: "photonics engineering guide", support: ["wavelength selection", "light engine design", "phototherapy compliance documents"] },
 ];
 

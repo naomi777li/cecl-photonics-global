@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight, Check, FileCheck2, Mail, MessageCircle } from 
 import Image from "next/image";
 import { buyerPersonas, siteOrigin, type CommercialPage, type GrowthLang } from "@/lib/growth-model";
 import { getInsight } from "@/lib/insights";
+import { getProductFamily } from "@/lib/product-catalog";
 import { BrandLogo } from "@/components/brand-logo";
 
 const beautyProductPrograms = [
@@ -21,6 +22,7 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
   const personas = page.personaIds
     .map((id) => buyerPersonas.find((persona) => persona.id === id))
     .filter(Boolean);
+  const relatedProducts = (page.relatedProducts ?? []).map(getProductFamily).filter(Boolean);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -89,6 +91,8 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
         <div><span>{isZh ? "适合阶段" : "Best-fit stage"}</span><strong>{isZh ? "供应商评估 → 项目简报" : "Supplier review → project brief"}</strong></div>
         <div><span>{isZh ? "证据原则" : "Evidence rule"}</span><strong>{isZh ? "文件与具体型号对应" : "Documents matched to the model"}</strong></div>
       </section>
+
+      {relatedProducts.length > 0 && <section className="section related-insights related-products"><div className="section-heading"><p className="eyebrow">{isZh ? "对应产品方向" : "RELATED PRODUCT FAMILY"}</p><h2>{isZh ? "从应用评估进入器件与模块选型。" : "Move from application review to emitter and module selection."}</h2></div><div className="related-grid">{relatedProducts.map((product) => <article key={product!.slug}><FileCheck2 size={22}/><h3>{product!.name[lang]}</h3><p>{product!.summary[lang]}</p><a href={`${langBase}/products/${product!.slug}`} data-analytics-event="select_content" data-content-type="product_family" data-content-id={product!.slug}>{isZh ? "查看产品方向与选型输入" : "View product direction & selection inputs"}<ArrowUpRight size={16}/></a></article>)}</div></section>}
 
       {page.slug === "medical-beauty-device-oem-odm" && <section className="section beauty-market-programs"><div className="section-heading split"><div><p className="eyebrow">{isZh ? "目标市场产品优先级" : "TARGET-MARKET PRODUCT PRIORITIES"}</p><h2>{isZh ? "先展示买家正在寻找的产品形态。" : "Lead with the formats buyers are actively seeking."}</h2></div><p>{isZh ? "产品顺序依据 2025–2026 年北美、欧洲、中东及东南亚的市场信号，并结合中能芯光现有 LED、VCSEL 与光学引擎能力。图片均为原创可配置概念视觉，不代表已定型或已获批整机。" : "Priorities combine 2025–2026 market signals from North America, Europe, the Middle East and Southeast Asia with CECL's LED, VCSEL and light-engine capabilities. Images are original configurable concepts—not released or cleared finished devices."}</p></div><div className="beauty-program-grid">{beautyProductPrograms.map((item) => <article key={item.image}><figure><Image src={`${basePath}${item.image}`} alt={item.title[lang]} fill sizes="(max-width: 760px) 100vw, 50vw"/></figure><div><small>{item.priority[lang]}</small><h3>{item.title[lang]}</h3><p>{item.body[lang]}</p><span>{item.markets[lang]}</span><a href="#project-brief">{isZh ? "申请配置与报价" : "Request configuration & quote"}<ArrowUpRight size={16}/></a></div></article>)}</div></section>}
 

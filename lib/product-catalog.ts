@@ -156,6 +156,15 @@ export const productFamilies: ProductFamily[] = [
     summary: { en: "Application-specific assemblies combining emitters, optics, electronics and mechanical interfaces.", zh: "结合发光器件、光学、电子与机械接口的应用定制组件。" },
     applications: { en: ["Sensing modules", "Specialty illumination", "Device integration"], zh: ["传感模块", "特种照明", "设备集成"] },
     reviewItems: { en: ["System requirement", "Optical and electrical interfaces", "Prototype objectives", "DFM and production transfer"], zh: ["系统需求", "光学与电气接口", "样机目标", "可制造性与量产转移"] }, image: "/products/visuals/light-engine.webp", imageAlt: { en: "Original visualization of a custom optical-module assembly", zh: "定制光学模块原创示意图" }, samples: []
+  },
+  {
+    slug: "aviation-marine-navigation-sensing-modules", group: "module",
+    name: { en: "Aviation & marine navigation sensing modules", zh: "航空与海事导航光学感知模块" },
+    eyebrow: { en: "NAVIGATION-SENSOR OEM DEVELOPMENT", zh: "导航传感 OEM 项目开发" },
+    summary: { en: "Project-defined optical emitter and module development for near-range obstacle awareness, approach/berthing assistance and other navigation-sensor OEM programs. These are photonic components—not complete navigation systems.", zh: "面向近距障碍感知、进近/靠泊辅助及其他导航传感器 OEM 项目的定制光源与模块开发。产品定位为光电器件，不是完整导航系统。" },
+    applications: { en: ["Aircraft and aerospace proximity or obstacle-sensing evaluation", "Landing-area or terrain-sensing OEM studies", "Surface-vessel approach and berthing assistance", "Above-water situational-awareness sensor modules"], zh: ["航空器与航天器近距感知或避障评估", "着陆区域或地形感知 OEM 方案评审", "水面船舶进近与靠泊辅助", "水面环境感知传感模块"] },
+    reviewItems: { en: ["Platform, operational phase and sensing task", "Range, field of view, target reflectance and environment", "Emitter wavelength, pulse/drive mode and receiver architecture", "Optical window, thermal, vibration, ingress and qualification needs"], zh: ["平台、运行阶段与感知任务", "量程、视场、目标反射率与环境", "发射波长、脉冲/驱动模式及接收架构", "光学窗口、热、振动、防护与验证需求"] },
+    image: "/products/visuals/optical-sensing.webp", imageAlt: { en: "Illustrative optical sensing module for navigation-sensor OEM evaluation", zh: "用于导航传感器 OEM 评估的光学感知模块示意图" }, samples: []
   }
 ];
 
