@@ -126,27 +126,6 @@ export const productFamilies: ProductFamily[] = [
     summary: { en: "Application-specific assemblies combining emitters, optics, electronics and mechanical interfaces.", zh: "结合发光器件、光学、电子与机械接口的应用定制组件。" },
     applications: { en: ["Sensing modules", "Specialty illumination", "Device integration"], zh: ["传感模块", "特种照明", "设备集成"] },
     reviewItems: { en: ["System requirement", "Optical and electrical interfaces", "Prototype objectives", "DFM and production transfer"], zh: ["系统需求", "光学与电气接口", "样机目标", "可制造性与量产转移"] }, image: "/products/visuals/light-engine.webp", imageAlt: { en: "Original visualization of a custom optical-module assembly", zh: "定制光学模块原创示意图" }, samples: []
-  },
-  {
-    slug: "aviation-maritime-optical-sensing",
-    group: "module",
-    name: { en: "Aviation & maritime optical-sensing modules", zh: "航空与海洋航行光学传感模块" },
-    eyebrow: { en: "APPLICATION DEVELOPMENT DIRECTION", zh: "应用开发方向" },
-    summary: {
-      en: "Project-defined optical-source and sensing-module development for situational-awareness and near-field detection programs. Scope is agreed with the system integrator; this is not a catalogued, certified avionics or navigation product.",
-      zh: "面向态势感知与近距探测项目的光源及传感模块开发方向，具体范围与系统集成方共同评审；此方向不代表现成目录产品或已认证的航空电子、导航系统。"
-    },
-    applications: {
-      en: ["Low-light EO/IR sensing prototypes", "Near-field obstacle-awareness evaluation", "Marine approach and deck-area monitoring concepts", "Aircraft ground-service and inspection sensing"],
-      zh: ["低照度 EO/IR 传感样机", "近距障碍物感知评估", "海上接近与甲板区域监测方案", "航空地面保障与巡检传感"]
-    },
-    reviewItems: {
-      en: ["Emitter wavelength, output and beam requirement", "Receiver, optics and system-level sensing architecture", "Vibration, temperature, humidity and salt-exposure environment", "Electrical / mechanical interfaces and verification plan", "Applicable industry qualification and approval pathway"],
-      zh: ["发射波长、输出与光束要求", "接收器、光学组件及系统级传感架构", "振动、温度、湿度及盐雾环境", "电气/机械接口与验证计划", "适用行业的鉴定与审批路径"]
-    },
-    image: "/products/visuals/optical-sensing.webp",
-    imageAlt: { en: "Illustrative optical sensing module visualization for engineering discussion", zh: "用于工程讨论的光学传感模块示意图" },
-    samples: []
   }
 ];
 
