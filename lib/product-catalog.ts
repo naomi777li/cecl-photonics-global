@@ -161,10 +161,10 @@ export const productFamilies: ProductFamily[] = [
     slug: "aviation-marine-navigation-sensing-modules", group: "module",
     name: { en: "Aviation & marine navigation sensing modules", zh: "航空与海事导航光学感知模块" },
     eyebrow: { en: "NAVIGATION-SENSOR OEM DEVELOPMENT", zh: "导航传感 OEM 项目开发" },
-    summary: { en: "Project-defined optical emitter and module development for near-range obstacle awareness, approach/berthing assistance and other navigation-sensor OEM programs. These are photonic components—not complete navigation systems.", zh: "面向近距障碍感知、进近/靠泊辅助及其他导航传感器 OEM 项目的定制光源与模块开发。产品定位为光电器件，不是完整导航系统。" },
+    summary: { en: "Project-defined optical emitter and sensing-module development for auxiliary proximity awareness, equipment monitoring, vessel approach/berthing and navigation-sensor OEM evaluation. These are photonic subassemblies—not certified avionics, primary navigation or collision-avoidance systems.", zh: "面向辅助接近感知、设备监测、水面船舶进近/靠泊及导航传感 OEM 评估的光源与传感模块开发方向。产品是光电子组件，不是已认证的航空电子、主导航或避碰系统。" },
     applications: { en: ["Aircraft and aerospace proximity or obstacle-sensing evaluation", "Landing-area or terrain-sensing OEM studies", "Surface-vessel approach and berthing assistance", "Above-water situational-awareness sensor modules"], zh: ["航空器与航天器近距感知或避障评估", "着陆区域或地形感知 OEM 方案评审", "水面船舶进近与靠泊辅助", "水面环境感知传感模块"] },
     reviewItems: { en: ["Platform, operational phase and sensing task", "Range, field of view, target reflectance and environment", "Emitter wavelength, pulse/drive mode and receiver architecture", "Optical window, thermal, vibration, ingress and qualification needs"], zh: ["平台、运行阶段与感知任务", "量程、视场、目标反射率与环境", "发射波长、脉冲/驱动模式及接收架构", "光学窗口、热、振动、防护与验证需求"] },
-    image: "/products/visuals/optical-sensing.webp", imageAlt: { en: "Illustrative optical sensing module for navigation-sensor OEM evaluation", zh: "用于导航传感器 OEM 评估的光学感知模块示意图" }, samples: []
+    image: "/products/visuals/aerospace-marine-sensing-concept.png", imageAlt: { en: "Illustrative concept of an optical sensing module in a marine bridge setting; not a deployed or certified system", zh: "海事驾驶台环境中的光学传感模块概念示意图；非已部署或认证系统" }, samples: []
   }
 ];
 

@@ -3,6 +3,7 @@ import { ArrowUpRight, BookOpen, Building2, Check, Cpu, Download, FileCheck2, La
 import { InquiryForm } from "@/components/inquiry-form";
 import { siteOrigin } from "@/lib/site-url";
 import { BrandLogo } from "@/components/brand-logo";
+import { productFamilies } from "@/lib/product-catalog";
 
 type Lang = "en" | "zh";
 
@@ -71,7 +72,8 @@ const productData = {
       ["LED arrays & COB engines", "Multi-emitter layouts engineered around coverage, thermal path and assembly requirements.", ["Emitter mix", "Board architecture", "Thermal interface"]],
       ["VCSEL modules", "Integrated source, optics and drive coordination for compact sensing or illumination assemblies.", ["Beam requirement", "Safety review input", "Evaluation sample"]],
       ["Beauty light engines", "Custom light-source assemblies for wearable, handheld and professional beauty-device concepts.", ["Uniformity target", "Heat & comfort", "Form-factor fit"]],
-      ["Custom optical modules", "Application-specific assemblies combining emitters, optics, electronics and mechanical interfaces.", ["DFM review", "Prototype build", "Production transfer"]]
+      ["Custom optical modules", "Application-specific assemblies combining emitters, optics, electronics and mechanical interfaces.", ["DFM review", "Prototype build", "Production transfer"]],
+      ["Aviation & marine navigation sensing modules", "Project-defined optical subassemblies for auxiliary sensing and equipment integration—not certified flight, primary navigation or collision-avoidance equipment.", ["Emitter / receiver path", "Environmental inputs", "Qualification plan"]]
     ]
   },
   zh: {
@@ -85,7 +87,8 @@ const productData = {
       ["LED 阵列与 COB 光引擎", "根据覆盖范围、散热路径和装配要求设计多光源布局。", ["光源组合", "电路板架构", "热界面设计"]],
       ["VCSEL 模块", "协调光源、光学与驱动，为紧凑型传感或照明组件提供集成方案。", ["光束需求", "安全评审输入", "评估样品"]],
       ["美容光学引擎", "面向穿戴式、手持式和专业美容设备的定制光源组件。", ["均匀性目标", "热管理与舒适度", "结构适配"]],
-      ["定制光学模块", "根据应用组合发光器件、光学、电子与机械接口。", ["可制造性评审", "样机制作", "量产转移"]]
+      ["定制光学模块", "根据应用组合发光器件、光学、电子与机械接口。", ["可制造性评审", "样机制作", "量产转移"]],
+      ["航空与海事导航感知模块", "面向辅助感测与设备集成的光电子组件开发方向，不宣称具备适航、主导航或避碰系统认证。", ["发射/接收方案", "环境条件输入", "认证路径评估"]]
     ]
   }
 };
@@ -94,7 +97,8 @@ const apps = [
   { icon: ScanLine, en: ["Sensing & machine vision", "Emitter selection, illumination geometry and compact module integration."], zh: ["传感与机器视觉", "发光器件选型、照明几何与紧凑模块集成。"] },
   { icon: Sparkles, en: ["Medical beauty", "Light engines and device programs for photobiomodulation and beauty concepts."], zh: ["医疗美容", "面向光生物调节和美容概念的光学引擎与设备项目。"] },
   { icon: Cpu, en: ["Consumer electronics", "Compact visible and infrared sources for intelligent device features."], zh: ["消费电子", "面向智能设备功能的紧凑型可见光与红外光源。"] },
-  { icon: Layers3, en: ["Specialty illumination", "Wavelength-specific platforms for industrial and application-defined lighting."], zh: ["特种照明", "面向工业和特定应用照明的波长平台。"] }
+  { icon: Layers3, en: ["Specialty illumination", "Wavelength-specific platforms for industrial and application-defined lighting."], zh: ["特种照明", "面向工业和特定应用照明的波长平台。"] },
+  { icon: ScanLine, en: ["Aerospace & maritime sensing", "Custom optical module development for auxiliary monitoring and equipment integration. Qualification and safety-critical use require separate review."], zh: ["航空与海洋感测", "面向辅助监测和设备集成的定制光学模块开发方向；系统认证与安全关键用途需另行评审。"] }
 ];
 
 const programs = {
@@ -216,16 +220,17 @@ type ProductGridItem = [string, string, string[]];
 const productRoutes: Record<string, string> = {
   "AlGaInP visible emitters": "red-yellow-led-chips", "InGaN visible emitters": "blue-green-led-chips", "Infrared LED": "infrared-led-chips", "VCSEL platform": "vcsel-chips",
   "AlGaInP 可见光芯片": "red-yellow-led-chips", "InGaN 可见光芯片": "blue-green-led-chips", "红外 LED": "infrared-led-chips", "VCSEL 平台": "vcsel-chips",
-  "LED arrays & COB engines": "led-arrays-cob-engines", "VCSEL modules": "vcsel-modules", "Beauty light engines": "medical-beauty-light-engines", "Custom optical modules": "custom-optical-modules",
-  "LED 阵列与 COB 光引擎": "led-arrays-cob-engines", "VCSEL 模块": "vcsel-modules", "美容光学引擎": "medical-beauty-light-engines", "定制光学模块": "custom-optical-modules",
+  "LED arrays & COB engines": "led-arrays-cob-engines", "VCSEL modules": "vcsel-modules", "Beauty light engines": "medical-beauty-light-engines", "Custom optical modules": "custom-optical-modules", "Aviation & marine navigation sensing modules": "aviation-marine-navigation-sensing-modules",
+  "LED 阵列与 COB 光引擎": "led-arrays-cob-engines", "VCSEL 模块": "vcsel-modules", "美容光学引擎": "medical-beauty-light-engines", "定制光学模块": "custom-optical-modules", "航空与海事导航感知模块": "aviation-marine-navigation-sensing-modules",
 };
 
 function ProductGrid({ items, inquire, lang, basePath }: { items: (string | string[])[][]; inquire: string; lang: Lang; basePath: string }) {
   return <div className="product-grid">{items.map((entry, i: number) => {
     const item = entry as ProductGridItem;
     const slug = productRoutes[item[0]];
+    const family = slug ? productFamilies.find((product) => product.slug === slug) : undefined;
     const href = slug ? `${basePath}${lang === "zh" ? "/zh" : ""}/products/${slug}/` : "#contact";
-    return <article className="product-card" key={item[0]}><div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href={href} data-analytics-event="select_content" data-content-type="product_family" data-content-id={slug}>{inquire}<ArrowUpRight size={16}/></a></article>;
+    return <article className="product-card" key={item[0]}>{family && <figure className="product-card-visual"><Image src={`${basePath}${family.image}`} alt={family.imageAlt[lang]} width={1200} height={800} loading="lazy"/><figcaption>{lang === "zh" ? "品类示意 · 以型号与样品为准" : "Category visualization · verify by model and sample"}</figcaption></figure>}<div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href={href} data-analytics-event="select_content" data-content-type="product_family" data-content-id={slug}>{inquire}<ArrowUpRight size={16}/></a></article>;
   })}</div>;
 }
 
@@ -235,7 +240,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const d = documentCenter[lang];
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const sitePath = (path: string) => `${basePath}${path}`;
-  const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "渠道合作"];
+  const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Aerospace / maritime sensing", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "航空 / 海洋传感", "渠道合作"];
 
   const publicSite = siteOrigin;
   const homeUrl = lang === "en" ? `${publicSite}/` : `${publicSite}/zh`;
