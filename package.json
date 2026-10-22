@@ -11,6 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "visuals:verify": "node scripts/verify-product-visuals.mjs",
     "growth:analyze": "node --experimental-strip-types scripts/analyze-growth-data.mjs",
     "db:generate": "drizzle-kit generate"
   },
