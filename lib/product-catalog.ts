@@ -142,6 +142,24 @@ export const productFamilies: ProductFamily[] = [
     reviewItems: { en: ["Beam requirement", "Electrical interface", "Mechanical envelope", "Evaluation and safety inputs"], zh: ["光束要求", "电气接口", "机械包络", "评估与安全输入"] }, image: "/products/visuals/optical-sensing.webp", imageAlt: { en: "Original visualization of an integrated optical sensing module", zh: "集成光学传感模块原创示意图" }, samples: []
   },
   {
+    slug: "optical-sensor-modules", group: "module",
+    name: { en: "Optical sensor modules & sensing front ends", zh: "光学传感器模块与感知前端" },
+    eyebrow: { en: "OPTICAL SENSING MODULES", zh: "光学传感模块" },
+    summary: { en: "OEM-oriented optical sensing subassemblies combining an emitter, receiver-facing optics and integration interfaces for proximity, reflective, ranging and application-specific detection programs. System-level sensing performance depends on the matched receiver, processing, calibration and validation.", zh: "面向 OEM 的光学感知子组件，可围绕发射器、接收端光学及设备接口进行开发，适用于接近、反射式、测距及特定检测项目。系统级传感性能取决于接收器、处理、标定与整机验证。" },
+    applications: { en: ["Proximity and presence sensing", "Reflective and interruption sensing", "ToF / triangulation ranging evaluation", "Liquid-level and equipment-state detection"], zh: ["接近与存在感知", "反射式与对射检测", "ToF / 三角测距评估", "液位与设备状态检测"] },
+    reviewItems: { en: ["Target, sensing principle and detection zone", "Emitter wavelength, pulse / drive and optical field", "Receiver type, spectral response and interface", "Ambient light, cover window, calibration and validation plan"], zh: ["目标物、感知原理与检测区域", "发射波长、脉冲/驱动与光场", "接收器类型、光谱响应与接口", "环境光、盖板、标定及验证计划"] },
+    image: "/products/visuals/optical-sensor-module-direction.jpg", imageAlt: { en: "Configurable optical sensing front-end module with separate emitter and receiver apertures", zh: "具有发射与接收光学窗口的可配置光学感知前端模块示意图" }, samples: []
+  },
+  {
+    slug: "optical-communication-modules", group: "module",
+    name: { en: "Optical communication modules & link subassemblies", zh: "光通信模块与链路子组件" },
+    eyebrow: { en: "OPTICAL COMMUNICATION OEM PROGRAMS", zh: "光通信 OEM 项目" },
+    summary: { en: "Project-defined optical transmitter, receiver and paired-link subassemblies for embedded, short-reach fiber and visible-light communication evaluations. CECL's supplied VCSEL catalog includes communication-use source families; data rate, fiber type, protocol, form factor, interoperability and compliance must be confirmed for each specific design.", zh: "面向嵌入式、短距光纤与可见光通信评估的项目定制光发射、接收及收发链路子组件。中能芯光现有 VCSEL 目录含通信应用光源系列；速率、光纤类型、协议、外形、互通性与合规要求须针对具体设计确认。" },
+    applications: { en: ["VCSEL-based short-reach optical source assemblies", "Optical transmitter / receiver integration studies", "Visible-light and vehicle optical-communication evaluation", "Embedded OEM optical links and custom subassemblies"], zh: ["VCSEL 短距光通信发射组件", "光发射/接收集成方案评估", "可见光与车载光通信评估", "嵌入式 OEM 光链路与定制子组件"] },
+    reviewItems: { en: ["Source / receiver architecture and optical wavelength", "Target rate, protocol, link distance and fiber type", "Connector, form factor, host electrical interface and power budget", "Interoperability, environmental limits and qualification requirements"], zh: ["光源/接收架构与工作波长", "目标速率、协议、链路距离与光纤类型", "连接器、外形尺寸、主机电气接口与功耗预算", "互通性、环境边界与验证要求"] },
+    image: "/products/visuals/optical-communication-module-direction.jpg", imageAlt: { en: "Optical transmitter and receiver subassemblies connected for an OEM link evaluation", zh: "用于 OEM 链路评估的光发射与接收子组件连接示意图" }, samples: []
+  },
+  {
     slug: "medical-beauty-light-engines", group: "module",
     name: { en: "Medical beauty light engines", zh: "医疗美容光学引擎" },
     eyebrow: { en: "OEM / ODM PLATFORM", zh: "OEM / ODM 平台" },

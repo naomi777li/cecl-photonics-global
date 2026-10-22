@@ -10,6 +10,8 @@ Chinese homepage: https://ceclphotonics.com/zh
 - AlGaInP red and yellow visible LED chip families
 - InGaN blue and green visible LED chip families
 - Infrared LED and VCSEL platforms
+- Optical sensor modules and sensing front ends for proximity, reflective, ToF, liquid-level and equipment-state detection
+- Optical communication modules and link subassemblies for embedded, short-reach fiber and visible-light OEM evaluation
 - LED arrays, COB engines, VCSEL modules and application-specific optical modules
 - Medical beauty and personal-care light-engine development for wearable, handheld and professional device concepts
 - OEM/ODM workflow covering requirement definition, architecture, prototype, validation planning, pilot build and production release
@@ -21,6 +23,8 @@ Specifications, performance, reports and compliance evidence must be reviewed ag
 ## Authoritative resources
 
 - Product catalogs and supplied source documents: https://ceclphotonics.com/#documents
+- Optical sensor modules: https://ceclphotonics.com/products/optical-sensor-modules
+- Optical communication modules: https://ceclphotonics.com/products/optical-communication-modules
 - Wavelength selection guide: https://ceclphotonics.com/insights/wavelength-selection-medical-beauty-device
 - Light-engine integration guide: https://ceclphotonics.com/insights/led-vcsel-light-engine-oem-odm
 - Buyer document checklist: https://ceclphotonics.com/insights/compliance-documents-phototherapy-device

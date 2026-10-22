@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ProductIndex } from "@/components/product-pages";
 
 export const metadata: Metadata = {
-  title: "LED, VCSEL & UV-C Chips, Optical Modules | CECL",
-  description: "Source LED, infrared, VCSEL and UV-C chips, or explore optical modules for robotics, automotive, UAV and marine OEM programs. Match a product family to your brief.",
+  title: "LED & VCSEL Chips, Optical Sensor and Communication Modules | CECL",
+  description: "Browse LED, infrared, VCSEL and UV-C chips, optical sensing front ends and communication link subassemblies for OEM programs. Match product families to your application brief.",
   alternates: { canonical: "/products", languages: { en: "/products", "zh-CN": "/zh/products", "x-default": "/products" } }
 };
 
