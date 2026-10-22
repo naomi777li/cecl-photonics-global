@@ -66,14 +66,18 @@ const productData = {
       ["AlGaInP visible emitters", "Red and yellow wavelength families for indicators, displays, sensing and light-based applications.", ["Die / packaged options", "Wavelength selection", "Binning discussion"]],
       ["InGaN visible emitters", "Blue and green wavelength families for indicators, specialty lighting and optical systems.", ["Application-matched package", "Thermal review", "Sample evaluation"]],
       ["Infrared LED", "Infrared emitters for sensing, illumination, machine vision and device integration.", ["Wavelength by project", "Radiant output review", "Package & optics"]],
-      ["VCSEL platform", "Vertical-cavity laser sources for proximity, time-of-flight, structured illumination and custom modules.", ["Emitter / array path", "Driver coordination", "Optical integration"]]
+      ["VCSEL platform", "Vertical-cavity laser sources for proximity, time-of-flight, structured illumination and custom modules.", ["Emitter / array path", "Driver coordination", "Optical integration"]],
+      ["UV-C LED chips & source modules", "UV-C semiconductor emitters and optical source modules for equipment OEM evaluation in air, surface and water-treatment applications.", ["Wavelength & output review", "Thermal / optical integration", "System efficacy validation"]]
     ],
     modules: [
       ["LED arrays & COB engines", "Multi-emitter layouts engineered around coverage, thermal path and assembly requirements.", ["Emitter mix", "Board architecture", "Thermal interface"]],
       ["VCSEL modules", "Integrated source, optics and drive coordination for compact sensing or illumination assemblies.", ["Beam requirement", "Safety review input", "Evaluation sample"]],
       ["Beauty light engines", "Custom light-source assemblies for wearable, handheld and professional beauty-device concepts.", ["Uniformity target", "Heat & comfort", "Form-factor fit"]],
       ["Custom optical modules", "Application-specific assemblies combining emitters, optics, electronics and mechanical interfaces.", ["DFM review", "Prototype build", "Production transfer"]],
-      ["Aviation & marine navigation sensing modules", "Project-defined optical subassemblies for auxiliary sensing and equipment integration—not certified flight, primary navigation or collision-avoidance equipment.", ["Emitter / receiver path", "Environmental inputs", "Qualification plan"]]
+      ["Aviation & marine navigation sensing modules", "Project-defined optical subassemblies for auxiliary sensing and equipment integration—not certified flight, primary navigation or collision-avoidance equipment.", ["Emitter / receiver path", "Environmental inputs", "Qualification plan"]],
+      ["Robotics optical ranging modules", "Optical emitter and module direction for AMRs, mobile robots, robot vacuums and machine-vision integration.", ["Sensing task & target", "Receiver / optics fit", "Calibration & validation"]],
+      ["Automotive IR illumination modules", "IR illumination components for in-cabin cameras and driver / occupant-monitoring programs.", ["Camera & wavelength", "Pulse / eye-safety review", "OEM qualification inputs"]],
+      ["UAV optical sensing modules", "Compact emitter subassemblies for drone inspection, payload sensing and platform-adjacent awareness.", ["Payload & power budget", "Optical interface", "Vibration / validation inputs"]]
     ]
   },
   zh: {
@@ -81,14 +85,18 @@ const productData = {
       ["AlGaInP 可见光芯片", "覆盖红光、黄光波段，面向指示、显示、传感及光应用。", ["芯片/封装选择", "波长选型", "分档讨论"]],
       ["InGaN 可见光芯片", "覆盖蓝光、绿光波段，面向指示、特种照明和光学系统。", ["应用匹配封装", "散热评审", "样品验证"]],
       ["红外 LED", "面向传感、补光、机器视觉和设备集成的红外发光器件。", ["按项目选择波长", "辐射功率评估", "封装与光学"]],
-      ["VCSEL 平台", "面向接近感应、ToF、结构光和定制模块的垂直腔面发射激光光源。", ["单管/阵列路径", "驱动协同", "光学集成"]]
+      ["VCSEL 平台", "面向接近感应、ToF、结构光和定制模块的垂直腔面发射激光光源。", ["单管/阵列路径", "驱动协同", "光学集成"]],
+      ["UV-C LED 芯片与光源模块", "面向空气、表面及水处理设备评估的 UV-C 半导体光源与光学模块方向。", ["波长与输出评审", "热与光学集成", "整机效果验证"]]
     ],
     modules: [
       ["LED 阵列与 COB 光引擎", "根据覆盖范围、散热路径和装配要求设计多光源布局。", ["光源组合", "电路板架构", "热界面设计"]],
       ["VCSEL 模块", "协调光源、光学与驱动，为紧凑型传感或照明组件提供集成方案。", ["光束需求", "安全评审输入", "评估样品"]],
       ["美容光学引擎", "面向穿戴式、手持式和专业美容设备的定制光源组件。", ["均匀性目标", "热管理与舒适度", "结构适配"]],
       ["定制光学模块", "根据应用组合发光器件、光学、电子与机械接口。", ["可制造性评审", "样机制作", "量产转移"]],
-      ["航空与海事导航感知模块", "面向辅助感测与设备集成的光电子组件开发方向，不宣称具备适航、主导航或避碰系统认证。", ["发射/接收方案", "环境条件输入", "认证路径评估"]]
+      ["航空与海事导航感知模块", "面向辅助感测与设备集成的光电子组件开发方向，不宣称具备适航、主导航或避碰系统认证。", ["发射/接收方案", "环境条件输入", "认证路径评估"]],
+      ["机器人光学测距模块", "面向 AMR、移动机器人、扫地机器人和机器视觉集成的光学发射器与模块方向。", ["感知任务与目标", "接收器 / 光学匹配", "标定与验证"]],
+      ["车载红外补光模块", "面向座舱摄像、驾驶员与乘员监测项目的红外照明器件方向。", ["摄像头与波段", "脉冲 / 眼安全评估", "车载验证输入"]],
+      ["无人机光学感知模块", "面向无人机巡检、载荷感知及平台近距感知的紧凑型发射子组件。", ["载荷与功耗预算", "光学接口", "振动与验证输入"]]
     ]
   }
 };
@@ -220,8 +228,9 @@ type ProductGridItem = [string, string, string[]];
 const productRoutes: Record<string, string> = {
   "AlGaInP visible emitters": "red-yellow-led-chips", "InGaN visible emitters": "blue-green-led-chips", "Infrared LED": "infrared-led-chips", "VCSEL platform": "vcsel-chips",
   "AlGaInP 可见光芯片": "red-yellow-led-chips", "InGaN 可见光芯片": "blue-green-led-chips", "红外 LED": "infrared-led-chips", "VCSEL 平台": "vcsel-chips",
-  "LED arrays & COB engines": "led-arrays-cob-engines", "VCSEL modules": "vcsel-modules", "Beauty light engines": "medical-beauty-light-engines", "Custom optical modules": "custom-optical-modules", "Aviation & marine navigation sensing modules": "aviation-marine-navigation-sensing-modules",
-  "LED 阵列与 COB 光引擎": "led-arrays-cob-engines", "VCSEL 模块": "vcsel-modules", "美容光学引擎": "medical-beauty-light-engines", "定制光学模块": "custom-optical-modules", "航空与海事导航感知模块": "aviation-marine-navigation-sensing-modules",
+  "LED arrays & COB engines": "led-arrays-cob-engines", "VCSEL modules": "vcsel-modules", "Beauty light engines": "medical-beauty-light-engines", "Custom optical modules": "custom-optical-modules", "Aviation & marine navigation sensing modules": "aviation-marine-navigation-sensing-modules", "Robotics optical ranging modules": "robotics-optical-ranging-modules", "Automotive IR illumination modules": "automotive-ir-illumination-modules", "UAV optical sensing modules": "uav-optical-sensing-modules",
+  "LED 阵列与 COB 光引擎": "led-arrays-cob-engines", "VCSEL 模块": "vcsel-modules", "美容光学引擎": "medical-beauty-light-engines", "定制光学模块": "custom-optical-modules", "航空与海事导航感知模块": "aviation-marine-navigation-sensing-modules", "机器人光学测距模块": "robotics-optical-ranging-modules", "车载红外补光模块": "automotive-ir-illumination-modules", "无人机光学感知模块": "uav-optical-sensing-modules",
+  "UV-C LED chips & source modules": "uvc-led-chips-and-source-modules", "UV-C LED 芯片与光源模块": "uvc-led-chips-and-source-modules",
 };
 
 function ProductGrid({ items, inquire, lang, basePath }: { items: (string | string[])[][]; inquire: string; lang: Lang; basePath: string }) {
@@ -240,7 +249,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const d = documentCenter[lang];
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const sitePath = (path: string) => `${basePath}${path}`;
-  const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Medical beauty OEM / ODM", "Aerospace / maritime sensing", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "医疗美容 OEM / ODM", "航空 / 海洋传感", "渠道合作"];
+  const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Robotics / AMR sensing", "Automotive IR / in-cabin sensing", "UAV / drone sensing", "UV-C LED / germicidal equipment", "Medical beauty OEM / ODM", "Aerospace / maritime sensing", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "机器人 / AMR 感知", "车载红外 / 座舱感知", "无人机感知", "UV-C LED / 杀菌设备", "医疗美容 OEM / ODM", "航空 / 海洋传感", "渠道合作"];
 
   const publicSite = siteOrigin;
   const homeUrl = lang === "en" ? `${publicSite}/` : `${publicSite}/zh`;

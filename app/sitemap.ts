@@ -8,8 +8,8 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const origin = siteOrigin;
-  const lastModified = new Date("2026-09-29");
-  const homeLastModified = new Date("2026-10-18");
+  const lastModified = new Date("2026-10-21");
+  const homeLastModified = new Date("2026-10-21");
   const localized = (path: string) => ({
     en: `${origin}${path}`,
     "zh-CN": `${origin}/zh${path === "/" ? "" : path}`,
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}/privacy`, lastModified, changeFrequency: "yearly", priority: .3, alternates: { languages: localized("/privacy") } },
     { url: `${origin}/zh/privacy`, lastModified, changeFrequency: "yearly", priority: .3, alternates: { languages: localized("/privacy") } },
     ...productFamilies.flatMap(({ slug }) => {
-      const productLastModified = slug === "vcsel-chips" ? homeLastModified : lastModified;
+      const productLastModified = ["vcsel-chips", "robotics-optical-ranging-modules", "automotive-ir-illumination-modules", "uav-optical-sensing-modules", "uvc-led-chips-and-source-modules"].includes(slug) ? homeLastModified : lastModified;
       return [
       { url: `${origin}/products/${slug}`, lastModified: productLastModified, changeFrequency: "monthly" as const, priority: .88, alternates: { languages: localized(`/products/${slug}`) } },
       { url: `${origin}/zh/products/${slug}`, lastModified: productLastModified, changeFrequency: "monthly" as const, priority: .82, alternates: { languages: localized(`/products/${slug}`) } },

@@ -164,7 +164,43 @@ export const productFamilies: ProductFamily[] = [
     summary: { en: "Project-defined optical emitter and sensing-module development for auxiliary proximity awareness, equipment monitoring, vessel approach/berthing and navigation-sensor OEM evaluation. These are photonic subassemblies—not certified avionics, primary navigation or collision-avoidance systems.", zh: "面向辅助接近感知、设备监测、水面船舶进近/靠泊及导航传感 OEM 评估的光源与传感模块开发方向。产品是光电子组件，不是已认证的航空电子、主导航或避碰系统。" },
     applications: { en: ["Aircraft and aerospace proximity or obstacle-sensing evaluation", "Landing-area or terrain-sensing OEM studies", "Surface-vessel approach and berthing assistance", "Above-water situational-awareness sensor modules"], zh: ["航空器与航天器近距感知或避障评估", "着陆区域或地形感知 OEM 方案评审", "水面船舶进近与靠泊辅助", "水面环境感知传感模块"] },
     reviewItems: { en: ["Platform, operational phase and sensing task", "Range, field of view, target reflectance and environment", "Emitter wavelength, pulse/drive mode and receiver architecture", "Optical window, thermal, vibration, ingress and qualification needs"], zh: ["平台、运行阶段与感知任务", "量程、视场、目标反射率与环境", "发射波长、脉冲/驱动模式及接收架构", "光学窗口、热、振动、防护与验证需求"] },
-    image: "/products/visuals/aerospace-marine-sensing-concept.png", imageAlt: { en: "Illustrative concept of an optical sensing module in a marine bridge setting; not a deployed or certified system", zh: "海事驾驶台环境中的光学传感模块概念示意图；非已部署或认证系统" }, samples: []
+    image: "/products/visuals/aerospace-marine-optical-module.jpg", imageAlt: { en: "Optical sensing module direction for aerospace and marine equipment integration", zh: "面向航空与海事设备集成的光学传感模块产品方向" }, samples: []
+  },
+  {
+    slug: "robotics-optical-ranging-modules", group: "module",
+    name: { en: "Robotics optical ranging & obstacle-sensing modules", zh: "机器人光学测距与避障感知模块" },
+    eyebrow: { en: "ROBOTICS & AUTONOMOUS EQUIPMENT", zh: "机器人与自主设备" },
+    summary: { en: "Emitter and optical-module development for AMRs, service robots and machine-vision platforms. A complete sensing system requires a matched receiver, processing, calibration and platform validation.", zh: "面向 AMR、服务机器人和机器视觉平台的发射器与光学模块开发方向。完整感知系统还需匹配接收器、处理、标定及平台验证。" },
+    applications: { en: ["AMR and mobile-robot proximity sensing", "Robot-vacuum obstacle-sensing emitters", "Machine-vision illumination"], zh: ["AMR 与移动机器人近距感知", "扫地机器人避障发射器件", "机器视觉照明"] },
+    reviewItems: { en: ["Sensing principle and target materials", "Wavelength, output and drive waveform", "Receiver, optics and field of view", "Ambient light, calibration and validation criteria"], zh: ["感知原理与目标材质", "波长、输出与驱动波形", "接收器、光学与视场", "环境光、标定及验证标准"] },
+    image: "/products/visuals/robotics-optical-ranging-module.jpg", imageAlt: { en: "Optical ranging emitter module integrated into a mobile robot platform", zh: "集成于移动机器人平台的光学测距发射模块" }, samples: [], relatedInsights: ["vcsel-robot-vacuum-obstacle-sensing"]
+  },
+  {
+    slug: "automotive-ir-illumination-modules", group: "module",
+    name: { en: "Automotive IR illumination modules", zh: "车载红外补光模块" },
+    eyebrow: { en: "IN-CABIN SENSING & DRIVER MONITORING", zh: "座舱感知与驾驶员监测" },
+    summary: { en: "IR emitter and illumination-module development for in-cabin camera, occupant-monitoring and driver-monitoring programs. Vehicle-level performance and qualification depend on the camera, optics, installation and OEM validation plan.", zh: "面向座舱摄像、乘员监测和驾驶员监测项目的红外发射器与补光模块开发方向。整车表现与验证取决于摄像头、光学、安装及 OEM 验证计划。" },
+    applications: { en: ["Driver and occupant monitoring evaluation", "In-cabin camera illumination", "Automotive optical-sensing integration"], zh: ["驾驶员与乘员监测评估", "座舱摄像补光", "车载光学传感集成"] },
+    reviewItems: { en: ["Camera sensor and wavelength band", "Illumination geometry and eye-safety assessment", "Pulse, drive and thermal conditions", "Automotive validation and change-control requirements"], zh: ["摄像传感器与波段", "照明几何与眼安全评估", "脉冲、驱动与热条件", "车载验证及变更控制要求"] },
+    image: "/products/visuals/automotive-ir-illumination-module.jpg", imageAlt: { en: "In-cabin infrared illumination module positioned for automotive camera sensing", zh: "用于汽车摄像感知的座舱红外补光模块" }, samples: []
+  },
+  {
+    slug: "uav-optical-sensing-modules", group: "module",
+    name: { en: "UAV optical sensing emitter modules", zh: "无人机光学感知发射模块" },
+    eyebrow: { en: "UAV & INDUSTRIAL DRONE OEM", zh: "无人机与工业巡检 OEM" },
+    summary: { en: "Project-defined optical emitters and subassemblies for UAV proximity awareness, inspection and payload integration. These components are not a complete flight, navigation or collision-avoidance system.", zh: "面向无人机近距感知、巡检和载荷集成的项目定制光学发射器与子组件方向。本产品不等同于完整飞行、导航或避碰系统。" },
+    applications: { en: ["UAV payload sensing evaluation", "Industrial inspection illumination", "Platform-adjacent proximity awareness"], zh: ["无人机载荷感知评估", "工业巡检照明", "平台近距感知"] },
+    reviewItems: { en: ["Platform, payload and sensing task", "Mass, volume and power budget", "Emitter, receiver and optical-window interfaces", "Vibration, thermal and flight-program validation inputs"], zh: ["平台、载荷与感知任务", "重量、空间与功耗预算", "发射器、接收端与光学窗口接口", "振动、热条件及飞行项目验证输入"] },
+    image: "/products/visuals/uav-optical-sensing-module.jpg", imageAlt: { en: "Compact optical sensing module on an industrial UAV inspection platform", zh: "工业巡检无人机平台上的紧凑型光学感知模块" }, samples: []
+  },
+  {
+    slug: "uvc-led-chips-and-source-modules", group: "semiconductor",
+    name: { en: "UV-C LED chips & germicidal source modules", zh: "UV-C LED 芯片与杀菌光源模块" },
+    eyebrow: { en: "ULTRAVIOLET-C SEMICONDUCTORS", zh: "深紫外半导体光源" },
+    summary: { en: "UV-C emitter and source-module development for equipment OEM evaluation, including air, surface and water-treatment device concepts. Wavelength, optical output, thermal design, exposure conditions and efficacy must be verified for each complete system.", zh: "面向设备 OEM 评估的 UV-C 发光芯片与光源模块开发方向，可讨论空气、表面及水处理设备应用。波长、光输出、热设计、照射条件和效果均须针对完整系统验证。" },
+    applications: { en: ["Air-treatment equipment", "Enclosed surface-treatment devices", "Water-treatment equipment development"], zh: ["空气处理设备", "封闭式表面处理设备", "水处理设备开发"] },
+    reviewItems: { en: ["Target wavelength and device architecture", "Optical output and exposure geometry", "Thermal path, driver and operating cycle", "Interlocks, shielding, biological-efficacy testing and destination-market requirements"], zh: ["目标波长与设备架构", "光输出与照射几何", "散热路径、驱动及运行周期", "联锁、防护、生物效果测试及目标市场要求"] },
+    image: "/products/visuals/uvc-led-chip-germicidal-source.jpg", imageAlt: { en: "UV-C LED chip and optical source module for germicidal equipment development", zh: "面向杀菌设备开发的 UV-C LED 芯片与光源模块" }, samples: []
   }
 ];
 
