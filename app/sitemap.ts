@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "x-default": `${origin}${path}`,
   });
   return [
-    { url: `${origin}/`, lastModified: homeLastModified, changeFrequency: "monthly", priority: 1, alternates: { languages: localized("/") } },
+    { url: origin, lastModified: homeLastModified, changeFrequency: "monthly", priority: 1, alternates: { languages: localized("") } },
     { url: `${origin}/zh`, lastModified: homeLastModified, changeFrequency: "monthly", priority: .9, alternates: { languages: localized("/") } },
     { url: `${origin}/contact`, lastModified: homeLastModified, changeFrequency: "yearly", priority: .8, alternates: { languages: { en: `${origin}/contact`, "zh-CN": `${origin}/zh/contact`, "x-default": `${origin}/contact` } } },
     { url: `${origin}/zh/contact`, lastModified: homeLastModified, changeFrequency: "yearly", priority: .75, alternates: { languages: { en: `${origin}/contact`, "zh-CN": `${origin}/zh/contact`, "x-default": `${origin}/contact` } } },
