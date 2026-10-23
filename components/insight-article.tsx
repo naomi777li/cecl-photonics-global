@@ -31,7 +31,7 @@ export function InsightArticle({ insight, lang }: { insight: Insight; lang: Insi
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: isZh ? "首页" : "Home", item: `${publicSite}${base || ""}/` },
+          { "@type": "ListItem", position: 1, name: isZh ? "首页" : "Home", item: `${publicSite}${base || ""}` },
           { "@type": "ListItem", position: 2, name: isZh ? "行业知识" : "Insights", item: `${publicSite}${base || ""}/#insights` },
           { "@type": "ListItem", position: 3, name: insight.title[lang], item: articleUrl }
         ]

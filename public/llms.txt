@@ -2,7 +2,7 @@
 
 > Official bilingual B2B website for photonic semiconductor components, optical modules, custom light engines and medical beauty OEM/ODM project development.
 
-Canonical website: https://ceclphotonics.com/
+Canonical website: https://ceclphotonics.com
 Chinese homepage: https://ceclphotonics.com/zh
 
 ## Core capabilities

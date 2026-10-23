@@ -252,13 +252,13 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Robotics / AMR sensing", "Automotive IR / in-cabin sensing", "UAV / drone sensing", "UV-C LED / germicidal equipment", "Medical beauty OEM / ODM", "Aerospace / maritime sensing", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "机器人 / AMR 感知", "车载红外 / 座舱感知", "无人机感知", "UV-C LED / 杀菌设备", "医疗美容 OEM / ODM", "航空 / 海洋传感", "渠道合作"];
 
   const publicSite = siteOrigin;
-  const homeUrl = lang === "en" ? `${publicSite}/` : `${publicSite}/zh`;
+  const homeUrl = lang === "en" ? publicSite : `${publicSite}/zh`;
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": `${publicSite}/#organization`, name: lang === "en" ? "CECL Photonics" : "中能芯光", url: `${publicSite}/`, email: "sales@ceclphotonics.com", contactPoint: [{ "@type": "ContactPoint", name: lang === "en" ? "Li Sicheng" : "李思澄", telephone: "+86-155-9590-3230", email: "sales@ceclphotonics.com", contactType: "sales", availableLanguage: ["English", "Chinese"] }] },
-      { "@type": "WebSite", "@id": `${publicSite}/#website`, url: `${publicSite}/`, name: "CECL Photonics", inLanguage: ["en", "zh-CN"], publisher: { "@id": `${publicSite}/#organization` } },
-      { "@type": "WebPage", "@id": `${homeUrl}#webpage`, url: homeUrl, name: lang === "en" ? "CECL Photonics | Photonic Semiconductors & Medical Beauty OEM/ODM" : "中能芯光｜光电芯片、光学引擎与医疗美容 OEM/ODM", isPartOf: { "@id": `${publicSite}/#website` }, about: { "@id": `${publicSite}/#organization` }, inLanguage: lang === "en" ? "en" : "zh-CN" },
+      { "@type": "Organization", "@id": `${publicSite}#organization`, name: lang === "en" ? "CECL Photonics" : "中能芯光", url: publicSite, email: "sales@ceclphotonics.com", contactPoint: [{ "@type": "ContactPoint", name: lang === "en" ? "Li Sicheng" : "李思澄", telephone: "+86-155-9590-3230", email: "sales@ceclphotonics.com", contactType: "sales", availableLanguage: ["English", "Chinese"] }] },
+      { "@type": "WebSite", "@id": `${publicSite}#website`, url: publicSite, name: "CECL Photonics", inLanguage: ["en", "zh-CN"], publisher: { "@id": `${publicSite}#organization` } },
+      { "@type": "WebPage", "@id": `${homeUrl}#webpage`, url: homeUrl, name: lang === "en" ? "CECL Photonics | Photonic Semiconductors & Medical Beauty OEM/ODM" : "中能芯光｜光电芯片、光学引擎与医疗美容 OEM/ODM", isPartOf: { "@id": `${publicSite}#website` }, about: { "@id": `${publicSite}#organization` }, inLanguage: lang === "en" ? "en" : "zh-CN" },
       { "@type": "FAQPage", mainEntity: faqs[lang].map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) }
     ]
   };

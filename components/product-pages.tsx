@@ -118,7 +118,7 @@ export function ProductDetail({ product, lang }: { product: ProductFamily; lang:
   const inquiryOptions = [zh ? "选择产品" : "Select product", product.name[lang]];
   const jsonLd = { "@context": "https://schema.org", "@graph": [
     { "@type": "BreadcrumbList", itemListElement: [
-      { "@type": "ListItem", position: 1, name: zh ? "首页" : "Home", item: `${siteOrigin}${prefix || "/"}` },
+      { "@type": "ListItem", position: 1, name: zh ? "首页" : "Home", item: `${siteOrigin}${prefix}` },
       { "@type": "ListItem", position: 2, name: zh ? "产品中心" : "Products", item: `${siteOrigin}${prefix}/products` },
       { "@type": "ListItem", position: 3, name: product.name[lang], item: url }
     ] }

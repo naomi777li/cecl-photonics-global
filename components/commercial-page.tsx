@@ -31,7 +31,7 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
         "@id": `${url}#service`,
         name: page.h1[lang],
         description: page.description[lang],
-        provider: { "@type": "Organization", "@id": `${siteOrigin}/#organization`, name: isZh ? "中能芯光" : "CECL Photonics", url: siteOrigin },
+        provider: { "@type": "Organization", "@id": `${siteOrigin}#organization`, name: isZh ? "中能芯光" : "CECL Photonics", url: siteOrigin },
         areaServed: "Worldwide",
         serviceType: page.primaryKeyword,
         audience: personas.map((persona) => ({ "@type": "Audience", audienceType: persona!.role[lang] })),
@@ -40,7 +40,7 @@ export function CommercialPageView({ page, lang }: { page: CommercialPage; lang:
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: isZh ? "首页" : "Home", item: `${siteOrigin}${isZh ? "/zh" : ""}/` },
+          { "@type": "ListItem", position: 1, name: isZh ? "首页" : "Home", item: `${siteOrigin}${isZh ? "/zh" : ""}` },
           { "@type": "ListItem", position: 2, name: isZh ? "解决方案" : "Solutions", item: url },
           { "@type": "ListItem", position: 3, name: page.primaryKeyword, item: url },
         ],
