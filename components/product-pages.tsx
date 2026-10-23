@@ -95,7 +95,42 @@ export function ProductIndex({ lang }: { lang: ProductLang }) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const prefix = zh ? "/zh" : "";
   const groups = ["semiconductor", "module"] as const;
+  const indexUrl = `${siteOrigin}${prefix}/products`;
+  const productIndexJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${indexUrl}#webpage`,
+        url: indexUrl,
+        name: zh ? "中能芯光产品中心" : "CECL Photonics product center",
+        description: zh ? "浏览中能芯光 LED 与 VCSEL 芯片、光学传感器及光通信模块产品系列。" : "Browse CECL Photonics LED and VCSEL chips, optical sensor modules, and optical communication module families.",
+        inLanguage: zh ? "zh-CN" : "en",
+        mainEntity: { "@id": `${indexUrl}#product-families` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: zh ? "首页" : "Home", item: `${siteOrigin}${prefix}` },
+          { "@type": "ListItem", position: 2, name: zh ? "产品中心" : "Products", item: indexUrl },
+        ],
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${indexUrl}#product-families`,
+        name: zh ? "中能芯光产品系列" : "CECL Photonics product families",
+        numberOfItems: productFamilies.length,
+        itemListElement: productFamilies.map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: product.name[lang],
+          url: `${siteOrigin}${prefix}/products/${product.slug}`,
+        })),
+      },
+    ],
+  };
   return <main className="product-hub">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productIndexJsonLd) }} />
     <Header lang={lang} alternate={`${zh ? "" : "/zh"}/products`} />
     <section className="product-hub-hero"><p className="eyebrow">{zh ? "产品中心" : "PRODUCT PLATFORM"}</p><h1>{zh ? "从发光芯片到应用光学引擎。" : "From emitter die to application-ready light engines."}</h1><p>{zh ? "按采购任务浏览产品。公开参数来自现有产品目录；定制模块参数需在项目评审后确认。" : "Browse by sourcing task. Published figures come from the supplied catalogs; custom-module parameters are confirmed through project review."}</p></section>
     <section className="sourcing-paths" aria-labelledby="sourcing-paths-title"><div className="section-heading"><p className="eyebrow">{zh ? "按采购形态开始" : "CHOOSE YOUR SOURCING SCOPE"}</p><h2 id="sourcing-paths-title">{zh ? "你需要芯片，还是可集成的光源方案？" : "Source the emitter—or scope an integration-ready light engine."}</h2><p>{zh ? "两条路径对应不同的工程输入。选择最接近当前项目阶段的一项，我们会据此确认目录型号或项目评审范围。" : "The two routes need different engineering inputs. Choose the one closest to your project stage to focus the catalog shortlist or project review."}</p></div><div className="sourcing-path-grid"><article><span className="eyebrow">01 · {zh ? "器件采购" : "COMPONENT SOURCING"}</span><h3>{zh ? "LED / VCSEL 芯片" : "LED & VCSEL chips"}</h3><p>{zh ? "适合已有封装、驱动或模组产线的采购与研发团队。先从目录系列匹配，再核对具体型号数据表。" : "For sourcing and engineering teams with an established packaging, driver or module workflow. Shortlist a catalog family, then verify the exact model datasheet."}</p><ul><li>{zh ? "告知目标波长 / 颜色与应用" : "Target wavelength / color and application"}</li><li>{zh ? "提供驱动条件、封装 / 尺寸及目标数量" : "Drive conditions, package / dimensions and target volume"}</li></ul><a href="#semiconductors">{zh ? "浏览芯片产品" : "Browse chip families"}<ArrowUpRight size={16}/></a></article><article><span className="eyebrow">02 · {zh ? "集成方案" : "INTEGRATION SCOPE"}</span><h3>{zh ? "LED 模块与光学引擎" : "LED modules & light engines"}</h3><p>{zh ? "适合正在定义光源子组件的 OEM 团队。把目标应用和机械、电气、散热及验证边界交给工程评审。" : "For OEM teams defining a light-source subassembly. Scope the target application together with mechanical, electrical, thermal and validation constraints."}</p><ul><li>{zh ? "应用 / 工作距离与光学目标" : "Application, working distance and optical target"}</li><li>{zh ? "安装空间、供电 / 控制及散热限制" : "Envelope, power / control and thermal limits"}</li></ul><a href="#modules">{zh ? "浏览模块产品" : "Browse module programs"}<ArrowUpRight size={16}/></a></article></div></section>
