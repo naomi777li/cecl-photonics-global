@@ -15,6 +15,7 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  expireTime: 600,
   ...(isGitHubPages ? {
     output: "export" as const,
     ...(repositoryBasePath ? { basePath: repositoryBasePath, assetPrefix: repositoryBasePath } : {}),
