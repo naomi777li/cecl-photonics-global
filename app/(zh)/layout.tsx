@@ -3,6 +3,8 @@ import { Analytics } from "@/components/analytics";
 import { siteOrigin } from "@/lib/site-url";
 import "../globals.css";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: { default: "中能芯光｜光电半导体、光学引擎与 OEM/ODM", template: "%s" },

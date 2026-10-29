@@ -3,6 +3,8 @@ import { Analytics } from "@/components/analytics";
 import { siteOrigin } from "@/lib/site-url";
 import "../globals.css";
 
+export const revalidate = 300;
+
 const publicBase = "";
 
 export const metadata: Metadata = {
