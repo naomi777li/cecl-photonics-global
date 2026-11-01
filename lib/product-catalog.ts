@@ -12,7 +12,7 @@ export type ProductSample = {
 
 export type ProductFamily = {
   slug: string;
-  group: "semiconductor" | "module";
+  group: "semiconductor" | "module" | "packaging";
   name: Localized;
   eyebrow: Localized;
   summary: Localized;
@@ -116,6 +116,26 @@ export const productFamilies: ProductFamily[] = [
     },
     image: "/products/visuals/multi-junction-vcsel-chip-concept.jpg",
     imageAlt: { en: "Concept visualization of a custom multi-junction VCSEL chip program", zh: "多结 VCSEL 芯片定制项目的产品概念示意图" },
+    samples: []
+  },
+  {
+    slug: "led-vcsel-chip-packaging", group: "packaging",
+    name: { en: "LED & VCSEL chip packaging", zh: "LED 与 VCSEL 芯片封装" },
+    eyebrow: { en: "OPTOELECTRONIC PACKAGING PROGRAMS", zh: "光电芯片封装项目" },
+    summary: {
+      en: "Packaging and assembly development for LED and VCSEL die programs, scoped around the optical interface, electrical interconnect, thermal path and device integration requirements.",
+      zh: "面向 LED 与 VCSEL 裸芯片项目的封装与组装开发，根据光学界面、电气互连、散热路径和设备集成要求开展评审。"
+    },
+    applications: {
+      en: ["LED and infrared emitter packages", "VCSEL chip and array packaging", "Optical sensing and illumination assemblies", "OEM package redesign or transfer programs"],
+      zh: ["LED 与红外发光器件封装", "VCSEL 芯片及阵列封装", "光学传感与照明组件", "OEM 封装改型或项目导入"]
+    },
+    reviewItems: {
+      en: ["Die type, source data and ownership / supply route", "Package outline, mounting and electrical interface", "Optical window, beam path and alignment needs", "Thermal boundary and operating conditions", "Sample stage, annual demand estimate and validation criteria"],
+      zh: ["芯片类型、现有资料及供料方式", "封装外形、安装方式与电气接口", "光学窗口、光路与对准需求", "散热边界与工作条件", "样品阶段、预计需求及验证标准"]
+    },
+    image: "/products/visuals/optoelectronic-chip-packaging-concept.jpg",
+    imageAlt: { en: "Concept visualization of optoelectronic chip packages and assembly architectures", zh: "光电芯片封装和组装结构概念示意图" },
     samples: []
   },
   {

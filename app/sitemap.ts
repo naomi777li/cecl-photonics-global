@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-10-21");
   const homeLastModified = new Date("2026-11-01");
   const productHubLastModified = new Date("2026-11-01");
-  const multiJunctionProductLastModified = new Date("2026-11-01");
+  const recentProductLastModified = new Date("2026-11-01");
   const opticalModuleLastModified = new Date("2026-10-23");
   const localized = (path: string) => ({
     en: `${origin}${path}`,
@@ -28,8 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}/privacy`, lastModified, changeFrequency: "yearly", priority: .3, alternates: { languages: localized("/privacy") } },
     { url: `${origin}/zh/privacy`, lastModified, changeFrequency: "yearly", priority: .3, alternates: { languages: localized("/privacy") } },
     ...productFamilies.flatMap(({ slug }) => {
-      const productLastModified = slug === "multi-junction-vcsel-chips"
-        ? multiJunctionProductLastModified
+      const productLastModified = ["multi-junction-vcsel-chips", "led-vcsel-chip-packaging"].includes(slug)
+        ? recentProductLastModified
         : ["optical-communication-modules", "optical-sensor-modules"].includes(slug)
         ? opticalModuleLastModified
         : ["vcsel-chips", "robotics-optical-ranging-modules", "automotive-ir-illumination-modules", "uav-optical-sensing-modules", "uvc-led-chips-and-source-modules"].includes(slug)

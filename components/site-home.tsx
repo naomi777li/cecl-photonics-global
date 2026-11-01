@@ -20,7 +20,7 @@ const copy = {
     componentBuyer: "FOR COMPONENT BUYERS", semiTitle: "Semiconductors & optical modules", semiBody: "Build your bill of materials around wavelength, optical power, package, thermal design and application constraints.", semiLink: "Browse the product platform",
     deviceBrands: "FOR DEVICE BRANDS", beautyTitle: "Medical beauty OEM / ODM", beautyBody: "Develop light-based beauty and personal-care devices with optical, thermal, industrialization and manufacturing support.", beautyLink: "Plan an OEM/ODM project",
     platformKicker: "PRODUCT PLATFORM", platformTitle: "Specify the light source, then scale the integration.", platformBody: "The catalog is organized by buyer decision—not internal technology labels—so engineering teams can move from emitter selection to a qualified module request.",
-    semiconductors: "Semiconductors", modules: "Modules & light engines", inquire: "Request specification",
+    semiconductors: "Semiconductors", modules: "Modules & light engines", packaging: "Chip packaging & assembly", inquire: "Request specification",
     appsKicker: "APPLICATIONS", appsTitle: "One photonics core, multiple market paths.", appsBody: "The site keeps chips and medical beauty together because the value chain is continuous. Each application has its own technical entry point, evidence requirements and commercial workflow.",
     beautyKicker: "MEDICAL BEAUTY & PERSONAL CARE", beautyMain: "Turn a wavelength brief into a manufacturable device program.", beautyDesc: "A separate device pathway lets brand owners discuss form factor, optical uniformity, heat, controls, production targets and market documentation without navigating a component catalog.",
     programs: "Example program directions", programNote: "Product classification, claims and required approvals depend on the final configuration and destination market.",
@@ -45,7 +45,7 @@ const copy = {
     componentBuyer: "面向器件采购与研发", semiTitle: "半导体与光学模块", semiBody: "围绕波长、光功率、封装、散热设计和应用约束，建立可评估的物料方案。", semiLink: "查看产品平台",
     deviceBrands: "面向设备品牌与渠道商", beautyTitle: "医疗美容 OEM / ODM", beautyBody: "提供光学、热设计、工业化和制造支持，开发光疗美容与个护设备。", beautyLink: "规划 OEM/ODM 项目",
     platformKicker: "产品平台", platformTitle: "先选光源，再推进系统集成。", platformBody: "目录按照采购决策逻辑组织，让工程团队能够从发光器件选择，顺畅进入模块评估和定制需求。",
-    semiconductors: "半导体产品", modules: "模块与光学引擎", inquire: "索取规格资料",
+    semiconductors: "半导体产品", modules: "模块与光学引擎", packaging: "芯片封装与组装", inquire: "索取规格资料",
     appsKicker: "应用领域", appsTitle: "一套光电核心，多条市场路径。", appsBody: "芯片与医疗美容可以放在同一个外贸站，因为两者属于连续价值链；不同应用分别设置技术入口、验证资料和商务流程。",
     beautyKicker: "医疗美容与个人护理", beautyMain: "把波长需求转化为可量产的设备项目。", beautyDesc: "设备客户可直接讨论外观形态、光照均匀性、散热、控制方式、产量目标和目标市场资料，不必先研究芯片目录。",
     programs: "项目方向示例", programNote: "产品分类、宣传功效和所需认证取决于最终配置及销售目的地。",
@@ -79,6 +79,9 @@ const productData = {
       ["Robotics optical ranging modules", "Optical emitter and module direction for AMRs, mobile robots, robot vacuums and machine-vision integration.", ["Sensing task & target", "Receiver / optics fit", "Calibration & validation"]],
       ["Automotive IR illumination modules", "IR illumination components for in-cabin cameras and driver / occupant-monitoring programs.", ["Camera & wavelength", "Pulse / eye-safety review", "OEM qualification inputs"]],
       ["UAV optical sensing modules", "Compact emitter subassemblies for drone inspection, payload sensing and platform-adjacent awareness.", ["Payload & power budget", "Optical interface", "Vibration / validation inputs"]]
+    ],
+    packaging: [
+      ["LED & VCSEL chip packaging", "Optoelectronic packaging and assembly development from bare die to an integration-ready device, scoped to the optical, electrical and thermal interfaces.", ["Die & package review", "Optical / electrical interface", "Thermal & validation inputs"]]
     ]
   },
   zh: {
@@ -99,6 +102,9 @@ const productData = {
       ["机器人光学测距模块", "面向 AMR、移动机器人、扫地机器人和机器视觉集成的光学发射器与模块方向。", ["感知任务与目标", "接收器 / 光学匹配", "标定与验证"]],
       ["车载红外补光模块", "面向座舱摄像、驾驶员与乘员监测项目的红外照明器件方向。", ["摄像头与波段", "脉冲 / 眼安全评估", "车载验证输入"]],
       ["无人机光学感知模块", "面向无人机巡检、载荷感知及平台近距感知的紧凑型发射子组件。", ["载荷与功耗预算", "光学接口", "振动与验证输入"]]
+    ],
+    packaging: [
+      ["LED 与 VCSEL 芯片封装", "从裸芯片到可集成器件的光电封装与组装开发，围绕光学、电气和散热接口进行项目评审。", ["芯片与封装评审", "光学 / 电气接口", "散热与验证输入"]]
     ]
   }
 };
@@ -230,6 +236,7 @@ type ProductGridItem = [string, string, string[]];
 const productRoutes: Record<string, string> = {
   "AlGaInP visible emitters": "red-yellow-led-chips", "InGaN visible emitters": "blue-green-led-chips", "Infrared LED": "infrared-led-chips", "VCSEL platform": "vcsel-chips", "Multi-junction VCSEL chips": "multi-junction-vcsel-chips",
   "AlGaInP 可见光芯片": "red-yellow-led-chips", "InGaN 可见光芯片": "blue-green-led-chips", "红外 LED": "infrared-led-chips", "VCSEL 平台": "vcsel-chips", "多结 VCSEL 芯片": "multi-junction-vcsel-chips",
+  "LED & VCSEL chip packaging": "led-vcsel-chip-packaging", "LED 与 VCSEL 芯片封装": "led-vcsel-chip-packaging",
   "LED arrays & COB engines": "led-arrays-cob-engines", "VCSEL modules": "vcsel-modules", "Beauty light engines": "medical-beauty-light-engines", "Custom optical modules": "custom-optical-modules", "Aviation & marine navigation sensing modules": "aviation-marine-navigation-sensing-modules", "Robotics optical ranging modules": "robotics-optical-ranging-modules", "Automotive IR illumination modules": "automotive-ir-illumination-modules", "UAV optical sensing modules": "uav-optical-sensing-modules",
   "LED 阵列与 COB 光引擎": "led-arrays-cob-engines", "VCSEL 模块": "vcsel-modules", "美容光学引擎": "medical-beauty-light-engines", "定制光学模块": "custom-optical-modules", "航空与海事导航感知模块": "aviation-marine-navigation-sensing-modules", "机器人光学测距模块": "robotics-optical-ranging-modules", "车载红外补光模块": "automotive-ir-illumination-modules", "无人机光学感知模块": "uav-optical-sensing-modules",
   "UV-C LED chips & source modules": "uvc-led-chips-and-source-modules", "UV-C LED 芯片与光源模块": "uvc-led-chips-and-source-modules",
@@ -241,7 +248,7 @@ function ProductGrid({ items, inquire, lang, basePath }: { items: (string | stri
     const slug = productRoutes[item[0]];
     const family = slug ? productFamilies.find((product) => product.slug === slug) : undefined;
     const href = slug ? `${basePath}${lang === "zh" ? "/zh" : ""}/products/${slug}/` : "#contact";
-    return <article className="product-card" key={item[0]}>{family && <figure className="product-card-visual"><Image src={`${basePath}${family.image}`} alt={family.imageAlt[lang]} width={1200} height={800} loading="lazy"/><figcaption>{family.slug === "multi-junction-vcsel-chips" ? (lang === "zh" ? "产品概念示意 · 以工程评审与样品为准" : "Concept visualization · confirm architecture and sample by engineering review") : lang === "zh" ? "品类示意 · 以型号与样品为准" : "Category visualization · verify by model and sample"}</figcaption></figure>}<div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href={href} data-analytics-event="select_content" data-content-type="product_family" data-content-id={slug}>{inquire}<ArrowUpRight size={16}/></a></article>;
+    return <article className="product-card" key={item[0]}>{family && <figure className="product-card-visual"><Image src={`${basePath}${family.image}`} alt={family.imageAlt[lang]} width={1200} height={800} loading="lazy"/><figcaption>{family.slug === "multi-junction-vcsel-chips" ? (lang === "zh" ? "产品概念示意 · 以工程评审与样品为准" : "Concept visualization · confirm architecture and sample by engineering review") : family.slug === "led-vcsel-chip-packaging" ? (lang === "zh" ? "封装架构概念示意 · 实际方案按项目评审" : "Packaging concept visualization · final architecture scoped per program") : lang === "zh" ? "品类示意 · 以型号与样品为准" : "Category visualization · verify by model and sample"}</figcaption></figure>}<div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href={href} data-analytics-event="select_content" data-content-type="product_family" data-content-id={slug}>{inquire}<ArrowUpRight size={16}/></a></article>;
   })}</div>;
 }
 
@@ -251,7 +258,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
   const d = documentCenter[lang];
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const sitePath = (path: string) => `${basePath}${path}`;
-  const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "Optical module / light engine", "Robotics / AMR sensing", "Automotive IR / in-cabin sensing", "UAV / drone sensing", "UV-C LED / germicidal equipment", "Medical beauty OEM / ODM", "Aerospace / maritime sensing", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "光学模块 / 光引擎", "机器人 / AMR 感知", "车载红外 / 座舱感知", "无人机感知", "UV-C LED / 杀菌设备", "医疗美容 OEM / ODM", "航空 / 海洋传感", "渠道合作"];
+  const formOptions = lang === "en" ? ["Select project type", "Semiconductor / chip", "LED / VCSEL chip packaging", "Optical module / light engine", "Robotics / AMR sensing", "Automotive IR / in-cabin sensing", "UAV / drone sensing", "UV-C LED / germicidal equipment", "Medical beauty OEM / ODM", "Aerospace / maritime sensing", "Distribution partnership"] : ["请选择项目类型", "半导体 / 芯片", "LED / VCSEL 芯片封装", "光学模块 / 光引擎", "机器人 / AMR 感知", "车载红外 / 座舱感知", "无人机感知", "UV-C LED / 杀菌设备", "医疗美容 OEM / ODM", "航空 / 海洋传感", "渠道合作"];
 
   const publicSite = siteOrigin;
   const homeUrl = lang === "en" ? publicSite : `${publicSite}/zh`;
@@ -283,7 +290,7 @@ export function SiteHome({ lang }: { lang: Lang }) {
 
       <section className="section pathways-wrap"><div className="section-heading"><p className="eyebrow">B2B PATHWAYS</p><h2>{t.pathways}</h2><p>{t.pathIntro}</p></div><div className="pathways"><article className="path-card dark"><span className="index">01</span><p className="eyebrow">{t.componentBuyer}</p><h3>{t.semiTitle}</h3><p>{t.semiBody}</p><a href={sitePath(`${lang === "zh" ? "/zh" : ""}/solutions/led-chip-manufacturer`)} data-analytics-event="select_content" data-content-type="commercial_solution" data-content-id="led-chip-manufacturer">{t.semiLink}<ArrowUpRight size={18}/></a></article><article className="path-card light"><span className="index">02</span><p className="eyebrow">{t.deviceBrands}</p><h3>{t.beautyTitle}</h3><p>{t.beautyBody}</p><a href={sitePath(`${lang === "zh" ? "/zh" : ""}/solutions/medical-beauty-device-oem-odm`)} data-analytics-event="select_content" data-content-type="commercial_solution" data-content-id="medical-beauty-device-oem-odm">{t.beautyLink}<ArrowUpRight size={18}/></a></article></div></section>
 
-      <section className="section product-platform" id="products"><div className="section-heading split"><div><p className="eyebrow">{t.platformKicker}</p><h2>{t.platformTitle}</h2></div><div><p>{t.platformBody}</p><a className="product-hub-link" href={sitePath(`${lang === "zh" ? "/zh" : ""}/products`)}>{lang === "zh" ? "进入完整产品中心" : "Open the full product center"}<ArrowUpRight size={16}/></a></div></div><div className="catalog-group"><h3>{t.semiconductors}</h3><ProductGrid items={p.chips} inquire={t.inquire} lang={lang} basePath={basePath}/></div><div className="catalog-group"><h3>{t.modules}</h3><ProductGrid items={p.modules} inquire={t.inquire} lang={lang} basePath={basePath}/></div></section>
+      <section className="section product-platform" id="products"><div className="section-heading split"><div><p className="eyebrow">{t.platformKicker}</p><h2>{t.platformTitle}</h2></div><div><p>{t.platformBody}</p><a className="product-hub-link" href={sitePath(`${lang === "zh" ? "/zh" : ""}/products`)}>{lang === "zh" ? "进入完整产品中心" : "Open the full product center"}<ArrowUpRight size={16}/></a></div></div><div className="catalog-group"><h3>{t.semiconductors}</h3><ProductGrid items={p.chips} inquire={t.inquire} lang={lang} basePath={basePath}/></div><div className="catalog-group"><h3>{t.modules}</h3><ProductGrid items={p.modules} inquire={t.inquire} lang={lang} basePath={basePath}/></div><div className="catalog-group"><h3>{t.packaging}</h3><ProductGrid items={p.packaging} inquire={t.inquire} lang={lang} basePath={basePath}/></div></section>
 
       <section className="section applications" id="solutions"><div className="section-heading split"><div><p className="eyebrow">{t.appsKicker}</p><h2>{t.appsTitle}</h2></div><p>{t.appsBody}</p></div><div className="application-grid">{apps.map(({icon:Icon,en,zh},i) => { const x = lang === "en" ? en : zh; return <article key={x[0]}><span>0{i+1}</span><Icon size={25}/><h3>{x[0]}</h3><p>{x[1]}</p></article>})}</div></section>
 
