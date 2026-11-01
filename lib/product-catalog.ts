@@ -99,6 +99,26 @@ export const productFamilies: ProductFamily[] = [
     ], catalog: "/documents/catalogs/CECL-VCSEL-Chip-Catalog-2025Q2.pdf", catalogLabel: { en: "2025 Q2 VCSEL chip catalog", zh: "2025 Q2 VCSEL 激光芯片产品目录" }
   },
   {
+    slug: "multi-junction-vcsel-chips", group: "semiconductor",
+    name: { en: "Multi-junction VCSEL chips", zh: "多结 VCSEL 激光芯片" },
+    eyebrow: { en: "CUSTOM VCSEL CHIP PROGRAMS", zh: "定制 VCSEL 芯片项目" },
+    summary: {
+      en: "A custom VCSEL chip development path for OEM teams evaluating multi-junction device architectures. Junction design, wavelength, output, drive conditions, thermal limits and packaging are scoped against the application and confirmed by engineering review.",
+      zh: "面向评估多结器件结构的 OEM 项目提供 VCSEL 芯片定制开发入口。结结构、波长、输出、驱动条件、热边界与封装均结合应用需求定义，并由工程评审确认。"
+    },
+    applications: {
+      en: ["High-output IR source evaluation", "3D sensing and illumination programs", "Robotics, automotive and UAV OEM development", "Custom VCSEL chip and package programs"],
+      zh: ["高输出红外光源评估", "3D 感知与照明项目", "机器人、汽车与无人机 OEM 开发", "定制 VCSEL 芯片与封装项目"]
+    },
+    reviewItems: {
+      en: ["Target application and optical output objective", "Wavelength and junction-architecture requirements", "CW / pulsed drive, duty cycle and electrical limits", "Thermal path, die format and package interface", "Optical field, acceptance criteria and validation plan"],
+      zh: ["目标应用与光输出目标", "波长及结结构要求", "连续/脉冲驱动、占空比与电气边界", "散热路径、芯片形式与封装接口", "光场、验收标准与验证计划"]
+    },
+    image: "/products/visuals/multi-junction-vcsel-chip-concept.jpg",
+    imageAlt: { en: "Concept visualization of a custom multi-junction VCSEL chip program", zh: "多结 VCSEL 芯片定制项目的产品概念示意图" },
+    samples: []
+  },
+  {
     slug: "led-arrays-cob-engines", group: "module",
     name: { en: "LED arrays & COB light engines", zh: "LED 阵列与 COB 光引擎" },
     eyebrow: { en: "CUSTOM LIGHT ENGINES", zh: "定制光学引擎" },

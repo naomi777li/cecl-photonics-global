@@ -9,6 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params; const product = getProductFamily(slug); if (!product) return {};
   const title = slug === "vcsel-chips"
     ? "VCSEL 芯片选型｜808 / 850 / 940 nm 传感应用｜中能芯光"
+    : slug === "multi-junction-vcsel-chips"
+      ? "多结 VCSEL 芯片定制开发与 OEM｜中能芯光"
     : slug === "vcsel-modules"
       ? "定制 VCSEL 光学模块｜ToF、结构光与传感照明｜中能芯光"
     : slug === "led-arrays-cob-engines"
@@ -22,6 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       : `${product.name.zh}｜中能芯光`;
   const description = slug === "vcsel-chips"
     ? "查看用于接近感应、扫地机器人避障、液位及工业传感的目录 VCSEL 系列。提交波长、驱动条件、光束与封装需求，申请型号评审。"
+    : slug === "multi-junction-vcsel-chips"
+      ? "面向 OEM 感知与照明项目评估多结 VCSEL 芯片定制开发。提交波长、输出目标、驱动、散热及封装要求，进入工程评审。"
     : slug === "vcsel-modules"
       ? "面向 3D ToF 泛光照明、结构光投射与车内感知，按项目评审 VCSEL 光源、光学、驱动和设备接口。具体光学与电气参数在项目评审后确认。"
     : slug === "led-arrays-cob-engines"

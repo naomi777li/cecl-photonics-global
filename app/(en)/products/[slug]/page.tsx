@@ -9,6 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params; const product = getProductFamily(slug); if (!product) return {};
   const title = slug === "vcsel-chips"
     ? "VCSEL Chips for 808, 850 & 940 nm Sensing | CECL"
+    : slug === "multi-junction-vcsel-chips"
+      ? "Multi-Junction VCSEL Chips for OEM Programs | CECL Photonics"
     : slug === "vcsel-modules"
       ? "Custom VCSEL Modules for 3D Sensing | CECL Photonics"
     : slug === "led-arrays-cob-engines"
@@ -22,6 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       : `${product.name.en} | CECL Photonics`;
   const description = slug === "vcsel-chips"
     ? "Compare catalog-listed VCSEL chip families for proximity, robot-vacuum obstacle, liquid and industrial sensing. Share wavelength, drive conditions, beam and package needs for OEM review."
+    : slug === "multi-junction-vcsel-chips"
+      ? "Explore custom multi-junction VCSEL chip development for OEM sensing and illumination. Share wavelength, output target, drive, thermal and package requirements for engineering review."
     : slug === "vcsel-modules"
       ? "Scope project-defined VCSEL illuminators for 3D time-of-flight, structured-light projection and in-cabin sensing. Review field of illumination, optics, drive and integration needs with CECL Photonics."
     : slug === "led-arrays-cob-engines"

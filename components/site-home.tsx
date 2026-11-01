@@ -67,6 +67,7 @@ const productData = {
       ["InGaN visible emitters", "Blue and green wavelength families for indicators, specialty lighting and optical systems.", ["Application-matched package", "Thermal review", "Sample evaluation"]],
       ["Infrared LED", "Infrared emitters for sensing, illumination, machine vision and device integration.", ["Wavelength by project", "Radiant output review", "Package & optics"]],
       ["VCSEL platform", "Vertical-cavity laser sources for proximity, time-of-flight, structured illumination and custom modules.", ["Emitter / array path", "Driver coordination", "Optical integration"]],
+      ["Multi-junction VCSEL chips", "Custom chip-development programs for OEMs evaluating multi-junction VCSEL architectures.", ["Architecture review", "Output & drive targets", "Thermal / package inputs"]],
       ["UV-C LED chips & source modules", "UV-C semiconductor emitters and optical source modules for equipment OEM evaluation in air, surface and water-treatment applications.", ["Wavelength & output review", "Thermal / optical integration", "System efficacy validation"]]
     ],
     modules: [
@@ -86,6 +87,7 @@ const productData = {
       ["InGaN 可见光芯片", "覆盖蓝光、绿光波段，面向指示、特种照明和光学系统。", ["应用匹配封装", "散热评审", "样品验证"]],
       ["红外 LED", "面向传感、补光、机器视觉和设备集成的红外发光器件。", ["按项目选择波长", "辐射功率评估", "封装与光学"]],
       ["VCSEL 平台", "面向接近感应、ToF、结构光和定制模块的垂直腔面发射激光光源。", ["单管/阵列路径", "驱动协同", "光学集成"]],
+      ["多结 VCSEL 芯片", "面向评估多结 VCSEL 器件结构的 OEM 芯片定制开发项目。", ["器件结构评审", "输出与驱动目标", "散热与封装输入"]],
       ["UV-C LED 芯片与光源模块", "面向空气、表面及水处理设备评估的 UV-C 半导体光源与光学模块方向。", ["波长与输出评审", "热与光学集成", "整机效果验证"]]
     ],
     modules: [
@@ -226,8 +228,8 @@ const insights = {
 type ProductGridItem = [string, string, string[]];
 
 const productRoutes: Record<string, string> = {
-  "AlGaInP visible emitters": "red-yellow-led-chips", "InGaN visible emitters": "blue-green-led-chips", "Infrared LED": "infrared-led-chips", "VCSEL platform": "vcsel-chips",
-  "AlGaInP 可见光芯片": "red-yellow-led-chips", "InGaN 可见光芯片": "blue-green-led-chips", "红外 LED": "infrared-led-chips", "VCSEL 平台": "vcsel-chips",
+  "AlGaInP visible emitters": "red-yellow-led-chips", "InGaN visible emitters": "blue-green-led-chips", "Infrared LED": "infrared-led-chips", "VCSEL platform": "vcsel-chips", "Multi-junction VCSEL chips": "multi-junction-vcsel-chips",
+  "AlGaInP 可见光芯片": "red-yellow-led-chips", "InGaN 可见光芯片": "blue-green-led-chips", "红外 LED": "infrared-led-chips", "VCSEL 平台": "vcsel-chips", "多结 VCSEL 芯片": "multi-junction-vcsel-chips",
   "LED arrays & COB engines": "led-arrays-cob-engines", "VCSEL modules": "vcsel-modules", "Beauty light engines": "medical-beauty-light-engines", "Custom optical modules": "custom-optical-modules", "Aviation & marine navigation sensing modules": "aviation-marine-navigation-sensing-modules", "Robotics optical ranging modules": "robotics-optical-ranging-modules", "Automotive IR illumination modules": "automotive-ir-illumination-modules", "UAV optical sensing modules": "uav-optical-sensing-modules",
   "LED 阵列与 COB 光引擎": "led-arrays-cob-engines", "VCSEL 模块": "vcsel-modules", "美容光学引擎": "medical-beauty-light-engines", "定制光学模块": "custom-optical-modules", "航空与海事导航感知模块": "aviation-marine-navigation-sensing-modules", "机器人光学测距模块": "robotics-optical-ranging-modules", "车载红外补光模块": "automotive-ir-illumination-modules", "无人机光学感知模块": "uav-optical-sensing-modules",
   "UV-C LED chips & source modules": "uvc-led-chips-and-source-modules", "UV-C LED 芯片与光源模块": "uvc-led-chips-and-source-modules",
@@ -239,7 +241,7 @@ function ProductGrid({ items, inquire, lang, basePath }: { items: (string | stri
     const slug = productRoutes[item[0]];
     const family = slug ? productFamilies.find((product) => product.slug === slug) : undefined;
     const href = slug ? `${basePath}${lang === "zh" ? "/zh" : ""}/products/${slug}/` : "#contact";
-    return <article className="product-card" key={item[0]}>{family && <figure className="product-card-visual"><Image src={`${basePath}${family.image}`} alt={family.imageAlt[lang]} width={1200} height={800} loading="lazy"/><figcaption>{lang === "zh" ? "品类示意 · 以型号与样品为准" : "Category visualization · verify by model and sample"}</figcaption></figure>}<div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href={href} data-analytics-event="select_content" data-content-type="product_family" data-content-id={slug}>{inquire}<ArrowUpRight size={16}/></a></article>;
+    return <article className="product-card" key={item[0]}>{family && <figure className="product-card-visual"><Image src={`${basePath}${family.image}`} alt={family.imageAlt[lang]} width={1200} height={800} loading="lazy"/><figcaption>{family.slug === "multi-junction-vcsel-chips" ? (lang === "zh" ? "产品概念示意 · 以工程评审与样品为准" : "Concept visualization · confirm architecture and sample by engineering review") : lang === "zh" ? "品类示意 · 以型号与样品为准" : "Category visualization · verify by model and sample"}</figcaption></figure>}<div className="product-top"><span>0{i + 1}</span><Cpu size={20}/></div><h3>{item[0]}</h3><p>{item[1]}</p><ul>{item[2].map(x => <li key={x}><Check size={15}/>{x}</li>)}</ul><a href={href} data-analytics-event="select_content" data-content-type="product_family" data-content-id={slug}>{inquire}<ArrowUpRight size={16}/></a></article>;
   })}</div>;
 }
 
