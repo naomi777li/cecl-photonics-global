@@ -22,6 +22,7 @@ export type ProductFamily = {
   imageAlt: Localized;
   samples: ProductSample[];
   relatedInsights?: string[];
+  relatedProducts?: string[];
   catalog?: string;
   catalogLabel?: Localized;
 };
@@ -82,6 +83,7 @@ export const productFamilies: ProductFamily[] = [
     reviewItems: { en: ["Wavelength and optical power", "Beam divergence", "Drive conditions", "Emitter, array and optics path"], zh: ["波长与光功率", "光束发散角", "驱动条件", "单管、阵列与光学路径"] },
     image: "/products/visuals/vcsel-array-components-v2.jpg", imageAlt: { en: "VCSEL emitter dies, an array on a ceramic carrier and a packaged optical module", zh: "VCSEL 发光芯片、陶瓷载板阵列与封装光学模块" },
     relatedInsights: ["vcsel-robot-vacuum-obstacle-sensing"],
+    relatedProducts: ["multi-junction-vcsel-chips"],
     samples: [
       { model: "850 nm family", application: { en: "Proximity sensing", zh: "接近传感" }, drive: "9 mA", output: { en: "9 mW typical", zh: "典型 9 mW" }, detail: { en: "Vf 2.0 V typical · divergence 28° typical", zh: "典型 Vf 2.0 V · 典型发散角 28°" } },
       { model: "940 nm family", application: { en: "Proximity sensing", zh: "接近传感" }, drive: "9 mA", output: { en: "5.8 mW typical", zh: "典型 5.8 mW" }, detail: { en: "Vf 1.8 V typical · divergence 24° typical", zh: "典型 Vf 1.8 V · 典型发散角 24°" } },
@@ -116,6 +118,7 @@ export const productFamilies: ProductFamily[] = [
     },
     image: "/products/visuals/multi-junction-vcsel-chip-concept.jpg",
     imageAlt: { en: "Concept visualization of a custom multi-junction VCSEL chip program", zh: "多结 VCSEL 芯片定制项目的产品概念示意图" },
+    relatedProducts: ["vcsel-chips"],
     samples: []
   },
   {
