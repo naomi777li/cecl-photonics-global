@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ? "Optical Sensor Modules for OEM Integration | CECL Photonics"
     : slug === "optical-communication-modules"
       ? "Optical Communication Modules & Link Subassemblies | CECL"
+    : slug === "automotive-ir-illumination-modules"
+      ? "Automotive IR Optics & Illumination Modules | CECL"
       : `${product.name.en} | CECL Photonics`;
   const description = slug === "vcsel-chips"
     ? "Compare catalog-listed VCSEL chip families for proximity, robot-vacuum obstacle, liquid and industrial sensing. Share wavelength, drive conditions, beam and package needs for OEM review."
@@ -40,6 +42,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ? "Explore OEM optical sensor modules and sensing front ends for proximity, reflective, ToF, liquid-level and equipment-state detection. Receiver, calibration and complete-system performance require project review."
     : slug === "optical-communication-modules"
       ? "Scope optical transmitter, receiver and link subassemblies for embedded, short-reach fiber and visible-light communications. Rate, protocol, fiber, form factor and interoperability are confirmed for each design."
+    : slug === "automotive-ir-illumination-modules"
+      ? "Automotive IR optics integration for in-cabin cameras and driver or occupant monitoring. Share sensor, wavelength band, geometry and drive needs for an OEM module review; system performance requires vehicle-level validation."
       : product.summary.en;
   return { title, description, alternates: { canonical: `/products/${slug}`, languages: { en: `/products/${slug}`, "zh-CN": `/zh/products/${slug}`, "x-default": `/products/${slug}` } }, openGraph: { title, description, url: `/products/${slug}`, type: "website" } };
 }
