@@ -118,6 +118,7 @@ export const productFamilies: ProductFamily[] = [
     },
     image: "/products/visuals/multi-junction-vcsel-chip-concept.jpg",
     imageAlt: { en: "Concept visualization of a custom multi-junction VCSEL chip program", zh: "多结 VCSEL 芯片定制项目的产品概念示意图" },
+    relatedInsights: ["multi-junction-vcsel-oem-selection-guide"],
     relatedProducts: ["vcsel-chips"],
     samples: []
   },

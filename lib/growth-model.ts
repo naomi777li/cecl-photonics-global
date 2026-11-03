@@ -349,6 +349,7 @@ export const commercialPages: CommercialPage[] = [
 export const keywordClusters = [
   { id: "led-chip", funnel: "commercial", page: "led-chip-manufacturer", primary: "LED chip manufacturer", support: ["LED chip supplier", "AlGaInP LED chip", "InGaN LED chip", "red LED chip"] },
   { id: "vcsel", funnel: "commercial", page: "vcsel-chip-supplier", primary: "VCSEL chip supplier", support: ["VCSEL manufacturer", "940nm VCSEL", "VCSEL array", "VCSEL module", "robot vacuum obstacle avoidance VCSEL", "808nm VCSEL", "850nm VCSEL"] },
+  { id: "multi-junction-vcsel", funnel: "technical-evaluation", page: "multi-junction-vcsel-chips", primary: "multi-junction VCSEL chips", support: ["multi-junction VCSEL chip supplier", "multi-junction VCSEL array", "double-junction VCSEL", "triple-junction VCSEL", "multi-junction VCSEL OEM selection"] },
   { id: "robotics-vcsel", funnel: "technical-evaluation", page: "vcsel-robot-vacuum-obstacle-sensing", primary: "VCSEL for robot vacuum obstacle avoidance", support: ["808nm VCSEL obstacle sensing", "850nm VCSEL robot vacuum", "triangulation obstacle sensing emitter"] },
   { id: "optical-module", funnel: "commercial", page: "custom-optical-module-manufacturer", primary: "custom optical module manufacturer", support: ["custom LED module", "COB light engine", "VCSEL module supplier"] },
   { id: "beauty-oem", funnel: "commercial", page: "medical-beauty-device-oem-odm", primary: "medical beauty device OEM ODM", support: ["LED face mask OEM", "red light therapy device ODM", "phototherapy device manufacturer"] },
@@ -366,6 +367,7 @@ export const insightToCommercialPages: Record<string, string[]> = {
   "led-vcsel-light-engine-oem-odm": ["custom-optical-module-manufacturer", "vcsel-chip-supplier"],
   "compliance-documents-phototherapy-device": ["medical-beauty-device-oem-odm", "led-chip-manufacturer"],
   "vcsel-robot-vacuum-obstacle-sensing": ["vcsel-chip-supplier"],
+  "multi-junction-vcsel-oem-selection-guide": ["vcsel-chip-supplier"],
 };
 
 export const contentBacklog = [
@@ -375,6 +377,7 @@ export const contentBacklog = [
   { priority: 4, personaId: "quality-distributor", intent: "risk-review", targetPage: "medical-beauty-device-oem-odm", topic: "Component report vs finished-device evidence for light-based beauty products" },
   { priority: 5, personaId: "optoelectronics-engineer", intent: "prototype-planning", targetPage: "custom-optical-module-manufacturer", topic: "Turning an optical prototype into production inspection criteria" },
   { priority: 1, personaId: "optoelectronics-engineer", intent: "technical-evaluation", targetPage: "vcsel-chip-supplier", topic: "Robot-vacuum obstacle sensing with 808 nm / 850 nm VCSEL emitters: triangulation, receiver and validation inputs" },
+  { priority: 1, personaId: "optoelectronics-engineer", intent: "technical-evaluation", targetPage: "multi-junction-vcsel-chips", topic: "Multi-junction VCSEL chips: translate market searches into an OEM specification and comparable supplier RFQ" },
 ];
 
 export const measurementModel = {

@@ -205,6 +205,41 @@ export const insights: Insight[] = [
       { label: "STMicroelectronics — VL53L4CX datasheet (940 nm ToF module and robotics applications)", url: "https://www.st.com/content/ccc/resource/technical/document/datasheet/group3/aa/c7/73/ba/d2/08/49/0f/DM00815676/files/DM00815676.pdf/jcr:content/translations/en.DM00815676.pdf" },
       { label: "Infineon — REAL3 ToF sensors for robotics and consumer applications", url: "https://www.infineon.com/products/sensor/tof-3d-image-sensors" }
     ]
+  },
+  {
+    slug: "multi-junction-vcsel-oem-selection-guide",
+    title: { en: "Multi-Junction VCSEL Chips: OEM Selection and Sourcing Guide", zh: "多结 VCSEL 芯片：OEM 选型与采购指南" },
+    description: {
+      en: "A technical buyer guide to junction architecture, operating point, beam, thermal path, packaging and the evidence needed to compare multi-junction VCSEL programs.",
+      zh: "从结结构、工作条件、光束、散热、封装与验证资料出发，建立可比较的多结 VCSEL 供应商评审清单。"
+    },
+    date: "2026-11-03",
+    readTime: { en: "7 min read", zh: "约 7 分钟" },
+    sections: {
+      en: [
+        { heading: "Turn a market search into a device requirement", paragraphs: ["Searches for the multi-junction VCSEL chips market can point to market forecasts, supplier options or a specific device need. Forecasts depend on the report's scope and are not a substitute for an engineering specification. This guide focuses on the product and sourcing questions an OEM team can verify before requesting a sample.", "A multi-junction architecture is a design choice, not a complete performance specification. Public component datasheets show that stacked active regions are used in some high-power sensing arrays, while research reports study other junction counts and structures. Those examples establish that the architecture exists; they do not establish the capability or qualification of another supplier's part."] },
+        { heading: "When to evaluate a multi-junction architecture", paragraphs: ["Evaluate it when the required optical output, pulse conditions, driver constraints and package envelope make a junction-stack discussion relevant. Compare it with single-junction emitters and alternative array or module designs at the same application operating point. More junctions alone do not guarantee better system efficiency, lower temperature or improved sensing results."], bullets: ["Target wavelength and tolerance", "Required optical output at defined current, pulse width and duty cycle", "Beam pattern, emitter layout and optical field at the receiver", "Electrical limits, driver topology and transient behavior", "Thermal interface, board, enclosure and ambient conditions"] },
+        { heading: "Build a comparable supplier RFQ", paragraphs: ["Ask each supplier to quote a named device or a clearly scoped development program. The request should separate existing catalog data from proposed, unqualified development targets. Agree what evidence will be provided at each stage: drawing and datasheet review, sample characterization, engineering sample, validation and production release."], bullets: ["Die format, emitter count or layout, and package interface", "CW or pulsed drive conditions and the measurement setup", "Wavelength, optical power, beam data and tolerances", "Thermal and lifetime test conditions, if available for the quoted model", "Lot identification, change notification and sample acceptance plan"] },
+        { heading: "Review performance with its evidence", paragraphs: ["A useful datasheet connects every value to a test condition, model and revision. Check whether power is peak or continuous, whether beam data describe the bare chip or assembled optics, and whether thermal or reliability evidence applies to the exact configuration being quoted. A paper's laboratory result is useful background, but it is not a supplier guarantee or a finished-module qualification."] },
+        { heading: "CECL project scope and next step", paragraphs: ["CECL presents multi-junction VCSEL chips as an OEM development direction subject to engineering review. The page does not promise a stocked junction count, fixed performance, certification, yield, volume or lead time. To assess fit, share the target application, wavelength, operating waveform, optical output, package constraints, thermal path, validation plan and annual or prototype quantity. The team can then review feasibility and identify what must be demonstrated in samples."] }
+      ],
+      zh: [
+        { heading: "把市场搜索转化为器件需求", paragraphs: ["搜索“多结 VCSEL 芯片市场”可能是在找市场预测、供应商，也可能是在找具体器件。市场预测会随报告口径变化，不能代替工程规格。本文聚焦 OEM 团队在索样之前可以核验的产品和采购问题。", "多结结构是一种设计选择，不是完整的性能规格。公开器件数据表显示，部分高功率传感阵列采用了堆叠有源区结构；研究论文也讨论了其他结数和结构。这些例子说明相关架构存在，但不能证明其他供应商的器件具备相同能力或已完成相同验证。"] },
+        { heading: "何时评估多结结构", paragraphs: ["当目标光输出、脉冲条件、驱动约束与封装空间使结结构评估具有意义时，再把多结方案纳入比较。应在同一应用工作点下与单结发射器、其他阵列或模块方案比较。结数增加本身并不保证系统效率更高、温度更低或感知结果更好。"], bullets: ["目标波长及容差", "明确电流、脉宽和占空比条件下的光输出", "接收端对应的光束形态、发光单元布局与光场", "电气边界、驱动拓扑与瞬态表现", "热界面、电路板、外壳和环境条件"] },
+        { heading: "写出可比较的供应商询价需求", paragraphs: ["要求供应商按明确型号报价，或清楚界定开发项目范围。询价应区分现有目录数据与尚未验证的开发目标，并约定各阶段交付的资料：图纸和数据表评审、样品表征、工程样品、验证与量产放行。"], bullets: ["芯片形式、发光单元数量或布局、封装接口", "连续或脉冲驱动条件及测量装置", "波长、光功率、光束数据与公差", "如有，注明对应报价型号的热与寿命测试条件", "批次识别、变更通知与样品验收计划"] },
+        { heading: "连同证据一起评审性能", paragraphs: ["有用的数据表会把每个数值关联到具体测试条件、型号和版本。应核对光功率是峰值还是连续值、光束数据对应裸芯片还是装配后的光学件，以及热性能或可靠性资料是否适用于本次报价的准确配置。论文中的实验室结果可以帮助理解技术背景，但不能代替供应商保证或整机模块验证。"] },
+        { heading: "中能芯光项目范围与下一步", paragraphs: ["中能芯光将多结 VCSEL 芯片作为需工程评审的 OEM 开发方向展示。页面不承诺现货结数、固定性能、认证、良率、产量或交期。若要评估适配性，请提交目标应用、波长、驱动波形、光输出、封装约束、散热路径、验证计划以及样品或年度数量，工程团队再评审可行性与样品阶段需要验证的内容。"] }
+      ]
+    },
+    note: {
+      en: "Market-size estimates vary with report definitions and are not reproduced here. The cited datasheets and paper are external technical references, not CECL product specifications or qualification evidence.",
+      zh: "不同报告的市场规模口径可能不同，本文不引用相关估值。所列数据表和论文仅为外部技术参考，不代表中能芯光产品规格或资格验证证据。"
+    },
+    sources: [
+      { label: "Lumentum — 100 W 940 nm Multi-Junction VCSEL Array datasheet", url: "https://resource.lumentum.com/s3fs-public/technical-library-items/100w940nmvcsel-ds-oc-ae.pdf" },
+      { label: "Coherent — 940 nm Multi-Mode Double-Junction VCSEL Array datasheet", url: "https://www.coherent.com/resources/datasheet/components-and-accessories/940nm-multi-mode-double-junction-vcsel-array.pdf" },
+      { label: "Journal of Lightwave Technology — Multi-junction cascaded VCSEL study", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10899599/" }
+    ]
   }
 ];
 
