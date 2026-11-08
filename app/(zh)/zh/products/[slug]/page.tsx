@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : slug === "uvc-led-chips-and-source-modules"
       ? "UV-C LED 芯片与杀菌光源模块｜中能芯光"
     : slug === "optical-sensor-modules"
-      ? "光学传感器模块与感知前端 OEM｜中能芯光"
+      ? "紫外探测器与光学传感模块 OEM｜中能芯光"
     : slug === "optical-communication-modules"
       ? "光通信模块与光链路子组件｜中能芯光"
       : `${product.name.zh}｜中能芯光`;
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : slug === "uvc-led-chips-and-source-modules"
       ? "了解面向空气处理、封闭式表面照射及水处理设备的 UV-C LED 芯片与光源模块开发。波长、照射剂量、安全及整机效果需按项目评审和验证。"
     : slug === "optical-sensor-modules"
-      ? "了解面向接近、反射式、ToF、液位及设备状态检测的光学传感模块与感知前端。接收器、标定与整机性能需经项目评审验证。"
+      ? "面向 OEM 项目评审光学传感器模块与 UV 光电二极管探测前端，覆盖接近、测距及紫外光源监测方向。请提供目标波段、探测器、滤光、信号接口与验证需求。"
     : slug === "optical-communication-modules"
       ? "面向嵌入式、短距光纤及可见光通信，评审光发射、接收与链路子组件。速率、协议、光纤、外形与互通性按具体设计确认。"
       : product.summary.zh;

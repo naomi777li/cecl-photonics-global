@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const productHubLastModified = new Date("2026-11-01");
   const recentProductLastModified = new Date("2026-11-01");
   const opticalModuleLastModified = new Date("2026-10-23");
+  const opticalSensorLastModified = new Date("2026-11-08");
   const localized = (path: string) => ({
     en: `${origin}${path}`,
     "zh-CN": `${origin}/zh${path === "/" ? "" : path}`,
@@ -28,9 +29,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${origin}/privacy`, lastModified, changeFrequency: "yearly", priority: .3, alternates: { languages: localized("/privacy") } },
     { url: `${origin}/zh/privacy`, lastModified, changeFrequency: "yearly", priority: .3, alternates: { languages: localized("/privacy") } },
     ...productFamilies.flatMap(({ slug }) => {
-      const productLastModified = ["multi-junction-vcsel-chips", "led-vcsel-chip-packaging"].includes(slug)
+      const productLastModified = slug === "optical-sensor-modules"
+        ? opticalSensorLastModified
+        : ["multi-junction-vcsel-chips", "led-vcsel-chip-packaging"].includes(slug)
         ? recentProductLastModified
-        : ["optical-communication-modules", "optical-sensor-modules"].includes(slug)
+        : slug === "optical-communication-modules"
         ? opticalModuleLastModified
         : ["vcsel-chips", "robotics-optical-ranging-modules", "automotive-ir-illumination-modules", "uav-optical-sensing-modules", "uvc-led-chips-and-source-modules"].includes(slug)
           ? homeLastModified

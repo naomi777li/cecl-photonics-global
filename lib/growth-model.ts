@@ -359,6 +359,7 @@ export const keywordClusters = [
   { id: "automotive-ir-illumination", funnel: "project-inquiry", page: "automotive-ir-illumination-modules", primary: "automotive infrared illumination module", support: ["in-cabin IR illuminator OEM", "driver monitoring infrared LED module", "occupant monitoring IR illumination supplier"] },
   { id: "uav-optical-sensing", funnel: "project-inquiry", page: "uav-optical-sensing-modules", primary: "UAV optical sensing module", support: ["drone optical sensor module OEM", "UAV obstacle sensing emitter", "industrial drone inspection illumination"] },
   { id: "uvc-led-germicidal", funnel: "project-inquiry", page: "uvc-led-chips-and-source-modules", primary: "UV-C LED chip for germicidal equipment", support: ["UV-C LED chip supplier", "UV-C LED disinfection module OEM", "germicidal UV-C light source module", "UV-C LED for air water surface treatment"] },
+  { id: "uv-photodetector", funnel: "technical-evaluation", page: "optical-sensor-modules", primary: "UV photodiode detector module", support: ["UV photodiode", "UV-C sensor chip", "UV source monitoring photodiode", "ultraviolet detector front end"] },
   { id: "engineering-guides", funnel: "informational", page: "insights", primary: "photonics engineering guide", support: ["wavelength selection", "light engine design", "phototherapy compliance documents"] },
 ];
 
